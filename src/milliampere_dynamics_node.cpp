@@ -1,3 +1,5 @@
+// Dynamics implementation of the Milliampere vessel from NTNU
+
 #include <memory>
 #include <cmath>
 #include <rclcpp/rclcpp.hpp>
@@ -7,6 +9,7 @@
 #include <geometry_msgs/msg/transform_stamped.hpp>
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2/LinearMath/Quaternion.h>
+#include <std_msgs/msg/float64_multi_array.hpp>
 
 #include <Eigen/Dense>
 
@@ -34,9 +37,44 @@ public:
     nu_.setZero();  // [u, v, r]
     eta_.setZero(); // [x, y, ψ]
     tau_.setZero(); // [X, Y, N]
+    azimuthAngles_.setZero();
+    thrustForces_.setZero();
+
+    //----------------------------------------------------------------
+    // 3) ROS interfaces
+    //----------------------------------------------------------------
+    thruster_cmd_sub_ = create_subscription<std_msgs::msg::Float64MultiArray>(
+        "/thruster_cmd",
+        10,
+        std::bind(
+            &MilliampereDynamics::onThrusterCommand, this, std::placeholders::_1)); // TODO anla
+
+    odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
+
+    // coordinate frame transforms (map → base_link)
+    tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
+
+    // calls step() each 20ms
+    timer_ = create_wall_timer(20ms, std::bind(&MilliampereDynamics::step, this));
   }
 
 private:
+  // callback: capture incoming thrust forces and azimuth angles in degrees
+  void onThrusterCommand(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
+  {
+    // 1) Degrees → radians
+    double az1 = deg2rad(msg->data[0]);
+    double az2 = deg2rad(msg->data[1]);
+
+    // 2) Wrap to (–π, π]
+    azimuthAngles_(0) = wrapYaw(az1);
+    azimuthAngles_(1) = wrapYaw(az2);
+
+    // 3) Thrust magnitudes
+    thrustForces_(0) = msg->data[2];
+    thrustForces_(1) = msg->data[3];
+  }
+
   void step()
   {
     const double dt = 0.02; // 50 Hz
@@ -53,10 +91,12 @@ private:
           Lx_ * sa1, Lx * sa2;
     // clang-format on
 
-    tau_ = T_ * thrustforces_;
+    tau_ = T_ * thrustForces_;
 
     // Mν̇ + C(v)v + D(v)v = τ
-    Eigen::Vector3d nu_dot = (-C_ * nu_ - D_ * nu_ + tau_) / M_;
+    updateCoriolisMatrix(nu_);
+    updateDampingMatrix(nu_);
+    Eigen::Vector3d nu_dot = M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_);
 
     // integrate body‐frame velocity νk+1​=νk​+ν˙k​⋅Δt
     nu_ += nu_dot * dt;
@@ -75,7 +115,52 @@ private:
 
     Eigen::Vector3d eta_dot = Jnb * nu_;
     eta_ += eta_dot * dt;
+
+    // ------------------------------------------------------------
+    //  C) Publish TF + Odometry
+    // ------------------------------------------------------------
+    auto stamp = now();
+
+    // 1) TF: map → base_link
+    geometry_msgs::msg::TransformStamped tf_msg;
+    tf_msg.header.stamp            = stamp;
+    tf_msg.header.frame_id         = "map";
+    tf_msg.child_frame_id          = "base_link";
+    tf_msg.transform.translation.x = eta_(0);
+    tf_msg.transform.translation.y = eta_(1);
+
+    tf2::Quaternion q;
+    q.setRPY(0.0, 0.0, eta_(2));
+    tf_msg.transform.rotation.x = q.x();
+    tf_msg.transform.rotation.y = q.y();
+    tf_msg.transform.rotation.z = q.z();
+    tf_msg.transform.rotation.w = q.w();
+    tf_broadcaster_->sendTransform(tf_msg);
+
+    // 2) Odometry
+    nav_msgs::msg::Odometry odom;
+    odom.header.stamp    = stamp;
+    odom.header.frame_id = "map";
+    odom.child_frame_id  = "base_link";
+
+    // pose
+    odom.pose.pose.position.x = eta_(0);
+    odom.pose.pose.position.y = eta_(1);
+    odom.pose.pose.position.z = 0.0; // flat world
+
+    // twist (body frame)
+    odom.twist.twist.linear.x  = nu_(0);
+    odom.twist.twist.linear.y  = nu_(1);
+    odom.twist.twist.angular.z = nu_(2);
+
+    odom_pub_->publish(odom);
   }
+
+  // ---------- ROS interfaces --------------------- // TODO anla
+  rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr thruster_cmd_sub_;
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr             odom_pub_;
+  std::shared_ptr<tf2_ros::TransformBroadcaster>                    tf_broadcaster_;
+  rclcpp::TimerBase::SharedPtr                                      timer_;
 
   // ---------- node state & parameters ------------
   double          m_  = 1800;     // mass [kg]
@@ -87,8 +172,8 @@ private:
   Eigen::Vector3d eta_;           // position [x, y, ψ]
   Eigen::Vector3d nu_;            // body-frame twist [u, v, r]
   Eigen::Vector3d tau_;           // [X, Y, N]
-  Eigen::Vector2d azimuthAngles_; // [α1, α2]
-  Eigen::Vector2d thrustForces_;  // [F1, F2]
+  Eigen::Vector2d azimuthAngles_; // [α₁, α₂] in radians
+  Eigen::Vector2d thrustForces_;  // [F₁, F₂] in Newtons
   Eigen::Matrix<double, 3, 2> T_; // Thrust configuration matrix
 
   double m11_ = 2389.657; // [kg]
@@ -119,7 +204,7 @@ private:
   double Nvr_  = -121.957; // [kg/s]
   double Nrrr_ = 0.0;      // [kg/s]
 
-  // Coriolis matrix is velocity dependent → compute dynamically
+  // velocity dependent → compute dynamically
   void updateCoriolisMatrix(const Eigen::Vector3d& nu)
   {
     double u = nu(0), v = nu(1), r = nu(2);
@@ -134,6 +219,7 @@ private:
     // clang-format on
   }
 
+  // velocity dependent → compute dynamically
   void updateDampingMatrix(const Eigen::Vector3d& nu)
   {
     double u = nu(0), v = nu(1), r = nu(2);
@@ -150,4 +236,30 @@ private:
           0.0, d32,  d33;
     // clang-format on
   }
+
+  double deg2rad(double deg) { return deg * M_PI / 180.0; }
+
+  double wrapYaw(double yaw)
+  {
+    double two_pi = 2.0 * M_PI;
+
+    // Step 1: Wrap into [0, 2π)
+    yaw = std::fmod(yaw, two_pi);
+    if (yaw < 0)
+      yaw += two_pi;
+
+    // Step 2: Wrap into [-π, π)
+    if (yaw > M_PI)
+      yaw -= two_pi;
+
+    return yaw;
+  }
+};
+
+int main(int argc, char** argv)
+{
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<MilliampereDynamics>());
+  rclcpp::shutdown();
+  return 0;
 }
