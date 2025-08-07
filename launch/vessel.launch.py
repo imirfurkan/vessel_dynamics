@@ -30,17 +30,27 @@ def generate_launch_description():
             parameters=[{'robot_description': robot_desc}],
             output='screen'
         ),
-
         # ————————————————————————————
-        # B) vessel_dynamics_node
+        # B1) milliampere_dynamics_node
         #    our simple kinematics, which publishes
         #    the dynamic map->base_link transform
         Node(
             package='vessel_kinematics',
-            executable='vessel_dynamics_node',
-            name='vessel_dynamics',
+            executable='milliampere_dynamics_node',
+            name='milliampere_dynamics',
             output='screen'
         ),
+
+        # # ————————————————————————————
+        # # B) vessel_dynamics_node
+        # #    our simple kinematics, which publishes
+        # #    the dynamic map->base_link transform
+        # Node(
+        #     package='vessel_kinematics',
+        #     executable='vessel_dynamics_node',
+        #     name='vessel_dynamics',
+        #     output='screen'
+        # ),
 
         # # ————————————————————————————
         # # C) vessel_kinematics_node
