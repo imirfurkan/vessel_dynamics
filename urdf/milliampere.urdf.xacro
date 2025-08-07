@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="vessel_prism">
+  <!-- prism dims -->
+  <xacro:property name="L" value="5.0"/>   <!-- length -->
+  <xacro:property name="W" value="2.8"/>   <!-- beam -->
+  <xacro:property name="H" value="3.5"/>   <!-- height -->
+
+  <link name="base_link">
+  <visual>
+    <origin xyz="0 0 ${-draught + H/2.0}" rpy="0 0 0"/>
+    <geometry>
+      <box size="${L} ${W} ${H}"/>
+    </geometry>
+    <material name="vessel_blue">
+      <color rgba="0.0 0.3 0.6 1.0"/>
+    </material>
+  </visual>
+  <collision>
+    <origin xyz="0 0 ${-draught + H/2.0}" rpy="0 0 0"/>
+    <geometry>
+      <box size="${L} ${W} ${H}"/>
+    </geometry>
+  </collision>
+</link>
+</robot>

@@ -13,7 +13,7 @@ def generate_launch_description():
         # find the 'xacro' executable
         FindExecutable(name='xacro'), ' ',
         # path to vessel_prism.urdf.xacro inside install/share/...
-        PathJoinSubstitution([pkg, 'urdf/vessel_prism.urdf.xacro'])
+        PathJoinSubstitution([pkg, 'urdf/milliampere.urdf.xacro'])
     ])
 
     # 4) return a LaunchDescription with the 3 nodes we want
