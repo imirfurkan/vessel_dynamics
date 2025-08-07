@@ -1,0 +1,23 @@
+BasedOnStyle: LLVM
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+ColumnLimit: 100
+SpaceBeforeParens: ControlStatements
+PointerAlignment: Left
+SortIncludes: false
+IncludeBlocks: Preserve
+
+# For Eigen matrix style formatting
+BinPackArguments: false
+BinPackParameters: false
+
+
+# For aligning = signs and types
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
