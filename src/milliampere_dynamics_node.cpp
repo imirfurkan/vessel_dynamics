@@ -88,18 +88,33 @@ private:
     // clang-format off
     T_ <<       ca1,      ca2,
                 sa1,      sa2,
-          Lx_ * sa1, Lx * sa2;
+          Lx_ * sa1, Lx_ * sa2;
     // clang-format on
 
     tau_ = T_ * thrustForces_;
+    // debug
+    RCLCPP_INFO(this->get_logger(),
+                "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]",
+                azimuthAngles_(0),
+                azimuthAngles_(1),
+                thrustForces_(0),
+                thrustForces_(1));
+    RCLCPP_INFO(this->get_logger(), "Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
 
     // Mν̇ + C(v)v + D(v)v = τ
     updateCoriolisMatrix(nu_);
     updateDampingMatrix(nu_);
     Eigen::Vector3d nu_dot = M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_);
+    RCLCPP_INFO(get_logger(), "C*nu: [%f, %f, %f]", (C_ * nu_)(0), (C_ * nu_)(1), (C_ * nu_)(2));
+    RCLCPP_INFO(get_logger(), "D*nu: [%f, %f, %f]", (D_ * nu_)(0), (D_ * nu_)(1), (D_ * nu_)(2));
+    RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tau_(2));
 
     // integrate body‐frame velocity νk+1​=νk​+ν˙k​⋅Δt
     nu_ += nu_dot * dt;
+
+    RCLCPP_INFO(this->get_logger(), "nu: [u=%.2f, v=%.2f, r=%.2f]", nu_(0), nu_(1), nu_(2));
+    RCLCPP_INFO(
+        this->get_logger(), "nu_dot: [du=%.2f, dv=%.2f, dr=%.2f]", nu_dot(0), nu_dot(1), nu_dot(2));
 
     // ------------------------------------------------------------
     //  B) Kinematic mapping to inertial pose
@@ -144,9 +159,10 @@ private:
     odom.child_frame_id  = "base_link";
 
     // pose
-    odom.pose.pose.position.x = eta_(0);
-    odom.pose.pose.position.y = eta_(1);
-    odom.pose.pose.position.z = 0.0; // flat world
+    odom.pose.pose.position.x  = eta_(0);
+    odom.pose.pose.position.y  = eta_(1);
+    odom.pose.pose.position.z  = 0.0; // flat world
+    odom.pose.pose.orientation = tf_msg.transform.rotation;
 
     // twist (body frame)
     odom.twist.twist.linear.x  = nu_(0);
@@ -154,6 +170,13 @@ private:
     odom.twist.twist.angular.z = nu_(2);
 
     odom_pub_->publish(odom);
+
+    // RCLCPP_INFO(this->get_logger(), "eta: [x=%.2f, y=%.2f, ψ=%.2f]", eta_(0), eta_(1), eta_(2));
+    // RCLCPP_INFO(this->get_logger(),
+    //             "eta_dot: [dx=%.2f, dy=%.2f, dψ=%.2f]",
+    //             eta_dot(0),
+    //             eta_dot(1),
+    //             eta_dot(2));
   }
 
   // ---------- ROS interfaces --------------------- // TODO anla

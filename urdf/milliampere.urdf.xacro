@@ -7,7 +7,7 @@
 
   <link name="base_link">
   <visual>
-    <origin xyz="0 0 ${-draught + H/2.0}" rpy="0 0 0"/>
+    <origin xyz="0 0 ${-0.2 + H/2.0}" rpy="0 0 0"/> // 0.2m = draught
     <geometry>
       <box size="${L} ${W} ${H}"/>
     </geometry>
@@ -16,7 +16,7 @@
     </material>
   </visual>
   <collision>
-    <origin xyz="0 0 ${-draught + H/2.0}" rpy="0 0 0"/>
+    <origin xyz="0 0 ${-0.2 + H/2.0}" rpy="0 0 0"/>
     <geometry>
       <box size="${L} ${W} ${H}"/>
     </geometry>
