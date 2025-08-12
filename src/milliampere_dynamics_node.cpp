@@ -88,10 +88,11 @@ private:
     // clang-format off
     T_ <<       ca1,      ca2,
                 sa1,      sa2,
-          Lx_ * sa1, Lx_ * sa2;
+          Lx_ * sa1, -Lx_ * sa2; //
     // clang-format on
 
     tau_ = T_ * thrustForces_;
+
     // debug
     RCLCPP_INFO(this->get_logger(),
                 "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]",
@@ -114,7 +115,7 @@ private:
 
     RCLCPP_INFO(this->get_logger(), "nu: [u=%.2f, v=%.2f, r=%.2f]", nu_(0), nu_(1), nu_(2));
     RCLCPP_INFO(
-        this->get_logger(), "nu_dot: [du=%.2f, dv=%.2f, dr=%.2f]", nu_dot(0), nu_dot(1), nu_dot(2));
+        this->get_logger(), "nu_dot: [du=%.3f, dv=%.3f, dr=%.3f]", nu_dot(0), nu_dot(1), nu_dot(2));
 
     // ------------------------------------------------------------
     //  B) Kinematic mapping to inertial pose
@@ -138,14 +139,18 @@ private:
 
     // 1) TF: map → base_link
     geometry_msgs::msg::TransformStamped tf_msg;
-    tf_msg.header.stamp            = stamp;
-    tf_msg.header.frame_id         = "map";
-    tf_msg.child_frame_id          = "base_link";
-    tf_msg.transform.translation.x = eta_(0);
-    tf_msg.transform.translation.y = eta_(1);
+    tf_msg.header.stamp    = stamp;
+    tf_msg.header.frame_id = "map";
+    tf_msg.child_frame_id  = "base_link";
+    // ---- compute ENU pose from NED state (2D) ----
+    const double x_ros   = eta_(1);              // ENU x = East  = y_NED
+    const double y_ros   = eta_(0);              // ENU y = North = x_NED
+    const double yaw_ros = M_PI / 2.0 - eta_(2); // ENU yaw CCW = 90° - NED yaw (CW+)
 
+    tf_msg.transform.translation.x = x_ros;
+    tf_msg.transform.translation.y = y_ros;
     tf2::Quaternion q;
-    q.setRPY(0.0, 0.0, eta_(2));
+    q.setRPY(0.0, 0.0, yaw_ros);
     tf_msg.transform.rotation.x = q.x();
     tf_msg.transform.rotation.y = q.y();
     tf_msg.transform.rotation.z = q.z();
@@ -159,15 +164,15 @@ private:
     odom.child_frame_id  = "base_link";
 
     // pose
-    odom.pose.pose.position.x  = eta_(0);
-    odom.pose.pose.position.y  = eta_(1);
+    odom.pose.pose.position.x  = x_ros;
+    odom.pose.pose.position.y  = y_ros;
     odom.pose.pose.position.z  = 0.0; // flat world
     odom.pose.pose.orientation = tf_msg.transform.rotation;
 
     // twist (body frame)
     odom.twist.twist.linear.x  = nu_(0);
-    odom.twist.twist.linear.y  = nu_(1);
-    odom.twist.twist.angular.z = nu_(2);
+    odom.twist.twist.linear.y  = nu_(1);                //
+    odom.twist.twist.angular.z = nu_(2) * 180.0 / M_PI; // revert to normal later.
 
     odom_pub_->publish(odom);
 
@@ -187,7 +192,7 @@ private:
 
   // ---------- node state & parameters ------------
   double          m_  = 1800;     // mass [kg]
-  double          Lx_ = 2;        // distance from CO to thrusters [m] TODO find the actual value
+  double          Lx_ = 1.8;      // distance from CO to thrusters [m] TODO find the actual value
   Eigen::Matrix3d Jnb;            // rotation matrix from body to inertial
   Eigen::Matrix3d M_;             // mass inertia matrix
   Eigen::Matrix3d C_;             // coriolis-centripetal matrix
@@ -203,7 +208,7 @@ private:
   double m22_ = 2533.911; // [kg]
   double m23_ = 62.386;   // [kg]
   double m32_ = 28.141;   // [kg]
-  double m33_ = 5068.910; // [kg]
+  double m33_ = 5068.910; // [kg] or [kg*m2]
 
   // ---------- Damping matrix D(nu) coefficients (fully coupled model) ----------
   // Surge
