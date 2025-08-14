@@ -1,11 +1,14 @@
-#include "thrust_allocator.hpp"
+#include "vessel_kinematics/thrust_allocator.hpp"
 #include <algorithm> // TODO when is this needed
 #include <cmath>
 #include <vector>
 #include <osqp.h>
+#include <Eigen/Dense> // TODO removing this still builds but it takes 4x time time
+#include <Eigen/Sparse>
 
 // Helper function declarations (at the bottom)
-static inline Vec2   clampVec(const Vec2& x, const Vec2& lo, const Vec2& hi);
+static inline Eigen::Vector2d
+clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi);
 static inline double wrapAngle(double angle);
 
 Eigen::Matrix<double, 3, 2> Tmatrix(const Eigen::Vector2d& a, double Lx)
@@ -20,6 +23,7 @@ Eigen::Matrix<double, 3, 2> Tmatrix(const Eigen::Vector2d& a, double Lx)
             s1,       s2,
        Lx * s1, -Lx * s2;
   // clang-format on
+  return T;
 }
 
 void dT_dalpha(const Eigen::Vector2d&       a,
@@ -68,9 +72,12 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   P_diag *= 2.0; // OSQP minimizes 0.5 x'Px + q'x
 
   // Pre-allocate memory for efficiency. This avoids slow resizing later.
+  std::vector<c_float> P_data;
   P_data.reserve(NUM_VARS);
+  std::vector<c_int> P_i;
   P_i.reserve(NUM_VARS);
-  P_p.reserve(NUM_VARS + 1); // accomply with CSC data structure
+  std::vector<c_int> P_p;
+  P_p.reserve(NUM_VARS + 1);
 
   // This loop fills the vectors for our diagonal matrix.
   for (int k = 0; k < NUM_VARS; ++k)
@@ -85,28 +92,87 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   // --- Linear Cost q (zero) ---
   std::vector<c_float> q(NUM_VARS, 0.0); // we don't have a linear cost, we just minimize 0.5 x'Px
 
-  const Eigen::Matrix<double, 3, 2> T0     = Tmatrix(state.alpha, P.Lx);
-  std::vector<c_float>              A_data = {
-      T0(0, 0),
-      T0(1, 0),
-      T0(2, 0),
-      1.0,
-      T0(0, 1),
-      T0(1, 1),
-      T0(2, 1),
-      1.0,
-      -1.0,
-      -1.0,
-      -1.0,
-      1.0,
-      1.0}; // list of all the non-zero values from the A matrix, read column by column.
-  std::vector<c_int> A_i = {0, 1, 2, 3, 0, 1, 2, 4, 0, 1, 2, 5, 6};
-  std::vector<c_int> A_p = {0, 4, 8, 9, 10, 11, 12, 13};
+  const Eigen::Matrix<double, 3, 2> T0 = Tmatrix(state.alpha, P.Lx);
+
+  Eigen::Matrix<double, 3, 2> dT1, dT2;
+  dT_dalpha(state.alpha, P.Lx, dT1, dT2);
+
+  // Linearization term for dα_0 and dα_1.
+  const Eigen::Vector3d term_dalpha0 = dT1.col(0) * state.f(0);
+  const Eigen::Vector3d term_dalpha1 = dT2.col(1) * state.f(1);
+
+  // Using a vector of triplets to build the sparse matrix A in a clean way.
+  // We'll convert this to CSC format later.
+  // A triplet is a simple (row, column, value) tuple.
+  std::vector<Eigen::Triplet<double>>
+      triplets; //  OSQP library is written in C and uses the more memory-efficient CSC format,
+                //  which is not directly compatible with Eigen's triplet representation so we have
+                //  to make it vector.
+
+  triplets.reserve(13);
+
+  // Row 0-2: Physics constraint (T0*f + (dT/dalpha)*f_prev*dalpha + s = tau_des)
+  // [f0]
+  triplets.emplace_back(0, 0, T0(0, 0));
+  triplets.emplace_back(1, 0, T0(1, 0));
+  triplets.emplace_back(2, 0, T0(2, 0));
+  // [f1]
+  triplets.emplace_back(0, 1, T0(0, 1));
+  triplets.emplace_back(1, 1, T0(1, 1));
+  triplets.emplace_back(2, 1, T0(2, 1));
+  // [sx, sy, sn]
+  triplets.emplace_back(0, 2, -1.0);
+  triplets.emplace_back(1, 3, -1.0);
+  triplets.emplace_back(2, 4, -1.0);
+  // [dα0]
+  triplets.emplace_back(0, 5, term_dalpha0(0));
+  triplets.emplace_back(1, 5, term_dalpha0(1));
+  triplets.emplace_back(2, 5, term_dalpha0(2));
+  // [dα1]
+  triplets.emplace_back(0, 6, term_dalpha1(0));
+  triplets.emplace_back(1, 6, term_dalpha1(1));
+  triplets.emplace_back(2, 6, term_dalpha1(2));
+  // Row 3: f0 lower bound
+  triplets.emplace_back(3, 0, 1.0);
+  // Row 4: f1 lower bound
+  triplets.emplace_back(4, 1, 1.0);
+  // Row 5: dα0 lower bound
+  triplets.emplace_back(5, 5, 1.0);
+  // Row 6: dα1 lower bound
+  triplets.emplace_back(6, 6, 1.0);
+
+  // Convert triplets to OSQP's CSC format. This is the most reliable way.
+  Eigen::SparseMatrix<double> A_sparse(NUM_CONSTRAINTS, NUM_VARS);
+  A_sparse.setFromTriplets(triplets.begin(), triplets.end());
+  A_sparse.makeCompressed();
+
+  // Extract CSC data
+  std::vector<c_float> A_data(A_sparse.valuePtr(), A_sparse.valuePtr() + A_sparse.nonZeros());
+  std::vector<c_int> A_i(A_sparse.innerIndexPtr(), A_sparse.innerIndexPtr() + A_sparse.nonZeros());
+  std::vector<c_int> A_p(A_sparse.outerIndexPtr(),
+                         A_sparse.outerIndexPtr() + (A_sparse.outerSize() + 1));
+
+  // std::vector<c_float> A_data = {
+  //     T0(0, 0),
+  //     T0(1, 0),
+  //     T0(2, 0),
+  //     1.0,
+  //     T0(0, 1),
+  //     T0(1, 1),
+  //     T0(2, 1),
+  //     1.0,
+  //     -1.0,
+  //     -1.0,
+  //     -1.0,
+  //     1.0,
+  //     1.0}; // list of all the non-zero values from the A matrix, read column by column.
+  // std::vector<c_int> A_i = {0, 1, 2, 3, 0, 1, 2, 4, 0, 1, 2, 5, 6};
+  // std::vector<c_int> A_p = {0, 4, 8, 9, 10, 11, 12, 13};
 
   // --- Constraint Bounds l and u ---
   std::vector<c_float>  l(NUM_CONSTRAINTS), u(NUM_CONSTRAINTS);
-  const Eigen::Vector2d dalpha_min = P.dalpha_min_rate_rad_s * P.dt;
-  const Eigen::Vector2d dalpha_max = P.dalpha_max_rate_rad_s * P.dt;
+  const Eigen::Vector2d dalpha_min = P.dalpha_min_rate_rad_s * dt;
+  const Eigen::Vector2d dalpha_max = P.dalpha_max_rate_rad_s * dt;
 
   // Physics constraint: T0*f + s = tau_des
   l[0] = u[0] = tau_des(0);
@@ -134,6 +200,7 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   data->l = l.data();
   data->u = u.data();
 
+  /////////////////////////////////////// CODE CRASH / PROBLEM in between
   OSQPWorkspace* raw_workspace = nullptr;
   osqp_setup(&raw_workspace, data.get(), settings.get());
   std::unique_ptr<OSQPWorkspace, OSQPWorkspaceDeleter> work(raw_workspace);
@@ -144,7 +211,7 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   TAResult   out;
   const bool is_solved = work && work->info->status_val == OSQP_SOLVED;
   out.success          = is_solved;
-
+  ///////////////////////////////////////// CODE CRASH / PROBLEM in between
   if (is_solved)
   {
     const c_float*  sol_x = work->solution->x;
@@ -166,7 +233,8 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   return out;
 }
 
-static inline Vec2 clampVec(const Vec2& x, const Vec2& lo, const Vec2& hi)
+static inline Eigen::Vector2d
+clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi)
 {
   return x.cwiseMax(lo).cwiseMin(hi);
 }

@@ -1,14 +1,15 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include <Eigen/Sparse>
 #include <memory> // Required for std::unique_ptr // TODO check that function
 
 // clang-format off
 
-// --- Forward declarations for OSQP C-style structs --- // TODO check
-struct OSQPSettings;
-struct OSQPWorkspace;
-struct OSQPData;
+// // --- Forward declarations for OSQP C-style structs --- // TODO check
+// struct OSQPSettings;
+// struct OSQPWorkspace;
+// struct OSQPData;
 
 /**
  * @file thrust_allocator.hpp
@@ -22,7 +23,6 @@ struct OSQPData;
 struct TAParams
 {
   double Lx = 1.8; // [m]
-  const double dt = 0.02; // 50 Hz
 
   // TODO why this initialization method
   Eigen::Vector2d f_min{0.0, 0.0};     // minimum thrust force per thruster [N]
@@ -40,14 +40,15 @@ struct TAParams
   // to build the sparse matrix 'P' that OSQP needs, inside osqp_path.
   Eigen::Vector2d Wf{1.0, 1.0};      // Higher values prioritize using less thrust.
   Eigen::Vector3d Qs{1e3, 1e3, 1e3}; // This should be high to ensure the desired tau is met.
-  Eigen::Vector2d Oa{10.0, 10.0} // Higher values result in smoother, less aggressive angle changes.
+  Eigen::Vector2d Oa{10.0, 10.0}; // Higher values result in smoother, less aggressive angle changes.
 };
 
 /// @brief Current state of the thruster system. This is updated at each timestep.
 struct TAState
 {
   Eigen::Vector2d alpha = Eigen::Vector2d::Zero(); // Current thruster angles [rad, rad].
-                                                   // TODO how is this updated each time step
+  Eigen::Vector2d f = Eigen::Vector2d::Zero();
+  // Eigen::Vector2d alpha{10.0 * M_PI / 180.0, 10.0 * M_PI / 180.0};
 };
 
 /// @brief The result computed by the thruster allocator.

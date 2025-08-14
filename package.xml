@@ -18,8 +18,8 @@
   <depend>tf2_ros</depend>
   <depend>tf2</depend>
   <depend>eigen3_cmake_module</depend>
-
   <depend>robot_state_publisher</depend>
+  <depend>osqp_vendor</depend>
 
   <!-- For processing XACRO -->
   <build_depend>xacro</build_depend>

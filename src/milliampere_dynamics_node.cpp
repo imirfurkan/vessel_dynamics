@@ -3,6 +3,7 @@
 #include <memory>
 #include <cmath>
 #include <rclcpp/rclcpp.hpp>
+#include "vessel_kinematics/thrust_allocator.hpp"
 
 #include <geometry_msgs/msg/wrench.hpp>
 #include <nav_msgs/msg/odometry.hpp>
@@ -37,17 +38,18 @@ public:
     nu_.setZero();  // [u, v, r]
     eta_.setZero(); // [x, y, ψ]
     tau_.setZero(); // [X, Y, N]
-    azimuthAngles_.setZero();
+    tau_des_.setZero();
+    azimuthAngles_.setZero(); // radian
+    // azimuthAngles_ << 10.0, 10.0;
     thrustForces_.setZero();
 
     //----------------------------------------------------------------
     // 3) ROS interfaces
     //----------------------------------------------------------------
-    thruster_cmd_sub_ = create_subscription<std_msgs::msg::Float64MultiArray>(
-        "/thruster_cmd",
+    tau_cmd_sub_ = create_subscription<geometry_msgs::msg::Wrench>(
+        "/tau_cmd",
         10,
-        std::bind(
-            &MilliampereDynamics::onThrusterCommand, this, std::placeholders::_1)); // TODO anla
+        std::bind(&MilliampereDynamics::onTauCommand, this, std::placeholders::_1)); // TODO anla
 
     odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
 
@@ -59,20 +61,12 @@ public:
   }
 
 private:
-  // callback: capture incoming thrust forces and azimuth angles in degrees
-  void onThrusterCommand(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
+  // callback: capture incoming tau
+  void onTauCommand(const geometry_msgs::msg::Wrench::SharedPtr msg)
   {
-    // 1) Degrees → radians
-    double az1 = deg2rad(msg->data[0]);
-    double az2 = deg2rad(msg->data[1]);
-
-    // 2) Wrap to (–π, π]
-    azimuthAngles_(0) = wrapAngle(az1);
-    azimuthAngles_(1) = wrapAngle(az2);
-
-    // 3) Thrust magnitudes
-    thrustForces_(0) = msg->data[2];
-    thrustForces_(1) = msg->data[3];
+    tau_des_(0) = msg->force.x;  // desired X force
+    tau_des_(1) = msg->force.y;  // desired Y force
+    tau_des_(2) = msg->torque.z; // desired N torque
   }
 
   void step()
@@ -80,7 +74,29 @@ private:
     const double dt = 0.02; // 50 Hz
 
     // ------------------------------------------------------------
-    //  A) Rigid‐body dynamics
+    //  Thruster Allocation
+    // ------------------------------------------------------------
+    RCLCPP_INFO(
+        this->get_logger(), "Desired Tau: [%f, %f, %f]", tau_des_(0), tau_des_(1), tau_des_(2));
+    TAResult ta_result = allocate_tau(tau_des_, ta_state_, ta_params_, dt);
+
+    if (ta_result.success)
+    {
+      azimuthAngles_ = ta_result.alpha;
+      thrustForces_  = ta_result.f;
+    }
+    else
+    {
+      // If the allocator fails, command zero thrust as a safety measure.
+      thrustForces_.setZero();
+      RCLCPP_WARN(this->get_logger(), "Thrust allocator failed to find a solution!");
+    }
+
+    ta_state_.alpha = ta_result.alpha;
+    ta_state_.f     = ta_result.f;
+
+    // ------------------------------------------------------------
+    //  Rigid‐body dynamics
     // ------------------------------------------------------------
     double ca1 = std::cos(azimuthAngles_(0)), ca2 = std::cos(azimuthAngles_(1));
     double sa1 = std::sin(azimuthAngles_(0)), sa2 = std::sin(azimuthAngles_(1));
@@ -91,6 +107,7 @@ private:
           Lx_ * sa1, -Lx_ * sa2; //
     // clang-format on
 
+    T_   = Tmatrix(azimuthAngles_, Lx_);
     tau_ = T_ * thrustForces_;
 
     // debug
@@ -100,25 +117,27 @@ private:
                 azimuthAngles_(1),
                 thrustForces_(0),
                 thrustForces_(1));
-    RCLCPP_INFO(this->get_logger(), "Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
+    RCLCPP_INFO(
+        this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
 
     // Mν̇ + C(v)v + D(v)v = τ
     updateCoriolisMatrix(nu_);
     updateDampingMatrix(nu_);
     Eigen::Vector3d nu_dot = M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_);
-    RCLCPP_INFO(get_logger(), "C*nu: [%f, %f, %f]", (C_ * nu_)(0), (C_ * nu_)(1), (C_ * nu_)(2));
-    RCLCPP_INFO(get_logger(), "D*nu: [%f, %f, %f]", (D_ * nu_)(0), (D_ * nu_)(1), (D_ * nu_)(2));
-    RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tau_(2));
+    // RCLCPP_INFO(get_logger(), "C*nu: [%f, %f, %f]", (C_ * nu_)(0), (C_ * nu_)(1), (C_ * nu_)(2));
+    // RCLCPP_INFO(get_logger(), "D*nu: [%f, %f, %f]", (D_ * nu_)(0), (D_ * nu_)(1), (D_ * nu_)(2));
+    // RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tau_(2));
 
     // integrate body‐frame velocity νk+1​=νk​+ν˙k​⋅Δt
     nu_ += nu_dot * dt;
 
     RCLCPP_INFO(this->get_logger(), "nu: [u=%.2f, v=%.2f, r=%.2f]", nu_(0), nu_(1), nu_(2));
-    RCLCPP_INFO(
-        this->get_logger(), "nu_dot: [du=%.3f, dv=%.3f, dr=%.3f]", nu_dot(0), nu_dot(1), nu_dot(2));
+    // RCLCPP_INFO(
+    //     this->get_logger(), "nu_dot: [du=%.3f, dv=%.3f, dr=%.3f]", nu_dot(0), nu_dot(1),
+    //     nu_dot(2));
 
     // ------------------------------------------------------------
-    //  B) Kinematic mapping to inertial pose
+    //  Kinematic mapping to inertial pose
     // ------------------------------------------------------------
 
     double cy = std::cos(eta_(2)), sy = std::sin(eta_(2));
@@ -133,10 +152,14 @@ private:
     eta_ += eta_dot * dt;
 
     // ------------------------------------------------------------
-    //  C) Publish TF + Odometry
+    //  Publish TF + Odometry
     // ------------------------------------------------------------
-    auto stamp = now();
+    publishState(this->now());
+  }
 
+  void publishState(const rclcpp::Time& stamp) // cpp note: for member functions inside a class, the
+                                               // order of their definitions does not matter.
+  {
     // 1) TF: map → base_link
     geometry_msgs::msg::TransformStamped tf_msg;
     tf_msg.header.stamp    = stamp;
@@ -175,24 +198,18 @@ private:
     odom.twist.twist.angular.z = nu_(2) * 180.0 / M_PI; // revert to normal later.
 
     odom_pub_->publish(odom);
-
-    // RCLCPP_INFO(this->get_logger(), "eta: [x=%.2f, y=%.2f, ψ=%.2f]", eta_(0), eta_(1), eta_(2));
-    // RCLCPP_INFO(this->get_logger(),
-    //             "eta_dot: [dx=%.2f, dy=%.2f, dψ=%.2f]",
-    //             eta_dot(0),
-    //             eta_dot(1),
-    //             eta_dot(2));
   }
 
   // ---------- ROS interfaces --------------------- // TODO anla
-  rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr thruster_cmd_sub_;
-  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr             odom_pub_;
-  std::shared_ptr<tf2_ros::TransformBroadcaster>                    tf_broadcaster_;
-  rclcpp::TimerBase::SharedPtr                                      timer_;
+  rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr tau_cmd_sub_;
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr       odom_pub_;
+  std::shared_ptr<tf2_ros::TransformBroadcaster>              tf_broadcaster_;
+  rclcpp::TimerBase::SharedPtr                                timer_;
 
   // ---------- node state & parameters ------------
   double          m_  = 1800;     // mass [kg]
   double          Lx_ = 1.8;      // distance from CO to thrusters [m] TODO find the actual value
+  Eigen::Vector3d tau_des_;       // [X, Y, N]
   Eigen::Matrix3d Jnb;            // rotation matrix from body to inertial
   Eigen::Matrix3d M_;             // mass inertia matrix
   Eigen::Matrix3d C_;             // coriolis-centripetal matrix
@@ -203,6 +220,9 @@ private:
   Eigen::Vector2d azimuthAngles_; // [α₁, α₂] in radians
   Eigen::Vector2d thrustForces_;  // [F₁, F₂] in Newtons
   Eigen::Matrix<double, 3, 2> T_; // Thrust configuration matrix
+
+  TAState  ta_state_;
+  TAParams ta_params_;
 
   double m11_ = 2389.657; // [kg]
   double m22_ = 2533.911; // [kg]
