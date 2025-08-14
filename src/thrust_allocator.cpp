@@ -98,8 +98,9 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   dT_dalpha(state.alpha, P.Lx, dT1, dT2);
 
   // Linearization term for dα_0 and dα_1.
-  const Eigen::Vector3d term_dalpha0 = dT1.col(0) * state.f(0);
-  const Eigen::Vector3d term_dalpha1 = dT2.col(1) * state.f(1);
+  Eigen::Vector3d       epsilon_     = Eigen::Vector3d::Constant(0.01);
+  const Eigen::Vector3d term_dalpha0 = dT1.col(0) * state.f(0) + epsilon_;
+  const Eigen::Vector3d term_dalpha1 = dT2.col(1) * state.f(1) + epsilon_;
 
   // Using a vector of triplets to build the sparse matrix A in a clean way.
   // We'll convert this to CSC format later.

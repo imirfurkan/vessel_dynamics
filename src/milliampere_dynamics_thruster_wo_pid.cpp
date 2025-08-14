@@ -4,14 +4,14 @@
 #include <cmath>
 #include <rclcpp/rclcpp.hpp>
 #include "vessel_kinematics/thrust_allocator.hpp"
+
 #include <geometry_msgs/msg/wrench.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <geometry_msgs/msg/transform_stamped.hpp>
-#include <geometry_msgs/msg/pose_stamped.hpp>
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <std_msgs/msg/float64_multi_array.hpp>
-#include <tf2/LinearMath/Matrix3x3.h>
+
 #include <Eigen/Dense>
 
 using namespace std::chrono_literals;
@@ -32,12 +32,6 @@ public:
              0, m32_, m33_;
     // clang-format on
 
-    Kp.diagonal() << 200, 200, 800;
-    Ki.diagonal() << 10, 10, 45;
-    Kd.diagonal() << 700, 700, 1600;
-
-    integral_error_limits_ << 500.0, 500.0, 500.0; // TODO tune these
-
     //----------------------------------------------------------------
     // 2) State initialization
     //----------------------------------------------------------------
@@ -45,17 +39,17 @@ public:
     eta_.setZero(); // [x, y, ψ]
     tau_.setZero(); // [X, Y, N]
     tau_des_.setZero();
-    nu_des_.setZero();
     azimuthAngles_.setZero(); // radian
+    // azimuthAngles_ << 10.0, 10.0;
     thrustForces_.setZero();
 
     //----------------------------------------------------------------
     // 3) ROS interfaces
     //----------------------------------------------------------------
-    pos_cmd_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(
-        "/goal_pose",
+    tau_cmd_sub_ = create_subscription<geometry_msgs::msg::Wrench>(
+        "/tau_cmd",
         10,
-        std::bind(&MilliampereDynamics::poseCallback, this, std::placeholders::_1)); // TODO anla
+        std::bind(&MilliampereDynamics::onTauCommand, this, std::placeholders::_1)); // TODO anla
 
     odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
 
@@ -68,55 +62,16 @@ public:
 
 private:
   // callback: capture incoming tau
-  void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
+  void onTauCommand(const geometry_msgs::msg::Wrench::SharedPtr msg)
   {
-    tf2::Quaternion Q(msg->pose.orientation.x,
-                      msg->pose.orientation.y,
-                      msg->pose.orientation.z,
-                      msg->pose.orientation.w);
-    tf2::Matrix3x3  m(Q);
-    double          roll, pitch, yaw;
-    m.getRPY(roll, pitch, yaw);
-
-    // Be careful when converting from ROS convention ENU to NED frames.
-    eta_des_(0) = msg->pose.position.y;
-    eta_des_(1) = msg->pose.position.x;
-    eta_des_(2) = yaw;
-
-    RCLCPP_INFO(this->get_logger(),
-                "Reference Position: [%f, %f, %f]",
-                eta_des_(0),
-                eta_des_(1),
-                eta_des_(2));
+    tau_des_(0) = msg->force.x;  // desired X force
+    tau_des_(1) = msg->force.y;  // desired Y force
+    tau_des_(2) = msg->torque.z; // desired N torque
   }
 
   void step()
   {
     const double dt = 0.02; // 50 Hz
-
-    // ------------------------------------------------------------
-    //  PID
-    // ------------------------------------------------------------
-
-    // Rotation matrix
-    Eigen::Matrix3d Rbn = calculateRotationMatrix(eta_).transpose(); // of eta_, not eta_des_
-
-    Eigen::Vector3d eta_diff_;
-    eta_diff_ << (eta_(0) - eta_des_(0)), // N error
-        (eta_(1) - eta_des_(1)),          // E error
-        wrapAngle(eta_(2) - eta_des_(2)); // wrapped ψ error //TODO does it make sense
-
-    Eigen::Vector3d error_     = Rbn * eta_diff_;
-    Eigen::Vector3d error_dot_ = nu_ - nu_des_;
-
-    error_integral_ += error_ * dt; // TODO add integral anti-windup
-    error_integral_ =
-        error_integral_.cwiseMax(-integral_error_limits_).cwiseMin(integral_error_limits_);
-
-    // tau_pid
-    Eigen::Vector3d tau_pid = -Kp * error_ - Ki * error_integral_ - Kd * error_dot_; // TODO
-
-    tau_des_ = tau_pid; // TODO add refereance feed forward, disturbances etc
 
     // ------------------------------------------------------------
     //  Thruster Allocation
@@ -157,15 +112,13 @@ private:
 
     // debug
     RCLCPP_INFO(this->get_logger(),
-                "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]", // TODO change output to degrees
+                "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]",
                 azimuthAngles_(0),
                 azimuthAngles_(1),
                 thrustForces_(0),
                 thrustForces_(1));
     RCLCPP_INFO(
         this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
-    RCLCPP_INFO(
-        this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f]", eta_(0), eta_(1), eta_(2));
 
     // Mν̇ + C(v)v + D(v)v = τ
     updateCoriolisMatrix(nu_);
@@ -187,8 +140,15 @@ private:
     //  Kinematic mapping to inertial pose
     // ------------------------------------------------------------
 
-    Eigen::Matrix3d Rnb     = calculateRotationMatrix(eta_);
-    Eigen::Vector3d eta_dot = Rnb * nu_;
+    double cy = std::cos(eta_(2)), sy = std::sin(eta_(2));
+
+    // clang-format off
+    Jnb << cy, -sy, 0,
+           sy,  cy, 0,
+            0,   0, 1;
+    // clang-format on
+
+    Eigen::Vector3d eta_dot = Jnb * nu_;
     eta_ += eta_dot * dt;
 
     // ------------------------------------------------------------
@@ -241,29 +201,22 @@ private:
   }
 
   // ---------- ROS interfaces --------------------- // TODO anla
-  rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pos_cmd_sub_;
-  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr            odom_pub_;
-  std::shared_ptr<tf2_ros::TransformBroadcaster>                   tf_broadcaster_;
-  rclcpp::TimerBase::SharedPtr                                     timer_;
+  rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr tau_cmd_sub_;
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr       odom_pub_;
+  std::shared_ptr<tf2_ros::TransformBroadcaster>              tf_broadcaster_;
+  rclcpp::TimerBase::SharedPtr                                timer_;
 
   // ---------- node state & parameters ------------
-  const double    m_  = 1800;        // mass [kg]
-  const double    Lx_ = 1.8;         // distance from CO to thrusters [m] TODO find the actual value
-  Eigen::Vector3d eta_des_;          // [N, E, ψ]
-  Eigen::Vector3d tau_des_;          // [X, Y, N]
-  Eigen::Matrix3d Jnb;               // rotation matrix from body to inertial
-  Eigen::Matrix3d M_;                // mass inertia matrix
-  Eigen::Matrix3d C_;                // coriolis-centripetal matrix
-  Eigen::Matrix3d D_;                // damping matrix
-  Eigen::Matrix3d Kp;                //
-  Eigen::Matrix3d Ki;                //
-  Eigen::Matrix3d Kd;                //
-  Eigen::Vector3d error_integral_{}; //
-  Eigen::Vector3d eta_;              // position [x, y, ψ]
-  Eigen::Vector3d nu_;               // body-frame twist [u, v, r]
-  Eigen::Vector3d nu_des_;           // desired body-frame twist [u, v, r]
-  Eigen::Vector3d tau_;              // [X, Y, N]
-  Eigen::Vector3d integral_error_limits_;
+  double          m_  = 1800;     // mass [kg]
+  double          Lx_ = 1.8;      // distance from CO to thrusters [m] TODO find the actual value
+  Eigen::Vector3d tau_des_;       // [X, Y, N]
+  Eigen::Matrix3d Jnb;            // rotation matrix from body to inertial
+  Eigen::Matrix3d M_;             // mass inertia matrix
+  Eigen::Matrix3d C_;             // coriolis-centripetal matrix
+  Eigen::Matrix3d D_;             // damping matrix
+  Eigen::Vector3d eta_;           // position [x, y, ψ]
+  Eigen::Vector3d nu_;            // body-frame twist [u, v, r]
+  Eigen::Vector3d tau_;           // [X, Y, N]
   Eigen::Vector2d azimuthAngles_; // [α₁, α₂] in radians
   Eigen::Vector2d thrustForces_;  // [F₁, F₂] in Newtons
   Eigen::Matrix<double, 3, 2> T_; // Thrust configuration matrix
@@ -330,19 +283,6 @@ private:
           0.0, d22,  d23,
           0.0, d32,  d33;
     // clang-format on
-  }
-
-  Eigen::Matrix3d calculateRotationMatrix(const Eigen::Vector3d& pos)
-  {
-    double cy = std::cos(pos(2)), sy = std::sin(pos(2)); // pos(2) is yaw.
-
-    // clang-format off
-    Jnb << cy, -sy, 0,
-           sy,  cy, 0,
-            0,   0, 1;
-    // clang-format on
-
-    return Jnb;
   }
 
   double deg2rad(double deg) { return deg * M_PI / 180.0; }
