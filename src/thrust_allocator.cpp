@@ -152,23 +152,6 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   std::vector<c_int> A_p(A_sparse.outerIndexPtr(),
                          A_sparse.outerIndexPtr() + (A_sparse.outerSize() + 1));
 
-  // std::vector<c_float> A_data = {
-  //     T0(0, 0),
-  //     T0(1, 0),
-  //     T0(2, 0),
-  //     1.0,
-  //     T0(0, 1),
-  //     T0(1, 1),
-  //     T0(2, 1),
-  //     1.0,
-  //     -1.0,
-  //     -1.0,
-  //     -1.0,
-  //     1.0,
-  //     1.0}; // list of all the non-zero values from the A matrix, read column by column.
-  // std::vector<c_int> A_i = {0, 1, 2, 3, 0, 1, 2, 4, 0, 1, 2, 5, 6};
-  // std::vector<c_int> A_p = {0, 4, 8, 9, 10, 11, 12, 13};
-
   // --- Constraint Bounds l and u ---
   std::vector<c_float>  l(NUM_CONSTRAINTS), u(NUM_CONSTRAINTS);
   const Eigen::Vector2d dalpha_min = P.dalpha_min_rate_rad_s * dt;
