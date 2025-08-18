@@ -7,7 +7,7 @@ AllowShortIfStatementsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterReturnType: None
-ColumnLimit: 100
+ColumnLimit: 120
 SpaceBeforeParens: ControlStatements
 PointerAlignment: Left
 SortIncludes: false

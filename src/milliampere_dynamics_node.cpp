@@ -27,9 +27,9 @@ public:
     // 1) Parameters
     //----------------------------------------------------------------
     // clang-format off
-    M_ << m11_,    0,    0,
-             0, m22_, m23_,
-             0, m32_, m33_;
+      M_ << m11_,    0,    0,
+              0, m22_, m23_,
+              0, m32_, m33_;
     // clang-format on
 
     Kp.diagonal() << 200, 200, 800;
@@ -48,14 +48,30 @@ public:
     nu_des_.setZero();
     azimuthAngles_.setZero(); // radian
     thrustForces_.setZero();
+    eta_ref_ = eta_; // Start the reference model at the vessel's initial state
+    eta_dot_ref_.setZero();
+    eta_ddot_ref_.setZero();
+
+    vel_ref_max_ << 2.57,    // Max speed ~ 5 knots [m/s]
+        1.0,                 // TODO (arbitrary)
+        15.0 * M_PI / 180.0; // TODO (arbitrary)
+
+    acc_ref_max_ << 0.25, // TODO (arbitrary)
+        0.1,              // TODO (arbitrary)
+        0.1;              // TODO (arbitrary)
+
+    // tuning parameters for the reference model
+    // reference model should be a slow, smooth system that ignores fast disturbances
+    // as we want reference feedforward model to be low bandwidth and pid to be high bandwidth
+    ref_zeta_ << 1.0, 1.0, 1.3;     // TODO Critically damped is usually best
+    ref_omega_n_ << 0.5, 0.25, 0.7; // TODO Tune these for response speed, higher values create
+                                    // high-bandwidth reference signal
 
     //----------------------------------------------------------------
     // 3) ROS interfaces
     //----------------------------------------------------------------
     pos_cmd_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(
-        "/goal_pose",
-        10,
-        std::bind(&MilliampereDynamics::poseCallback, this, std::placeholders::_1)); // TODO anla
+        "/goal_pose", 10, std::bind(&MilliampereDynamics::poseCallback, this, std::placeholders::_1)); // TODO anla
 
     odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
 
@@ -70,12 +86,10 @@ private:
   // callback: capture incoming tau
   void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
   {
-    tf2::Quaternion Q(msg->pose.orientation.x,
-                      msg->pose.orientation.y,
-                      msg->pose.orientation.z,
-                      msg->pose.orientation.w);
-    tf2::Matrix3x3  m(Q);
-    double          roll, pitch, yaw;
+    tf2::Quaternion Q(
+        msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z, msg->pose.orientation.w);
+    tf2::Matrix3x3 m(Q);
+    double         roll, pitch, yaw;
     m.getRPY(roll, pitch, yaw);
 
     // Be careful when converting from ROS convention ENU to NED frames.
@@ -83,11 +97,7 @@ private:
     eta_des_(1) = msg->pose.position.x;
     eta_des_(2) = yaw;
 
-    RCLCPP_INFO(this->get_logger(),
-                "Reference Position: [%f, %f, %f]",
-                eta_des_(0),
-                eta_des_(1),
-                eta_des_(2));
+    RCLCPP_INFO(this->get_logger(), "Reference Position: [%f, %f, %f]", eta_des_(0), eta_des_(1), eta_des_(2));
   }
 
   void step()
@@ -95,34 +105,42 @@ private:
     const double dt = 0.02; // 50 Hz
 
     // ------------------------------------------------------------
-    //  PID
+    //  Reference Model + FF + PID
     // ------------------------------------------------------------
-
-    // Rotation matrix
     Eigen::Matrix3d Rbn = calculateRotationMatrix(eta_).transpose(); // of eta_, not eta_des_
 
+    updateReferenceModel(dt);
+    Eigen::Vector3d nu_ref_     = Rbn * eta_dot_ref_;  // velocity in the body frame
+    Eigen::Vector3d nu_dot_ref_ = Rbn * eta_ddot_ref_; // acceleration in the body frame
+    RCLCPP_INFO(this->get_logger(), "nu_ref_: [%f, %f, %f]", nu_ref_(0), nu_ref_(1), nu_ref_(2));
+    RCLCPP_INFO(this->get_logger(), "nu_dot_ref_: [%f, %f, %f]", nu_dot_ref_(0), nu_dot_ref_(1), nu_dot_ref_(2));
+
+    Eigen::Matrix3d C_d, D_d;
+    updateCoriolisMatrix(nu_ref_, C_d);
+    updateDampingMatrix(nu_ref_, D_d);
+    Eigen::Vector3d tau_ff = M_ * nu_dot_ref_ + C_d * nu_ref_ + D_d * nu_ref_;
+
     Eigen::Vector3d eta_diff_;
-    eta_diff_ << (eta_(0) - eta_des_(0)), // N error
-        (eta_(1) - eta_des_(1)),          // E error
-        wrapAngle(eta_(2) - eta_des_(2)); // wrapped ψ error //TODO does it make sense
+    eta_diff_ << (eta_(0) - eta_ref_(0)), // N error
+        (eta_(1) - eta_ref_(1)),          // E error
+        wrapAngle(eta_(2) - eta_ref_(2)); // wrapped ψ error
 
-    Eigen::Vector3d error_     = Rbn * eta_diff_;
-    Eigen::Vector3d error_dot_ = nu_ - nu_des_;
+    Eigen::Vector3d error_     = Rbn * eta_diff_; // error should be in the body frame
+    Eigen::Vector3d error_dot_ = nu_ - nu_ref_;
 
-    error_integral_ += error_ * dt; // TODO add integral anti-windup
-    error_integral_ =
-        error_integral_.cwiseMax(-integral_error_limits_).cwiseMin(integral_error_limits_);
+    error_integral_ += error_ * dt;
+    error_integral_ = clampVec3(error_integral_, -integral_error_limits_, integral_error_limits_);
 
-    // tau_pid
     Eigen::Vector3d tau_pid = -Kp * error_ - Ki * error_integral_ - Kd * error_dot_; // TODO
 
-    tau_des_ = tau_pid; // TODO add refereance feed forward, disturbances etc
+    tau_des_ = tau_pid + tau_ff; // TODO add refereance feed forward, disturbances etc
+    RCLCPP_INFO(this->get_logger(), "FF Tau: [%f, %f, %f]", tau_ff(0), tau_ff(1), tau_ff(2));
+    RCLCPP_INFO(this->get_logger(), "PID Tau: [%f, %f, %f]", tau_pid(0), tau_pid(1), tau_pid(2));
+    RCLCPP_INFO(this->get_logger(), "Desired Tau: [%f, %f, %f]", tau_des_(0), tau_des_(1), tau_des_(2));
 
     // ------------------------------------------------------------
     //  Thruster Allocation
     // ------------------------------------------------------------
-    RCLCPP_INFO(
-        this->get_logger(), "Desired Tau: [%f, %f, %f]", tau_des_(0), tau_des_(1), tau_des_(2));
     TAResult ta_result = allocate_tau(tau_des_, ta_state_, ta_params_, dt);
 
     if (ta_result.success)
@@ -147,9 +165,9 @@ private:
     double sa1 = std::sin(azimuthAngles_(0)), sa2 = std::sin(azimuthAngles_(1));
 
     // clang-format off
-    T_ <<       ca1,      ca2,
-                sa1,      sa2,
-          Lx_ * sa1, -Lx_ * sa2; //
+      T_ <<       ca1,      ca2,
+                  sa1,      sa2,
+            Lx_ * sa1, -Lx_ * sa2; //
     // clang-format on
 
     T_   = Tmatrix(azimuthAngles_, Lx_);
@@ -162,26 +180,21 @@ private:
                 azimuthAngles_(1),
                 thrustForces_(0),
                 thrustForces_(1));
-    RCLCPP_INFO(
-        this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
-    RCLCPP_INFO(
-        this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f]", eta_(0), eta_(1), eta_(2));
+    RCLCPP_INFO(this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
+    RCLCPP_INFO(this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f]", eta_(0), eta_(1), eta_(2));
 
     // Mν̇ + C(v)v + D(v)v = τ
-    updateCoriolisMatrix(nu_);
-    updateDampingMatrix(nu_);
+
+    updateCoriolisMatrix(nu_, this->C_);
+    updateDampingMatrix(nu_, this->D_);
     Eigen::Vector3d nu_dot = M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_);
     // RCLCPP_INFO(get_logger(), "C*nu: [%f, %f, %f]", (C_ * nu_)(0), (C_ * nu_)(1), (C_ * nu_)(2));
     // RCLCPP_INFO(get_logger(), "D*nu: [%f, %f, %f]", (D_ * nu_)(0), (D_ * nu_)(1), (D_ * nu_)(2));
-    // RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tau_(2));
+    // RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tu_(2));a
 
-    // integrate body‐frame velocity νk+1​=νk​+ν˙k​⋅Δt
     nu_ += nu_dot * dt;
 
     RCLCPP_INFO(this->get_logger(), "nu: [u=%.2f, v=%.2f, r=%.2f]", nu_(0), nu_(1), nu_(2));
-    // RCLCPP_INFO(
-    //     this->get_logger(), "nu_dot: [du=%.3f, dv=%.3f, dr=%.3f]", nu_dot(0), nu_dot(1),
-    //     nu_dot(2));
 
     // ------------------------------------------------------------
     //  Kinematic mapping to inertial pose
@@ -247,26 +260,37 @@ private:
   rclcpp::TimerBase::SharedPtr                                     timer_;
 
   // ---------- node state & parameters ------------
-  const double    m_  = 1800;        // mass [kg]
-  const double    Lx_ = 1.8;         // distance from CO to thrusters [m] TODO find the actual value
-  Eigen::Vector3d eta_des_;          // [N, E, ψ]
-  Eigen::Vector3d tau_des_;          // [X, Y, N]
-  Eigen::Matrix3d Jnb;               // rotation matrix from body to inertial
-  Eigen::Matrix3d M_;                // mass inertia matrix
-  Eigen::Matrix3d C_;                // coriolis-centripetal matrix
-  Eigen::Matrix3d D_;                // damping matrix
-  Eigen::Matrix3d Kp;                //
-  Eigen::Matrix3d Ki;                //
-  Eigen::Matrix3d Kd;                //
-  Eigen::Vector3d error_integral_{}; //
-  Eigen::Vector3d eta_;              // position [x, y, ψ]
-  Eigen::Vector3d nu_;               // body-frame twist [u, v, r]
-  Eigen::Vector3d nu_des_;           // desired body-frame twist [u, v, r]
-  Eigen::Vector3d tau_;              // [X, Y, N]
-  Eigen::Vector3d integral_error_limits_;
-  Eigen::Vector2d azimuthAngles_; // [α₁, α₂] in radians
-  Eigen::Vector2d thrustForces_;  // [F₁, F₂] in Newtons
-  Eigen::Matrix<double, 3, 2> T_; // Thrust configuration matrix
+  const double                m_  = 1800;        // mass [kg]
+  const double                Lx_ = 1.8;         // distance from CO to thrusters [m] TODO find the actual value
+  Eigen::Vector3d             eta_;              // position [x, y, ψ]
+  Eigen::Vector3d             nu_;               // body-frame twist [u, v, r]
+  Eigen::Vector3d             tau_;              // [X, Y, N]
+  Eigen::Vector3d             eta_des_;          // [N, E, ψ]
+  Eigen::Vector3d             nu_des_;           // desired body-frame twist [u, v, r]
+  Eigen::Vector3d             tau_des_;          // [X, Y, N]
+  Eigen::Vector3d             eta_ref_;          // η_d   (smooth desired position)
+  Eigen::Vector3d             eta_dot_ref_;      // η̇_d or v_d (smooth desired velocity)
+  Eigen::Vector3d             eta_ddot_ref_;     // η̈_d or a_d (smooth desired acceleration)
+  Eigen::Matrix3d             Jnb;               // rotation matrix from body to inertial
+  Eigen::Matrix3d             M_;                // mass inertia matrix
+  Eigen::Matrix3d             C_;                // coriolis-centripetal matrix
+  Eigen::Matrix3d             D_;                // damping matrix
+  Eigen::Matrix3d             Kp;                //
+  Eigen::Matrix3d             Ki;                //
+  Eigen::Matrix3d             Kd;                //
+  Eigen::Vector3d             error_integral_{}; //
+  Eigen::Vector3d             integral_error_limits_;
+  Eigen::Vector2d             azimuthAngles_; // [α₁, α₂] in radians
+  Eigen::Vector2d             thrustForces_;  // [F₁, F₂] in Newtons
+  Eigen::Matrix<double, 3, 2> T_;             // Thrust configuration matrix
+
+  // Physical limits for saturation
+  Eigen::Vector3d vel_ref_max_; // v_max in the book
+  Eigen::Vector3d acc_ref_max_; // a_max (derived from ν̇_max)
+
+  // Tuning parameters for the reference model (Ω and Δ matrices)
+  Eigen::Vector3d ref_omega_n_; // Diagonal elements of Ω
+  Eigen::Vector3d ref_zeta_;    // Diagonal elements of Δ
 
   TAState  ta_state_;
   TAParams ta_params_;
@@ -300,7 +324,7 @@ private:
   double Nrrr_ = 0.0;      // [kg/s]
 
   // velocity dependent → compute dynamically
-  void updateCoriolisMatrix(const Eigen::Vector3d& nu)
+  void updateCoriolisMatrix(const Eigen::Vector3d& nu, Eigen::Matrix3d& C_out)
   {
     double u = nu(0), v = nu(1), r = nu(2);
 
@@ -308,14 +332,14 @@ private:
     double c23 = m11_ * u;
 
     // clang-format off
-    C_ <<  0.0,  0.0, c13,
-           0.0,  0.0, c23,
-          -c13, -c23, 0.0;
+      C_out <<  0.0,  0.0, c13,
+            0.0,  0.0, c23,
+            -c13, -c23, 0.0;
     // clang-format on
   }
 
   // velocity dependent → compute dynamically
-  void updateDampingMatrix(const Eigen::Vector3d& nu)
+  void updateDampingMatrix(const Eigen::Vector3d& nu, Eigen::Matrix3d& D_out)
   {
     double u = nu(0), v = nu(1), r = nu(2);
 
@@ -326,9 +350,9 @@ private:
     double d33 = -Nr_ - Nvr_ * std::abs(v) - Nrr_ * std::abs(r) - Nrrr_ * r * r;
 
     // clang-format off
-    D_ << d11, 0.0,  0.0,
-          0.0, d22,  d23,
-          0.0, d32,  d33;
+      D_out << d11, 0.0,  0.0,
+            0.0, d22,  d23,
+            0.0, d32,  d33;
     // clang-format on
   }
 
@@ -337,12 +361,41 @@ private:
     double cy = std::cos(pos(2)), sy = std::sin(pos(2)); // pos(2) is yaw.
 
     // clang-format off
-    Jnb << cy, -sy, 0,
-           sy,  cy, 0,
-            0,   0, 1;
+      Jnb << cy, -sy, 0,
+            sy,  cy, 0,
+              0,   0, 1;
     // clang-format on
 
     return Jnb;
+  }
+
+  void updateReferenceModel(double dt)
+  {
+    // Let w = ref_omega_n_ and z = ref_zeta_ for simplicity.
+    // The equation is: η3_d + (2Δ+I)Ωη̈_d + (2Δ+I)Ω²η̇_d + Ω³η_d = Ω³rⁿ
+    // We solve for the highest derivative, η3_d (desired jerk).
+
+    // Diagonals of Ω matrices
+    Eigen::Vector3d w  = ref_omega_n_;                            // Ω
+    Eigen::Vector3d w2 = ref_omega_n_.cwiseProduct(ref_omega_n_); // Ω²
+    Eigen::Vector3d w3 = w2.cwiseProduct(ref_omega_n_);           // Ω³
+
+    // Diagonals of the (2Δ + I) matrix
+    Eigen::Vector3d two_z_plus_I = 2.0 * ref_zeta_ + Eigen::Vector3d::Ones();
+
+    // Calculate desired jerk by building the rearranged equation term by term
+    Eigen::Vector3d term1 = w3.cwiseProduct(eta_des_ - eta_ref_);
+    Eigen::Vector3d term2 = w2.cwiseProduct(two_z_plus_I).cwiseProduct(eta_dot_ref_);
+    Eigen::Vector3d term3 = w.cwiseProduct(two_z_plus_I).cwiseProduct(eta_ddot_ref_);
+
+    Eigen::Vector3d eta_dddot_ref_ = term1 - term2 - term3;
+
+    eta_ddot_ref_ += eta_dddot_ref_ * dt; // Eular integration from jerk to acceleration
+    eta_ddot_ref_ = clampVec3(eta_ddot_ref_, -acc_ref_max_, acc_ref_max_); // Saturate the acceleration
+    eta_dot_ref_ += eta_ddot_ref_ * dt;
+    eta_dot_ref_ = clampVec3(eta_dot_ref_, -vel_ref_max_, vel_ref_max_);
+    eta_ref_ += eta_dot_ref_ * dt;
+    eta_ref_(2) = wrapAngle(eta_ref_(2));
   }
 
   double deg2rad(double deg) { return deg * M_PI / 180.0; }
@@ -363,6 +416,11 @@ private:
       angle -= two_pi;
 
     return angle;
+  }
+
+  Eigen::Vector3d clampVec3(const Eigen::Vector3d& x, const Eigen::Vector3d& lo, const Eigen::Vector3d& hi)
+  {
+    return x.cwiseMax(lo).cwiseMin(hi);
   }
 };
 

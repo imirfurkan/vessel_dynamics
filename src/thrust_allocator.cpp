@@ -7,9 +7,8 @@
 #include <Eigen/Sparse>
 
 // Helper function declarations (at the bottom)
-static inline Eigen::Vector2d
-clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi);
-static inline double wrapAngle(double angle);
+static inline Eigen::Vector2d clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi);
+static inline double          wrapAngle(double angle);
 
 Eigen::Matrix<double, 3, 2> Tmatrix(const Eigen::Vector2d& a, double Lx)
 {
@@ -26,10 +25,7 @@ Eigen::Matrix<double, 3, 2> Tmatrix(const Eigen::Vector2d& a, double Lx)
   return T;
 }
 
-void dT_dalpha(const Eigen::Vector2d&       a,
-               double                       Lx,
-               Eigen::Matrix<double, 3, 2>& dT1,
-               Eigen::Matrix<double, 3, 2>& dT2)
+void dT_dalpha(const Eigen::Vector2d& a, double Lx, Eigen::Matrix<double, 3, 2>& dT1, Eigen::Matrix<double, 3, 2>& dT2)
 {
   // Note: This function uses "output parameters" (dT1, dT2) passed by
   // reference. This is more efficient than returning large matrix objects,
@@ -58,8 +54,7 @@ struct OSQPWorkspaceDeleter { void operator()(OSQPWorkspace *w) const { if (w) o
 // clang-format on
 
 // main dispatcher function
-TAResult
-allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParams& P, double dt)
+TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParams& P, double dt)
 {
   // --- QP Problem Definition ---
   // Solves for x = [f_0, f_1, s_x, s_y, s_n, dα_0, dα_1]
@@ -105,10 +100,9 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   // Using a vector of triplets to build the sparse matrix A in a clean way.
   // We'll convert this to CSC format later.
   // A triplet is a simple (row, column, value) tuple.
-  std::vector<Eigen::Triplet<double>>
-      triplets; //  OSQP library is written in C and uses the more memory-efficient CSC format,
-                //  which is not directly compatible with Eigen's triplet representation so we have
-                //  to make it vector.
+  std::vector<Eigen::Triplet<double>> triplets; //  OSQP library is written in C and uses the more memory-efficient CSC
+                                                //  format, which is not directly compatible with Eigen's triplet
+                                                //  representation so we have to make it vector.
 
   triplets.reserve(13);
 
@@ -149,9 +143,8 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
 
   // Extract CSC data
   std::vector<c_float> A_data(A_sparse.valuePtr(), A_sparse.valuePtr() + A_sparse.nonZeros());
-  std::vector<c_int> A_i(A_sparse.innerIndexPtr(), A_sparse.innerIndexPtr() + A_sparse.nonZeros());
-  std::vector<c_int> A_p(A_sparse.outerIndexPtr(),
-                         A_sparse.outerIndexPtr() + (A_sparse.outerSize() + 1));
+  std::vector<c_int>   A_i(A_sparse.innerIndexPtr(), A_sparse.innerIndexPtr() + A_sparse.nonZeros());
+  std::vector<c_int>   A_p(A_sparse.outerIndexPtr(), A_sparse.outerIndexPtr() + (A_sparse.outerSize() + 1));
 
   // --- Constraint Bounds l and u ---
   std::vector<c_float>  l(NUM_CONSTRAINTS), u(NUM_CONSTRAINTS);
@@ -170,8 +163,7 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   l[6] = dalpha_min(1), u[6] = dalpha_max(1);
 
   // --- Setup and Solve with OSQP (using RAII for safety) --- // TODO detayli incelemedim
-  std::unique_ptr<OSQPSettings, OSQPSettingsDeleter> settings(
-      (OSQPSettings*)c_malloc(sizeof(OSQPSettings)));
+  std::unique_ptr<OSQPSettings, OSQPSettingsDeleter> settings((OSQPSettings*)c_malloc(sizeof(OSQPSettings)));
   osqp_set_default_settings(settings.get());
   settings->verbose = 0;
 
@@ -184,7 +176,6 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   data->l = l.data();
   data->u = u.data();
 
-  /////////////////////////////////////// CODE CRASH / PROBLEM in between
   OSQPWorkspace* raw_workspace = nullptr;
   osqp_setup(&raw_workspace, data.get(), settings.get());
   std::unique_ptr<OSQPWorkspace, OSQPWorkspaceDeleter> work(raw_workspace);
@@ -195,7 +186,6 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   TAResult   out;
   const bool is_solved = work && work->info->status_val == OSQP_SOLVED;
   out.success          = is_solved;
-  ///////////////////////////////////////// CODE CRASH / PROBLEM in between
   if (is_solved)
   {
     const c_float*  sol_x = work->solution->x;
@@ -217,8 +207,7 @@ allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, const TAParam
   return out;
 }
 
-static inline Eigen::Vector2d
-clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi)
+static inline Eigen::Vector2d clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi)
 {
   return x.cwiseMax(lo).cwiseMin(hi);
 }
