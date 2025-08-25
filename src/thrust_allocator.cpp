@@ -5,6 +5,7 @@
 #include <osqp.h>
 #include <Eigen/Dense> // TODO removing this still builds but it takes 4x time time
 #include <Eigen/Sparse>
+#include <iostream>
 
 // Helper function declarations (at the bottom)
 static inline Eigen::Vector2d clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi);
@@ -216,14 +217,10 @@ static inline double wrapAngle(double angle)
 {
   const double two_pi = 2.0 * M_PI;
 
-  // Step 1: First, wrap the angle into the [0, 2π) range.
-  // After this block, 'angle' is guaranteed to be positive.
   angle = std::fmod(angle, two_pi);
   if (angle < 0)
     angle += two_pi;
 
-  // Step 2: Now, move angles from the top half (π, 2π) to the equivalent
-  // negative half (-π, 0).
   if (angle > M_PI)
     angle -= two_pi;
 

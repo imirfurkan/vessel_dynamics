@@ -36,7 +36,7 @@ public:
     Ki.diagonal() << 10, 10, 45;
     Kd.diagonal() << 700, 700, 1600;
 
-    integral_error_limits_ << 500.0, 500.0, 500.0; // TODO tune these
+    integral_error_limits_ << 50.0, 50.0, 50.0; // TODO tune these
 
     //----------------------------------------------------------------
     // 2) State initialization
@@ -54,17 +54,17 @@ public:
 
     vel_ref_max_ << 2.57,    // Max speed ~ 5 knots [m/s]
         1.0,                 // TODO (arbitrary)
-        15.0 * M_PI / 180.0; // TODO (arbitrary)
+        32.0 * M_PI / 180.0; // Table 5.1 (not azimuth but body?)
 
     acc_ref_max_ << 0.25, // TODO (arbitrary)
         0.1,              // TODO (arbitrary)
-        0.1;              // TODO (arbitrary)
+        0.2;              // TODO (arbitrary)
 
     // tuning parameters for the reference model
     // reference model should be a slow, smooth system that ignores fast disturbances
     // as we want reference feedforward model to be low bandwidth and pid to be high bandwidth
-    ref_zeta_ << 1.0, 1.0, 1.3;     // TODO Critically damped is usually best
-    ref_omega_n_ << 0.5, 0.25, 0.7; // TODO Tune these for response speed, higher values create
+    ref_zeta_ << 1.0, 1.0, 1.0;     // TODO Critically damped is usually best
+    ref_omega_n_ << 0.5, 0.25, 0.5; // TODO Tune these for response speed, higher values create
                                     // high-bandwidth reference signal
 
     //----------------------------------------------------------------
@@ -79,23 +79,27 @@ public:
     tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
 
     // calls step() each 20ms
-    timer_ = create_wall_timer(20ms, std::bind(&MilliampereDynamics::step, this));
+    timer_       = create_wall_timer(20ms, std::bind(&MilliampereDynamics::step, this));
+    azimuth_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/azimuth_angles", 10);
   }
 
 private:
   // callback: capture incoming tau
   void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
   {
-    tf2::Quaternion Q(
-        msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z, msg->pose.orientation.w);
-    tf2::Matrix3x3 m(Q);
-    double         roll, pitch, yaw;
-    m.getRPY(roll, pitch, yaw);
+    // tf2::Quaternion Q(
+    //     msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z, msg->pose.orientation.w);
+    // tf2::Matrix3x3 m(Q);
+    // double         roll, pitch, yaw;
+    // m.getRPY(roll, pitch, yaw);
+
+    double yaw_deg = msg->pose.orientation.z;
+    double yaw_rad = yaw_deg * M_PI / 180;
 
     // Be careful when converting from ROS convention ENU to NED frames.
     eta_des_(0) = msg->pose.position.y;
     eta_des_(1) = msg->pose.position.x;
-    eta_des_(2) = yaw;
+    eta_des_(2) = yaw_rad;
 
     RCLCPP_INFO(this->get_logger(), "Reference Position: [%f, %f, %f]", eta_des_(0), eta_des_(1), eta_des_(2));
   }
@@ -133,7 +137,7 @@ private:
 
     Eigen::Vector3d tau_pid = -Kp * error_ - Ki * error_integral_ - Kd * error_dot_; // TODO
 
-    tau_des_ = tau_pid + tau_ff; // TODO add refereance feed forward, disturbances etc
+    tau_des_ = tau_pid + tau_ff; // TODO add disturbances
     RCLCPP_INFO(this->get_logger(), "FF Tau: [%f, %f, %f]", tau_ff(0), tau_ff(1), tau_ff(2));
     RCLCPP_INFO(this->get_logger(), "PID Tau: [%f, %f, %f]", tau_pid(0), tau_pid(1), tau_pid(2));
     RCLCPP_INFO(this->get_logger(), "Desired Tau: [%f, %f, %f]", tau_des_(0), tau_des_(1), tau_des_(2));
@@ -158,6 +162,21 @@ private:
     ta_state_.alpha = ta_result.alpha;
     ta_state_.f     = ta_result.f;
 
+    // Create the message object
+    auto msg = std::make_shared<std_msgs::msg::Float64MultiArray>();
+
+    // Resize the data to hold 2 elements
+    msg->data.resize(4);
+
+    // Copy the Eigen::Vector2d data into the message data vector
+    msg->data[0] = azimuthAngles_(0) * 180 / M_PI;
+    msg->data[1] = azimuthAngles_(1) * 180 / M_PI;
+    msg->data[2] = tau_pid(0);
+    msg->data[3] = tau_ff(0);
+
+    // Publish the message
+    azimuth_pub_->publish(*msg);
+
     // ------------------------------------------------------------
     //  Rigid‐body dynamics
     // ------------------------------------------------------------
@@ -176,8 +195,8 @@ private:
     // debug
     RCLCPP_INFO(this->get_logger(),
                 "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]", // TODO change output to degrees
-                azimuthAngles_(0),
-                azimuthAngles_(1),
+                azimuthAngles_(0) * 180 / M_PI,
+                azimuthAngles_(1) * 180 / M_PI,
                 thrustForces_(0),
                 thrustForces_(1));
     RCLCPP_INFO(this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
@@ -258,6 +277,7 @@ private:
   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr            odom_pub_;
   std::shared_ptr<tf2_ros::TransformBroadcaster>                   tf_broadcaster_;
   rclcpp::TimerBase::SharedPtr                                     timer_;
+  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr   azimuth_pub_;
 
   // ---------- node state & parameters ------------
   const double                m_  = 1800;        // mass [kg]
@@ -384,7 +404,8 @@ private:
     Eigen::Vector3d two_z_plus_I = 2.0 * ref_zeta_ + Eigen::Vector3d::Ones();
 
     // Calculate desired jerk by building the rearranged equation term by term
-    Eigen::Vector3d term1 = w3.cwiseProduct(eta_des_ - eta_ref_);
+    Eigen::Vector3d term1 =
+        w3.cwiseProduct(eta_des_ - eta_ref_); // TODO does it make sense for eta_ref_ to be initialized with eta_
     Eigen::Vector3d term2 = w2.cwiseProduct(two_z_plus_I).cwiseProduct(eta_dot_ref_);
     Eigen::Vector3d term3 = w.cwiseProduct(two_z_plus_I).cwiseProduct(eta_ddot_ref_);
 
@@ -404,14 +425,10 @@ private:
   {
     const double two_pi = 2.0 * M_PI;
 
-    // Step 1: First, wrap the angle into the [0, 2π) range.
-    // After this block, 'angle' is guaranteed to be positive.
     angle = std::fmod(angle, two_pi);
     if (angle < 0)
       angle += two_pi;
 
-    // Step 2: Now, move angles from the top half (π, 2π) to the equivalent
-    // negative half (-π, 0).
     if (angle > M_PI)
       angle -= two_pi;
 

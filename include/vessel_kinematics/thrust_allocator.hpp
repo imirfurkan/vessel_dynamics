@@ -30,8 +30,10 @@ struct TAParams
 
   // Azimuth rate limits ~ From Table 3.9 of Pedersen
   // Index 0 is for thruster 1, index 1 is for thruster 2.
-  Eigen::Vector2d dalpha_min_rate_rad_s{-34.46, -37.53};
-  Eigen::Vector2d dalpha_max_rate_rad_s{34.46, 37.53};
+  Eigen::Vector2d dalpha_min_rate_rad_s{-34.46 * M_PI / 180, -37.53 * M_PI / 180};
+  Eigen::Vector2d dalpha_max_rate_rad_s{34.46 *  M_PI / 180, 37.53 *  M_PI / 180};
+  // Eigen::Vector2d dalpha_min_rate_rad_s{-0.1745, -0.1745};
+  // Eigen::Vector2d dalpha_max_rate_rad_s{0.1745, 0.1745};
 
   // --- QP Optimization Weights ---
   // These weights define the "priorities" of the optimization.
@@ -39,8 +41,8 @@ struct TAParams
   // These vectors are later concatenated into one large diagonal vector
   // to build the sparse matrix 'P' that OSQP needs, inside osqp_path.
   Eigen::Vector2d Wf{1.0, 1.0};      // Higher values prioritize using less thrust.
-  Eigen::Vector3d Qs{1e3, 1e3, 1e3}; // This should be high to ensure the desired tau is met.
-  Eigen::Vector2d Oa{10.0, 10.0}; // Higher values result in smoother, less aggressive angle changes.
+  Eigen::Vector3d Qs{1e4, 1e4, 1e4}; // This should be high to ensure the desired tau is met.
+  Eigen::Vector2d Oa{1e2, 1e2}; // Higher values result in smoother, less aggressive angle changes.
 };
 
 /// @brief Current state of the thruster system. This is updated at each timestep.
