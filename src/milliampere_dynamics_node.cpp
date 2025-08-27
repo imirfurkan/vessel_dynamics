@@ -65,14 +65,14 @@ public:
     // tuning parameters for the reference model
     // reference model should be a slow, smooth system that ignores fast disturbances
     // as we want reference feedforward model to be low bandwidth and pid to be high bandwidth
-    ref_zeta_ << 1.0, 1.0, 1.0;     // TODO Critically damped is usually best
-    ref_omega_n_ << 0.5, 0.25, 0.5; // TODO Tune these for response speed, higher values create
+    ref_zeta_ << 1.0, 1.0, 1.0;     // Critically damped is usually best
+    ref_omega_n_ << 0.5, 0.25, 0.5; // Tune these for response speed, higher values create
                                     // high-bandwidth reference signal
 
     // Wave states
-    omega0_ << 0.90, 0.90, 0.90;    // rad/s
-    lambda_ << 0.10, 0.10, 0.10;    // JONSWAP damping ratio // TODO why jonswap
-    K_wave_ << 500.0, 500.0, 500.0; // TODO
+    omega0_ << 0.90, 0.90, 0.90; // rad/s
+    lambda_ << 0.10, 0.10, 0.10; // JONSWAP damping ratio // TODO why jonswap
+    K_wave_ << 500.0, 500.0, 500.0;
     xi_wave_.setZero();
 
     A_wave_.setZero();
@@ -107,26 +107,22 @@ public:
   }
 
 private:
-  // callback: capture incoming tau
+  // callback: capture incoming goal position
   void poseCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
   {
-    // tf2::Quaternion Q(
-    //     msg->pose.orientation.x, msg->pose.orientation.y, msg->pose.orientation.z, msg->pose.orientation.w);
-    // tf2::Matrix3x3 m(Q);
-    // double         roll, pitch, yaw;
-    // m.getRPY(roll, pitch, yaw);
     goal_received_ = true;
-    double yaw_deg = msg->pose.orientation.z;
+    double yaw_deg = msg->pose.orientation.z; // command in rqt is given directly as degrees.
     double yaw_rad = yaw_deg * M_PI / 180;
 
     // converting from ROS convention ENU to NED frames.
     eta_des_(0) = msg->pose.position.y;
     eta_des_(1) = msg->pose.position.x;
-    eta_des_(2) = yaw_rad; // TODO does it make sense to have degree here? it is compared with eta_ref
+    eta_des_(2) = yaw_rad;
 
-    RCLCPP_INFO(this->get_logger(), "Reference Position: [%f, %f, %f]", eta_des_(0), eta_des_(1), eta_des_(2));
+    RCLCPP_INFO(this->get_logger(), "Goal Position: [%f, %f, %f]", eta_des_(0), eta_des_(1), eta_des_(2));
   }
 
+  // callback: capture incoming tau
   void actualWrenchCallback(const geometry_msgs::msg::Wrench::SharedPtr msg)
   {
     tau_actual_(0) = msg->force.x;
@@ -188,7 +184,7 @@ private:
     // ------------------------------------------------------------
     //  Publish Desired Wrench to Thrust Allocator
     // ------------------------------------------------------------
-    auto wrench_msg      = std::make_unique<geometry_msgs::msg::Wrench>(); // TODO why make unique and () at the end
+    auto wrench_msg      = std::make_unique<geometry_msgs::msg::Wrench>(); // TODO why std::make_unique
     wrench_msg->force.x  = tau_des_(0);
     wrench_msg->force.y  = tau_des_(1);
     wrench_msg->torque.z = tau_des_(2);
@@ -296,7 +292,7 @@ private:
     odom_pub_->publish(odom);
   }
 
-  // ---------- ROS interfaces --------------------- // TODO anla
+  // ---------- ROS interfaces ---------------------
   rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pos_cmd_sub_;
   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr            odom_pub_;
   std::shared_ptr<tf2_ros::TransformBroadcaster>                   tf_broadcaster_;

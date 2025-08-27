@@ -1,0 +1,8 @@
+source;share/vessel_kinematics/hook/cmake_prefix_path.ps1
+source;share/vessel_kinematics/hook/cmake_prefix_path.dsv
+source;share/vessel_kinematics/hook/cmake_prefix_path.sh
+source;share/vessel_kinematics/local_setup.bash
+source;share/vessel_kinematics/local_setup.dsv
+source;share/vessel_kinematics/local_setup.ps1
+source;share/vessel_kinematics/local_setup.sh
+source;share/vessel_kinematics/local_setup.zsh

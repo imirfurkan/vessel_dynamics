@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="vessel_prism">
+  <!-- prism dims -->
+  <xacro:property name="L" value="2.0"/>   <!-- length -->
+  <xacro:property name="W" value="0.8"/>   <!-- beam -->
+  <xacro:property name="H" value="0.3"/>   <!-- height -->
+  <xacro:property name="mass" value="500.0"/>
+  <!-- inertial of solid box about center -->
+  <xacro:property name="ixx" value="${mass*(H*H+W*W)/12.0}"/>
+  <xacro:property name="iyy" value="${mass*(L*L+H*H)/12.0}"/>
+  <xacro:property name="izz" value="${mass*(L*L+W*W)/12.0}"/>
+
+  <link name="base_link">
+    <!-- VISUAL -->
+    <visual>
+      <!-- <origin xyz="0 0 ${-H/2.0}" rpy="0 0 0"/> -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+
+      <geometry>
+        <box size="${L} ${W} ${H}"/>
+      </geometry>
+      <material name="vessel_blue">
+        <color rgba="0.0 0.3 0.6 1.0"/>
+      </material>
+    </visual>
+    <!-- COLLISION -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <!-- <origin xyz="0 0 ${-H/2.0}" rpy="0 0 0"/> -->
+      <geometry>
+        <box size="${L} ${W} ${H}"/>
+      </geometry>
+    </collision>
+    <!-- INERTIAL -->
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${mass}"/>
+      <inertia
+        ixx="${ixx}" ixy="0.0" ixz="0.0"
+        iyy="${iyy}" iyz="0.0"
+        izz="${izz}"/>
+    </inertial>
+  </link>
+</robot>

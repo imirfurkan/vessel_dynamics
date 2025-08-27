@@ -71,5 +71,10 @@
         "variant": "cpp",
         "core": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    // "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.default.cppStandard": "c++17"
 }

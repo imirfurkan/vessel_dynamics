@@ -1,0 +1,2 @@
+source;share/vessel_kinematics/environment/ament_prefix_path.sh
+source;share/vessel_kinematics/environment/path.sh
