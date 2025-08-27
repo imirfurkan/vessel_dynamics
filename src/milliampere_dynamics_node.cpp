@@ -13,6 +13,8 @@
 #include <std_msgs/msg/float64_multi_array.hpp>
 #include <tf2/LinearMath/Matrix3x3.h>
 #include <Eigen/Dense>
+#include <random>
+#include <chrono>
 
 using namespace std::chrono_literals;
 
@@ -33,17 +35,17 @@ public:
     // clang-format on
 
     Kp.diagonal() << 200, 200, 800;
-    Ki.diagonal() << 10, 10, 45;
+    Ki.diagonal() << 15, 15, 45;
     Kd.diagonal() << 700, 700, 1600;
 
-    integral_error_limits_ << 50.0, 50.0, 50.0; // TODO tune these
+    integral_error_limits_ << 20.0, 20.0, 50.0; // TODO tune these
 
     //----------------------------------------------------------------
     // 2) State initialization
     //----------------------------------------------------------------
-    nu_.setZero();  // [u, v, r]
-    eta_.setZero(); // [x, y, ψ]
-    tau_.setZero(); // [X, Y, N]
+    nu_.setZero();         // [u, v, r]
+    eta_.setZero();        // [x, y, ψ]
+    tau_actual_.setZero(); // [X, Y, N]
     tau_des_.setZero();
     nu_des_.setZero();
     azimuthAngles_.setZero(); // radian
@@ -67,9 +69,31 @@ public:
     ref_omega_n_ << 0.5, 0.25, 0.5; // TODO Tune these for response speed, higher values create
                                     // high-bandwidth reference signal
 
+    // Wave states
+    omega0_ << 0.90, 0.90, 0.90;    // rad/s
+    lambda_ << 0.10, 0.10, 0.10;    // JONSWAP damping ratio // TODO why jonswap
+    K_wave_ << 500.0, 500.0, 500.0; // TODO
+    xi_wave_.setZero();
+
+    A_wave_.setZero();
+    A_wave_.topRightCorner<3, 3>() = Eigen::Matrix3d::Identity();
+
+    Eigen::Matrix3d omega0_sq        = omega0_.cwiseProduct(omega0_).asDiagonal();
+    A_wave_.bottomLeftCorner<3, 3>() = -omega0_sq;
+
+    Eigen::Matrix3d TwoLambdaOmega0   = (2.0 * lambda_.array() * omega0_.array()).matrix().asDiagonal();
+    A_wave_.bottomRightCorner<3, 3>() = -TwoLambdaOmega0;
+
+    E_wave_.setZero();
+    E_wave_.bottomRows<3>() = Eigen::Matrix3d::Identity();
+
     //----------------------------------------------------------------
     // 3) ROS interfaces
     //----------------------------------------------------------------
+    wrench_pub_        = create_publisher<geometry_msgs::msg::Wrench>("/cmd_wrench", 10);
+    actual_wrench_sub_ = create_subscription<geometry_msgs::msg::Wrench>(
+        "/actual_wrench", 10, std::bind(&MilliampereDynamics::actualWrenchCallback, this, std::placeholders::_1));
+
     pos_cmd_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(
         "/goal_pose", 10, std::bind(&MilliampereDynamics::poseCallback, this, std::placeholders::_1)); // TODO anla
 
@@ -79,8 +103,7 @@ public:
     tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
 
     // calls step() each 20ms
-    timer_       = create_wall_timer(20ms, std::bind(&MilliampereDynamics::step, this));
-    azimuth_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>("/azimuth_angles", 10);
+    timer_ = create_wall_timer(20ms, std::bind(&MilliampereDynamics::step, this));
   }
 
 private:
@@ -92,16 +115,23 @@ private:
     // tf2::Matrix3x3 m(Q);
     // double         roll, pitch, yaw;
     // m.getRPY(roll, pitch, yaw);
-
+    goal_received_ = true;
     double yaw_deg = msg->pose.orientation.z;
     double yaw_rad = yaw_deg * M_PI / 180;
 
-    // Be careful when converting from ROS convention ENU to NED frames.
+    // converting from ROS convention ENU to NED frames.
     eta_des_(0) = msg->pose.position.y;
     eta_des_(1) = msg->pose.position.x;
-    eta_des_(2) = yaw_rad;
+    eta_des_(2) = yaw_rad; // TODO does it make sense to have degree here? it is compared with eta_ref
 
     RCLCPP_INFO(this->get_logger(), "Reference Position: [%f, %f, %f]", eta_des_(0), eta_des_(1), eta_des_(2));
+  }
+
+  void actualWrenchCallback(const geometry_msgs::msg::Wrench::SharedPtr msg)
+  {
+    tau_actual_(0) = msg->force.x;
+    tau_actual_(1) = msg->force.y;
+    tau_actual_(2) = msg->torque.z;
   }
 
   void step()
@@ -112,6 +142,19 @@ private:
     //  Reference Model + FF + PID
     // ------------------------------------------------------------
     Eigen::Matrix3d Rbn = calculateRotationMatrix(eta_).transpose(); // of eta_, not eta_des_
+
+    // TODO Rising edge detection for update reference model
+    // to update the eta_ref_ with current eta_ to avoid
+    // incorrect or no ff tau generation
+
+    // if (goal_received_)
+    // {
+    //   // A new goal has just been received. Reset the reference model to the current state.
+    //   RCLCPP_INFO(this->get_logger(), "New goal received! Resetting reference model to current vessel state.");
+    //   eta_ref_ = eta_;
+    //   eta_dot_ref_.setZero();
+    //   eta_ddot_ref_.setZero();
+    // }
 
     updateReferenceModel(dt);
     Eigen::Vector3d nu_ref_     = Rbn * eta_dot_ref_;  // velocity in the body frame
@@ -137,76 +180,57 @@ private:
 
     Eigen::Vector3d tau_pid = -Kp * error_ - Ki * error_integral_ - Kd * error_dot_; // TODO
 
-    tau_des_ = tau_pid + tau_ff; // TODO add disturbances
+    tau_des_ = tau_pid + tau_ff;
     RCLCPP_INFO(this->get_logger(), "FF Tau: [%f, %f, %f]", tau_ff(0), tau_ff(1), tau_ff(2));
     RCLCPP_INFO(this->get_logger(), "PID Tau: [%f, %f, %f]", tau_pid(0), tau_pid(1), tau_pid(2));
     RCLCPP_INFO(this->get_logger(), "Desired Tau: [%f, %f, %f]", tau_des_(0), tau_des_(1), tau_des_(2));
 
     // ------------------------------------------------------------
-    //  Thruster Allocation
+    //  Publish Desired Wrench to Thrust Allocator
     // ------------------------------------------------------------
-    TAResult ta_result = allocate_tau(tau_des_, ta_state_, ta_params_, dt);
+    auto wrench_msg      = std::make_unique<geometry_msgs::msg::Wrench>(); // TODO why make unique and () at the end
+    wrench_msg->force.x  = tau_des_(0);
+    wrench_msg->force.y  = tau_des_(1);
+    wrench_msg->torque.z = tau_des_(2);
 
-    if (ta_result.success)
+    if (goal_received_)
     {
-      azimuthAngles_ = ta_result.alpha;
-      thrustForces_  = ta_result.f;
+      wrench_pub_->publish(std::move(wrench_msg)); // TODO why std move
     }
-    else
-    {
-      // If the allocator fails, command zero thrust as a safety measure.
-      thrustForces_.setZero();
-      RCLCPP_WARN(this->get_logger(), "Thrust allocator failed to find a solution!");
-    }
-
-    ta_state_.alpha = ta_result.alpha;
-    ta_state_.f     = ta_result.f;
-
-    // Create the message object
-    auto msg = std::make_shared<std_msgs::msg::Float64MultiArray>();
-
-    // Resize the data to hold 2 elements
-    msg->data.resize(4);
-
-    // Copy the Eigen::Vector2d data into the message data vector
-    msg->data[0] = azimuthAngles_(0) * 180 / M_PI;
-    msg->data[1] = azimuthAngles_(1) * 180 / M_PI;
-    msg->data[2] = tau_pid(0);
-    msg->data[3] = tau_ff(0);
-
-    // Publish the message
-    azimuth_pub_->publish(*msg);
 
     // ------------------------------------------------------------
     //  Rigid‐body dynamics
     // ------------------------------------------------------------
-    double ca1 = std::cos(azimuthAngles_(0)), ca2 = std::cos(azimuthAngles_(1));
-    double sa1 = std::sin(azimuthAngles_(0)), sa2 = std::sin(azimuthAngles_(1));
-
-    // clang-format off
-      T_ <<       ca1,      ca2,
-                  sa1,      sa2,
-            Lx_ * sa1, -Lx_ * sa2; //
-    // clang-format on
-
-    T_   = Tmatrix(azimuthAngles_, Lx_);
-    tau_ = T_ * thrustForces_;
 
     // debug
-    RCLCPP_INFO(this->get_logger(),
-                "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]", // TODO change output to degrees
-                azimuthAngles_(0) * 180 / M_PI,
-                azimuthAngles_(1) * 180 / M_PI,
-                thrustForces_(0),
-                thrustForces_(1));
-    RCLCPP_INFO(this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
-    RCLCPP_INFO(this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f]", eta_(0), eta_(1), eta_(2));
+    // RCLCPP_INFO(this->get_logger(),
+    //             "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]",
+    //             azimuthAngles_(0) * 180 / M_PI,
+    //             azimuthAngles_(1) * 180 / M_PI,
+    //             thrustForces_(0),
+    //             thrustForces_(1));
+    // RCLCPP_INFO(this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_(0), tau_(1), tau_(2));
+    // RCLCPP_INFO(this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f° ]", eta_(0), eta_(1), eta_(2));
 
-    // Mν̇ + C(v)v + D(v)v = τ
+    // Mν̇ + C(v)v + D(v)v = τ + t_wave
 
-    updateCoriolisMatrix(nu_, this->C_);
+    std::default_random_engine       generator(std::chrono::system_clock::now().time_since_epoch().count());
+    std::normal_distribution<double> distribution(0.0, 1.0); // Mean 0, StdDev 1
+
+    Eigen::Vector3d white_noise_ = {distribution(generator), distribution(generator), distribution(generator)};
+
+    Eigen::Vector<double, 6> xi_dot = A_wave_ * xi_wave_ + E_wave_ * white_noise_;
+    xi_wave_ += xi_dot * dt;
+
+    Eigen::Vector3d first_order_waves = K_wave_.cwiseProduct(xi_wave_.tail<3>());
+    tau_wave_                         = first_order_waves; // TODO + second_order_waves
+
+    updateCoriolisMatrix(nu_, this->C_); // TODO understand this->
     updateDampingMatrix(nu_, this->D_);
-    Eigen::Vector3d nu_dot = M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_);
+    Eigen::Vector3d tau_total_ = tau_actual_ + tau_wave_;
+    // Eigen::Vector3d tau_total_ = tau_wave_;
+
+    Eigen::Vector3d nu_dot = M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_total_);
     // RCLCPP_INFO(get_logger(), "C*nu: [%f, %f, %f]", (C_ * nu_)(0), (C_ * nu_)(1), (C_ * nu_)(2));
     // RCLCPP_INFO(get_logger(), "D*nu: [%f, %f, %f]", (D_ * nu_)(0), (D_ * nu_)(1), (D_ * nu_)(2));
     // RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tu_(2));a
@@ -277,14 +301,16 @@ private:
   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr            odom_pub_;
   std::shared_ptr<tf2_ros::TransformBroadcaster>                   tf_broadcaster_;
   rclcpp::TimerBase::SharedPtr                                     timer_;
-  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr   azimuth_pub_;
+  rclcpp::Publisher<geometry_msgs::msg::Wrench>::SharedPtr         wrench_pub_;
+  rclcpp::Subscription<geometry_msgs::msg::Wrench>::SharedPtr      actual_wrench_sub_;
 
   // ---------- node state & parameters ------------
   const double                m_  = 1800;        // mass [kg]
   const double                Lx_ = 1.8;         // distance from CO to thrusters [m] TODO find the actual value
   Eigen::Vector3d             eta_;              // position [x, y, ψ]
   Eigen::Vector3d             nu_;               // body-frame twist [u, v, r]
-  Eigen::Vector3d             tau_;              // [X, Y, N]
+  Eigen::Vector3d             tau_actual_;       // [X, Y, N]
+  Eigen::Vector3d             tau_wave_;         // [X, Y, N]
   Eigen::Vector3d             eta_des_;          // [N, E, ψ]
   Eigen::Vector3d             nu_des_;           // desired body-frame twist [u, v, r]
   Eigen::Vector3d             tau_des_;          // [X, Y, N]
@@ -303,6 +329,8 @@ private:
   Eigen::Vector2d             azimuthAngles_; // [α₁, α₂] in radians
   Eigen::Vector2d             thrustForces_;  // [F₁, F₂] in Newtons
   Eigen::Matrix<double, 3, 2> T_;             // Thrust configuration matrix
+  bool                        goal_received_      = false;
+  bool                        prev_goal_received_ = false;
 
   // Physical limits for saturation
   Eigen::Vector3d vel_ref_max_; // v_max in the book
@@ -314,6 +342,14 @@ private:
 
   TAState  ta_state_;
   TAParams ta_params_;
+
+  // ---------- Wave Disturbance Model ------------
+  Eigen::Vector3d             omega0_;  // Dominant wave frequencies [rad/s] for surge, sway, yaw
+  Eigen::Vector3d             lambda_;  // Damping ratios for surge, sway, yaw
+  Eigen::Vector3d             K_wave_;  // Gains to control force/torque magnitude
+  Eigen::Vector<double, 6>    xi_wave_; // Grouped state vector [pos_s, pos_y, pos_n, vel_s, vel_y, vel_n]
+  Eigen::Matrix<double, 6, 6> A_wave_;  // 6x6 state matrix
+  Eigen::Matrix<double, 6, 3> E_wave_;  // 6x3 input matrix
 
   double m11_ = 2389.657; // [kg]
   double m22_ = 2533.911; // [kg]
@@ -409,7 +445,7 @@ private:
     Eigen::Vector3d term2 = w2.cwiseProduct(two_z_plus_I).cwiseProduct(eta_dot_ref_);
     Eigen::Vector3d term3 = w.cwiseProduct(two_z_plus_I).cwiseProduct(eta_ddot_ref_);
 
-    Eigen::Vector3d eta_dddot_ref_ = term1 - term2 - term3;
+    Eigen::Vector3d eta_dddot_ref_ = term1 - term2 - term3; // TODO is this whole 0 if term1 is zero
 
     eta_ddot_ref_ += eta_dddot_ref_ * dt; // Eular integration from jerk to acceleration
     eta_ddot_ref_ = clampVec3(eta_ddot_ref_, -acc_ref_max_, acc_ref_max_); // Saturate the acceleration

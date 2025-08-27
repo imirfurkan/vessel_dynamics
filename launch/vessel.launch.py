@@ -55,4 +55,15 @@ def generate_launch_description():
             name='milliampere_dynamics',
             output='screen'
         ),
+
+        # ————————————————————————————
+        # D) thrust_allocator_node
+        #    
+        #    
+        Node(
+            package='vessel_kinematics',
+            executable='thrust_allocator_node',
+            name='thrust_allocator',
+            output='screen'
+        ),
     ])

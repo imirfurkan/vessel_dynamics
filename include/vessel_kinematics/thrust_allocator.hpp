@@ -6,11 +6,6 @@
 
 // clang-format off
 
-// // --- Forward declarations for OSQP C-style structs --- // TODO check
-// struct OSQPSettings;
-// struct OSQPWorkspace;
-// struct OSQPData;
-
 /**
  * @file thrust_allocator.hpp
  * @brief An optimal thruster allocator for a 2-thruster, 3-DOF vessel.
@@ -24,7 +19,6 @@ struct TAParams
 {
   double Lx = 1.8; // [m]
 
-  // TODO why this initialization method
   Eigen::Vector2d f_min{0.0, 0.0};     // minimum thrust force per thruster [N]
   Eigen::Vector2d f_max{500.0, 500.0}; // maximum thrust force per thruster [N]
 
@@ -70,7 +64,7 @@ void dT_dalpha(const Eigen::Vector2d&       a,
 
 
 /// @brief Main entry point to compute thruster commands using OSQP.
-/// @return A TAResult struct. The 'success' flag MUST be checked by the caller. // TODO is that so
+/// @return A TAResult struct. The 'success' flag MUST be checked by the caller.
 TAResult allocate_tau(const Eigen::Vector3d &tau_des,
                       const TAState &state,
                       const TAParams &P,

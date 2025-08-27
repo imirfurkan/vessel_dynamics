@@ -26,8 +26,12 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-# 3) milliampere dynamics node
-add_executable(milliampere_dynamics_node src/milliampere_dynamics_node.cpp src/thrust_allocator.cpp)
+
+#################################################################
+# --- Milliampere Dynamics Node ---
+#################################################################
+
+add_executable(milliampere_dynamics_node src/milliampere_dynamics_node.cpp)
 
 ament_target_dependencies(milliampere_dynamics_node
   rclcpp
@@ -48,7 +52,41 @@ target_include_directories(milliampere_dynamics_node PUBLIC
 
 target_link_libraries(milliampere_dynamics_node Eigen3::Eigen osqp::osqp)
 
-install(TARGETS milliampere_dynamics_node
+#################################################################
+# --- Thrust Allocator Library & Node ---
+#################################################################
+
+add_library(vessel_lib src/thrust_allocator.cpp)
+target_include_directories(vessel_lib PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+  ${osqp_vendor_INCLUDE_DIRS}
+)
+target_link_libraries(vessel_lib PUBLIC Eigen3::Eigen osqp::osqp)
+
+add_executable(thrust_allocator_node src/thrust_allocator_node.cpp)
+
+ament_target_dependencies(thrust_allocator_node
+  rclcpp
+  geometry_msgs
+  std_msgs
+)
+target_link_libraries(thrust_allocator_node vessel_lib)
+
+
+install(TARGETS
+  milliampere_dynamics_node
+  thrust_allocator_node
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+#################################################################
+# --- Installation Rules ---
+#################################################################
+
+install(TARGETS
+  milliampere_dynamics_node
+  thrust_allocator_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
