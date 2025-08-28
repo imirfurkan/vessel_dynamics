@@ -77,4 +77,14 @@ def generate_launch_description():
             name='milliampere_controller',
             output='screen'
         ),
+        # ————————————————————————————
+        # F) disturbances_node
+        #    
+        #    
+        Node(
+            package='vessel_kinematics',
+            executable='disturbances_node',
+            name='disturbances',
+            output='screen'
+        ),
     ])

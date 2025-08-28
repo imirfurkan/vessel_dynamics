@@ -4,6 +4,7 @@
 /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/vessel_lib.dir
 /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/thrust_allocator_node.dir
 /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/milliampere_controller_node.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/disturbances_node.dir
 /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/test.dir
 /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/edit_cache.dir
 /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/rebuild_cache.dir

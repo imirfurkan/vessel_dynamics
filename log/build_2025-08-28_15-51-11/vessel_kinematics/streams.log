@@ -1,0 +1,47 @@
+[0.024s] Invoking command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28
+[0.078s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.558s] -- Found rclcpp: 28.1.11 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.609s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.629s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.651s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.677s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.811s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.815s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.964s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.096s] -- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)
+[1.160s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[1.219s] -- Found tf2_ros: 0.36.14 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[1.459s] -- Found osqp_vendor: 0.2.0 (/opt/ros/jazzy/share/osqp_vendor/cmake)
+[1.464s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[1.819s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.819s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/imirdo/marine_ws/src/vessel_kinematics/include>
+[1.820s] -- Configured cppcheck exclude dirs and/or files: 
+[1.834s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.834s] -- Configured 'flake8' exclude dirs and/or files: 
+[1.868s] -- Added test 'lint_cmake' to check CMake code style
+[1.887s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.017s] -- Added test 'uncrustify' to check C / C++ code style
+[2.017s] -- Configured uncrustify additional arguments: 
+[2.035s] -- Added test 'xmllint' to check XML markup files
+[2.036s] -- Configuring done (2.0s)
+[2.097s] -- Generating done (0.0s)
+[2.116s] -- Build files have been written to: /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics
+[2.209s] [ 20%] Built target vessel_lib
+[2.226s] [ 40%] Built target milliampere_dynamics_node
+[2.266s] [ 50%] [32mBuilding CXX object CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o[0m
+[2.292s] [ 70%] Built target thrust_allocator_node
+[2.293s] [ 80%] [32m[1mLinking CXX executable milliampere_controller_node[0m
+[3.188s] [ 90%] Built target milliampere_controller_node
+[7.650s] [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:55:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+[7.650s]    55 | }
+[7.651s]       |  [01;31m[K^[m[K
+[7.651s]       |  [32m[K;[m[K
+[8.067s] [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:[m[K In member function ‘[01m[Kvoid DisturbancesNode::[01;32m[KFirstOrderWaves[m[K()[m[K’:
+[8.068s] [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:45:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktau_wave_[m[K’ was not declared in this scope; did you mean ‘[01m[KA_wave_[m[K’?
+[8.068s]    45 |     [01;31m[Ktau_wave_[m[K                         = first_order_waves; // TODO + second_order_waves
+[8.068s]       |     [01;31m[K^~~~~~~~~[m[K
+[8.069s]       |     [32m[KA_wave_[m[K
+[10.089s] gmake[2]: *** [CMakeFiles/disturbances_node.dir/build.make:76: CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o] Error 1
+[10.089s] gmake[1]: *** [CMakeFiles/Makefile2:249: CMakeFiles/disturbances_node.dir/all] Error 2
+[10.090s] gmake: *** [Makefile:146: all] Error 2
+[10.095s] Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28

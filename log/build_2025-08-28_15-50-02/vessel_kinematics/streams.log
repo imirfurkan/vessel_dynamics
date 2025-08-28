@@ -1,0 +1,20 @@
+[0.038s] Invoking command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28
+[0.173s] [ 10%] [32mBuilding CXX object CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o[0m
+[0.182s] [ 30%] Built target vessel_lib
+[0.205s] [ 40%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
+[0.278s] [ 60%] Built target thrust_allocator_node
+[0.279s] [ 70%] [32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o[0m
+[0.742s] In file included from [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:2[m[K:
+[0.742s] [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/include/vessel_kinematics/utils.hpp:3:10:[m[K [01;31m[Kfatal error: [m[KEigen/Dense: No such file or directory
+[0.743s]     3 | #include [01;31m[K<Eigen/Dense>[m[K
+[0.743s]       |          [01;31m[K^~~~~~~~~~~~~[m[K
+[0.743s] compilation terminated.
+[0.748s] gmake[2]: *** [CMakeFiles/disturbances_node.dir/build.make:76: CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o] Error 1
+[0.748s] gmake[1]: *** [CMakeFiles/Makefile2:249: CMakeFiles/disturbances_node.dir/all] Error 2
+[0.748s] gmake[1]: *** Waiting for unfinished jobs....
+[23.911s] [ 80%] [32m[1mLinking CXX executable milliampere_controller_node[0m
+[24.757s] [ 80%] Built target milliampere_controller_node
+[25.513s] [ 90%] [32m[1mLinking CXX executable milliampere_dynamics_node[0m
+[26.540s] [ 90%] Built target milliampere_dynamics_node
+[26.542s] gmake: *** [Makefile:146: all] Error 2
+[26.547s] Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28

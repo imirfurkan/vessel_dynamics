@@ -249,6 +249,43 @@ milliampere_controller_node/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/build
 .PHONY : milliampere_controller_node/fast
 
+#=============================================================================
+# Target rules for targets named disturbances_node
+
+# Build rule for target.
+disturbances_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 disturbances_node
+.PHONY : disturbances_node
+
+# fast build rule for target.
+disturbances_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/build
+.PHONY : disturbances_node/fast
+
+src/disturbances_node.o: src/disturbances_node.cpp.o
+.PHONY : src/disturbances_node.o
+
+# target to build an object file
+src/disturbances_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o
+.PHONY : src/disturbances_node.cpp.o
+
+src/disturbances_node.i: src/disturbances_node.cpp.i
+.PHONY : src/disturbances_node.i
+
+# target to preprocess a source file
+src/disturbances_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.i
+.PHONY : src/disturbances_node.cpp.i
+
+src/disturbances_node.s: src/disturbances_node.cpp.s
+.PHONY : src/disturbances_node.s
+
+# target to generate assembly for a file
+src/disturbances_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.s
+.PHONY : src/disturbances_node.cpp.s
+
 src/milliampere_controller_node.o: src/milliampere_controller_node.cpp.o
 .PHONY : src/milliampere_controller_node.o
 
@@ -360,10 +397,14 @@ help:
 	@echo "... test"
 	@echo "... uninstall"
 	@echo "... vessel_kinematics_uninstall"
+	@echo "... disturbances_node"
 	@echo "... milliampere_controller_node"
 	@echo "... milliampere_dynamics_node"
 	@echo "... thrust_allocator_node"
 	@echo "... vessel_lib"
+	@echo "... src/disturbances_node.o"
+	@echo "... src/disturbances_node.i"
+	@echo "... src/disturbances_node.s"
 	@echo "... src/milliampere_controller_node.o"
 	@echo "... src/milliampere_controller_node.i"
 	@echo "... src/milliampere_controller_node.s"

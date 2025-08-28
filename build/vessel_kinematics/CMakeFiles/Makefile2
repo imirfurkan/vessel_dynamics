@@ -67,6 +67,7 @@ all: CMakeFiles/milliampere_dynamics_node.dir/all
 all: CMakeFiles/vessel_lib.dir/all
 all: CMakeFiles/thrust_allocator_node.dir/all
 all: CMakeFiles/milliampere_controller_node.dir/all
+all: CMakeFiles/disturbances_node.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -80,6 +81,7 @@ clean: CMakeFiles/milliampere_dynamics_node.dir/clean
 clean: CMakeFiles/vessel_lib.dir/clean
 clean: CMakeFiles/thrust_allocator_node.dir/clean
 clean: CMakeFiles/milliampere_controller_node.dir/clean
+clean: CMakeFiles/disturbances_node.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -141,7 +143,7 @@ CMakeFiles/vessel_kinematics_uninstall.dir/clean:
 CMakeFiles/milliampere_dynamics_node.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_dynamics_node.dir/build.make CMakeFiles/milliampere_dynamics_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_dynamics_node.dir/build.make CMakeFiles/milliampere_dynamics_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=3,4 "Built target milliampere_dynamics_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=5,6 "Built target milliampere_dynamics_node"
 .PHONY : CMakeFiles/milliampere_dynamics_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -167,7 +169,7 @@ CMakeFiles/milliampere_dynamics_node.dir/clean:
 CMakeFiles/vessel_lib.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vessel_lib.dir/build.make CMakeFiles/vessel_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vessel_lib.dir/build.make CMakeFiles/vessel_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=7,8 "Built target vessel_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=9,10 "Built target vessel_lib"
 .PHONY : CMakeFiles/vessel_lib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -193,7 +195,7 @@ CMakeFiles/vessel_lib.dir/clean:
 CMakeFiles/thrust_allocator_node.dir/all: CMakeFiles/vessel_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thrust_allocator_node.dir/build.make CMakeFiles/thrust_allocator_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thrust_allocator_node.dir/build.make CMakeFiles/thrust_allocator_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=5,6 "Built target thrust_allocator_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=7,8 "Built target thrust_allocator_node"
 .PHONY : CMakeFiles/thrust_allocator_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -219,7 +221,7 @@ CMakeFiles/thrust_allocator_node.dir/clean:
 CMakeFiles/milliampere_controller_node.dir/all: CMakeFiles/vessel_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=1,2 "Built target milliampere_controller_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=3,4 "Built target milliampere_controller_node"
 .PHONY : CMakeFiles/milliampere_controller_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -237,6 +239,32 @@ milliampere_controller_node: CMakeFiles/milliampere_controller_node.dir/rule
 CMakeFiles/milliampere_controller_node.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/clean
 .PHONY : CMakeFiles/milliampere_controller_node.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/disturbances_node.dir
+
+# All Build rule for target.
+CMakeFiles/disturbances_node.dir/all: CMakeFiles/vessel_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=1,2 "Built target disturbances_node"
+.PHONY : CMakeFiles/disturbances_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/disturbances_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/disturbances_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles 0
+.PHONY : CMakeFiles/disturbances_node.dir/rule
+
+# Convenience name for target.
+disturbances_node: CMakeFiles/disturbances_node.dir/rule
+.PHONY : disturbances_node
+
+# clean rule for target.
+CMakeFiles/disturbances_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/clean
+.PHONY : CMakeFiles/disturbances_node.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

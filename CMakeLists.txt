@@ -111,6 +111,36 @@ install(TARGETS milliampere_controller_node
   DESTINATION lib/${PROJECT_NAME})
 
 #################################################################
+# --- Disturbances Node ---
+#################################################################
+
+add_executable(disturbances_node src/disturbances_node.cpp)
+
+# CORRECTED: Only include your own package's headers here.
+target_include_directories(disturbances_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+ament_target_dependencies(disturbances_node
+  rclcpp
+  geometry_msgs
+  std_msgs
+  nav_msgs
+  tf2
+  tf2_ros
+)
+
+# Link Eigen if you use it in this file
+target_link_libraries(disturbances_node
+  Eigen3::Eigen
+  vessel_lib            # if your node uses your library
+)
+
+install(TARGETS disturbances_node
+  DESTINATION lib/${PROJECT_NAME})
+
+#################################################################
 # --- Installation Rules ---
 #################################################################
 

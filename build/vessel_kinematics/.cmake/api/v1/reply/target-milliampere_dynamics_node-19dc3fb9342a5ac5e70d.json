@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "milliampere_controller_node"
+			"path" : "milliampere_dynamics_node"
 		}
 	],
 	"backtrace" : 1,
@@ -85,25 +85,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 87,
+				"line" : 34,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 110,
+				"line" : 77,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 117,
+				"line" : 147,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 95,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
@@ -114,8 +114,14 @@
 			},
 			{
 				"command" : 2,
+				"file" : 1,
+				"line" : 152,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
 				"file" : 0,
-				"line" : 105,
+				"line" : 53,
 				"parent" : 0
 			},
 			{
@@ -126,33 +132,33 @@
 			},
 			{
 				"file" : 4,
-				"parent" : 7
+				"parent" : 8
 			},
 			{
 				"command" : 5,
 				"file" : 4,
 				"line" : 41,
-				"parent" : 8
+				"parent" : 9
 			},
 			{
 				"file" : 3,
-				"parent" : 9
+				"parent" : 10
 			},
 			{
 				"command" : 5,
 				"file" : 3,
 				"line" : 9,
-				"parent" : 10
+				"parent" : 11
 			},
 			{
 				"file" : 2,
-				"parent" : 11
+				"parent" : 12
 			},
 			{
 				"command" : 4,
 				"file" : 2,
 				"line" : 61,
-				"parent" : 12
+				"parent" : 13
 			},
 			{
 				"command" : 6,
@@ -162,181 +168,181 @@
 			},
 			{
 				"file" : 7,
-				"parent" : 14
+				"parent" : 15
 			},
 			{
 				"command" : 5,
 				"file" : 7,
 				"line" : 41,
-				"parent" : 15
+				"parent" : 16
 			},
 			{
 				"file" : 6,
-				"parent" : 16
+				"parent" : 17
 			},
 			{
 				"command" : 5,
 				"file" : 6,
 				"line" : 9,
-				"parent" : 17
+				"parent" : 18
 			},
 			{
 				"file" : 5,
-				"parent" : 18
+				"parent" : 19
 			},
 			{
 				"command" : 4,
 				"file" : 5,
 				"line" : 61,
-				"parent" : 19
+				"parent" : 20
 			},
 			{
 				"command" : 5,
 				"file" : 4,
 				"line" : 41,
-				"parent" : 8
+				"parent" : 9
 			},
 			{
 				"file" : 11,
-				"parent" : 21
+				"parent" : 22
 			},
 			{
 				"command" : 6,
 				"file" : 11,
 				"line" : 21,
-				"parent" : 22
+				"parent" : 23
 			},
 			{
 				"file" : 10,
-				"parent" : 23
+				"parent" : 24
 			},
 			{
 				"command" : 5,
 				"file" : 10,
 				"line" : 41,
-				"parent" : 24
+				"parent" : 25
 			},
 			{
 				"file" : 9,
-				"parent" : 25
+				"parent" : 26
 			},
 			{
 				"command" : 5,
 				"file" : 9,
 				"line" : 9,
-				"parent" : 26
+				"parent" : 27
 			},
 			{
 				"file" : 8,
-				"parent" : 27
+				"parent" : 28
 			},
 			{
 				"command" : 4,
 				"file" : 8,
 				"line" : 61,
-				"parent" : 28
+				"parent" : 29
 			},
 			{
 				"command" : 5,
 				"file" : 7,
 				"line" : 41,
-				"parent" : 15
+				"parent" : 16
 			},
 			{
 				"file" : 15,
-				"parent" : 30
+				"parent" : 31
 			},
 			{
 				"command" : 6,
 				"file" : 15,
 				"line" : 21,
-				"parent" : 31
-			},
-			{
-				"file" : 14,
 				"parent" : 32
 			},
 			{
-				"command" : 5,
 				"file" : 14,
-				"line" : 41,
 				"parent" : 33
 			},
 			{
-				"file" : 13,
+				"command" : 5,
+				"file" : 14,
+				"line" : 41,
 				"parent" : 34
+			},
+			{
+				"file" : 13,
+				"parent" : 35
 			},
 			{
 				"command" : 5,
 				"file" : 13,
 				"line" : 9,
-				"parent" : 35
+				"parent" : 36
 			},
 			{
 				"file" : 12,
-				"parent" : 36
+				"parent" : 37
 			},
 			{
 				"command" : 4,
 				"file" : 12,
 				"line" : 61,
-				"parent" : 37
+				"parent" : 38
 			},
 			{
 				"command" : 6,
 				"file" : 15,
 				"line" : 21,
-				"parent" : 31
+				"parent" : 32
 			},
 			{
 				"file" : 20,
-				"parent" : 39
+				"parent" : 40
 			},
 			{
 				"command" : 5,
 				"file" : 20,
 				"line" : 41,
-				"parent" : 40
+				"parent" : 41
 			},
 			{
 				"file" : 19,
-				"parent" : 41
+				"parent" : 42
 			},
 			{
 				"command" : 6,
 				"file" : 19,
 				"line" : 21,
-				"parent" : 42
+				"parent" : 43
 			},
 			{
 				"file" : 18,
-				"parent" : 43
+				"parent" : 44
 			},
 			{
 				"command" : 5,
 				"file" : 18,
 				"line" : 41,
-				"parent" : 44
+				"parent" : 45
 			},
 			{
 				"file" : 17,
-				"parent" : 45
+				"parent" : 46
 			},
 			{
 				"command" : 5,
 				"file" : 17,
 				"line" : 9,
-				"parent" : 46
+				"parent" : 47
 			},
 			{
 				"file" : 16,
-				"parent" : 47
+				"parent" : 48
 			},
 			{
 				"command" : 4,
 				"file" : 16,
 				"line" : 61,
-				"parent" : 48
+				"parent" : 49
 			},
 			{
 				"command" : 6,
@@ -346,197 +352,197 @@
 			},
 			{
 				"file" : 23,
-				"parent" : 50
+				"parent" : 51
 			},
 			{
 				"command" : 5,
 				"file" : 23,
 				"line" : 41,
-				"parent" : 51
-			},
-			{
-				"file" : 22,
 				"parent" : 52
 			},
 			{
-				"command" : 5,
 				"file" : 22,
-				"line" : 9,
 				"parent" : 53
 			},
 			{
-				"file" : 21,
+				"command" : 5,
+				"file" : 22,
+				"line" : 9,
 				"parent" : 54
 			},
 			{
-				"command" : 4,
 				"file" : 21,
-				"line" : 61,
 				"parent" : 55
 			},
 			{
+				"command" : 4,
+				"file" : 21,
+				"line" : 61,
+				"parent" : 56
+			},
+			{
 				"command" : 5,
 				"file" : 22,
 				"line" : 9,
-				"parent" : 53
+				"parent" : 54
 			},
 			{
 				"file" : 24,
-				"parent" : 57
-			},
-			{
-				"command" : 4,
-				"file" : 24,
-				"line" : 61,
 				"parent" : 58
 			},
 			{
+				"command" : 4,
+				"file" : 24,
+				"line" : 61,
+				"parent" : 59
+			},
+			{
 				"command" : 5,
 				"file" : 22,
 				"line" : 9,
-				"parent" : 53
+				"parent" : 54
 			},
 			{
 				"file" : 25,
-				"parent" : 60
-			},
-			{
-				"command" : 4,
-				"file" : 25,
-				"line" : 61,
 				"parent" : 61
 			},
 			{
+				"command" : 4,
+				"file" : 25,
+				"line" : 61,
+				"parent" : 62
+			},
+			{
 				"command" : 5,
 				"file" : 22,
 				"line" : 9,
-				"parent" : 53
+				"parent" : 54
 			},
 			{
 				"file" : 26,
-				"parent" : 63
-			},
-			{
-				"command" : 4,
-				"file" : 26,
-				"line" : 61,
 				"parent" : 64
 			},
 			{
+				"command" : 4,
+				"file" : 26,
+				"line" : 61,
+				"parent" : 65
+			},
+			{
 				"command" : 5,
 				"file" : 22,
 				"line" : 9,
-				"parent" : 53
+				"parent" : 54
 			},
 			{
 				"file" : 27,
-				"parent" : 66
+				"parent" : 67
 			},
 			{
 				"command" : 4,
 				"file" : 27,
 				"line" : 61,
-				"parent" : 67
+				"parent" : 68
 			},
 			{
 				"command" : 6,
 				"file" : 11,
 				"line" : 21,
-				"parent" : 22
+				"parent" : 23
 			},
 			{
 				"file" : 30,
-				"parent" : 69
+				"parent" : 70
 			},
 			{
 				"command" : 5,
 				"file" : 30,
 				"line" : 41,
-				"parent" : 70
-			},
-			{
-				"file" : 29,
 				"parent" : 71
 			},
 			{
-				"command" : 5,
 				"file" : 29,
-				"line" : 9,
 				"parent" : 72
 			},
 			{
-				"file" : 28,
+				"command" : 5,
+				"file" : 29,
+				"line" : 9,
 				"parent" : 73
 			},
 			{
-				"command" : 4,
 				"file" : 28,
-				"line" : 61,
 				"parent" : 74
 			},
 			{
+				"command" : 4,
+				"file" : 28,
+				"line" : 61,
+				"parent" : 75
+			},
+			{
 				"command" : 5,
 				"file" : 29,
 				"line" : 9,
-				"parent" : 72
+				"parent" : 73
 			},
 			{
 				"file" : 31,
-				"parent" : 76
-			},
-			{
-				"command" : 4,
-				"file" : 31,
-				"line" : 61,
 				"parent" : 77
 			},
 			{
+				"command" : 4,
+				"file" : 31,
+				"line" : 61,
+				"parent" : 78
+			},
+			{
 				"command" : 5,
 				"file" : 29,
 				"line" : 9,
-				"parent" : 72
+				"parent" : 73
 			},
 			{
 				"file" : 32,
-				"parent" : 79
-			},
-			{
-				"command" : 4,
-				"file" : 32,
-				"line" : 61,
 				"parent" : 80
 			},
 			{
+				"command" : 4,
+				"file" : 32,
+				"line" : 61,
+				"parent" : 81
+			},
+			{
 				"command" : 5,
 				"file" : 29,
 				"line" : 9,
-				"parent" : 72
+				"parent" : 73
 			},
 			{
 				"file" : 33,
-				"parent" : 82
-			},
-			{
-				"command" : 4,
-				"file" : 33,
-				"line" : 61,
 				"parent" : 83
 			},
 			{
+				"command" : 4,
+				"file" : 33,
+				"line" : 61,
+				"parent" : 84
+			},
+			{
 				"command" : 5,
 				"file" : 29,
 				"line" : 9,
-				"parent" : 72
+				"parent" : 73
 			},
 			{
 				"file" : 34,
-				"parent" : 85
+				"parent" : 86
 			},
 			{
 				"command" : 4,
 				"file" : 34,
 				"line" : 61,
-				"parent" : 86
+				"parent" : 87
 			},
 			{
 				"command" : 6,
@@ -546,247 +552,241 @@
 			},
 			{
 				"file" : 37,
-				"parent" : 88
+				"parent" : 89
 			},
 			{
 				"command" : 5,
 				"file" : 37,
 				"line" : 41,
-				"parent" : 89
-			},
-			{
-				"file" : 36,
 				"parent" : 90
 			},
 			{
-				"command" : 5,
 				"file" : 36,
-				"line" : 9,
 				"parent" : 91
 			},
 			{
-				"file" : 35,
+				"command" : 5,
+				"file" : 36,
+				"line" : 9,
 				"parent" : 92
 			},
 			{
-				"command" : 4,
 				"file" : 35,
-				"line" : 61,
 				"parent" : 93
 			},
 			{
+				"command" : 4,
+				"file" : 35,
+				"line" : 61,
+				"parent" : 94
+			},
+			{
 				"command" : 5,
 				"file" : 36,
 				"line" : 9,
-				"parent" : 91
+				"parent" : 92
 			},
 			{
 				"file" : 38,
-				"parent" : 95
-			},
-			{
-				"command" : 4,
-				"file" : 38,
-				"line" : 61,
 				"parent" : 96
 			},
 			{
+				"command" : 4,
+				"file" : 38,
+				"line" : 61,
+				"parent" : 97
+			},
+			{
 				"command" : 5,
 				"file" : 36,
 				"line" : 9,
-				"parent" : 91
+				"parent" : 92
 			},
 			{
 				"file" : 39,
-				"parent" : 98
-			},
-			{
-				"command" : 4,
-				"file" : 39,
-				"line" : 61,
 				"parent" : 99
 			},
 			{
+				"command" : 4,
+				"file" : 39,
+				"line" : 61,
+				"parent" : 100
+			},
+			{
 				"command" : 5,
 				"file" : 22,
 				"line" : 9,
-				"parent" : 53
+				"parent" : 54
 			},
 			{
 				"file" : 40,
-				"parent" : 101
-			},
-			{
-				"command" : 4,
-				"file" : 40,
-				"line" : 61,
 				"parent" : 102
 			},
 			{
+				"command" : 4,
+				"file" : 40,
+				"line" : 61,
+				"parent" : 103
+			},
+			{
 				"command" : 5,
 				"file" : 22,
 				"line" : 9,
-				"parent" : 53
+				"parent" : 54
 			},
 			{
 				"file" : 41,
-				"parent" : 104
+				"parent" : 105
 			},
 			{
 				"command" : 4,
 				"file" : 41,
 				"line" : 61,
-				"parent" : 105
+				"parent" : 106
 			},
 			{
 				"command" : 5,
 				"file" : 29,
 				"line" : 9,
-				"parent" : 72
+				"parent" : 73
 			},
 			{
 				"file" : 42,
-				"parent" : 107
+				"parent" : 108
 			},
 			{
 				"command" : 4,
 				"file" : 42,
 				"line" : 61,
-				"parent" : 108
+				"parent" : 109
 			},
 			{
 				"command" : 6,
 				"file" : 15,
 				"line" : 21,
-				"parent" : 31
+				"parent" : 32
 			},
 			{
 				"file" : 47,
-				"parent" : 110
+				"parent" : 111
 			},
 			{
 				"command" : 5,
 				"file" : 47,
 				"line" : 41,
-				"parent" : 111
+				"parent" : 112
 			},
 			{
 				"file" : 46,
-				"parent" : 112
+				"parent" : 113
 			},
 			{
 				"command" : 6,
 				"file" : 46,
 				"line" : 21,
-				"parent" : 113
+				"parent" : 114
 			},
 			{
 				"file" : 45,
-				"parent" : 114
+				"parent" : 115
 			},
 			{
 				"command" : 5,
 				"file" : 45,
 				"line" : 41,
-				"parent" : 115
+				"parent" : 116
 			},
 			{
 				"file" : 44,
-				"parent" : 116
+				"parent" : 117
 			},
 			{
 				"command" : 5,
 				"file" : 44,
 				"line" : 9,
-				"parent" : 117
+				"parent" : 118
 			},
 			{
 				"file" : 43,
-				"parent" : 118
+				"parent" : 119
 			},
 			{
 				"command" : 4,
 				"file" : 43,
 				"line" : 61,
-				"parent" : 119
+				"parent" : 120
 			},
 			{
 				"command" : 5,
 				"file" : 29,
 				"line" : 9,
-				"parent" : 72
+				"parent" : 73
 			},
 			{
 				"file" : 48,
-				"parent" : 121
+				"parent" : 122
 			},
 			{
 				"command" : 4,
 				"file" : 48,
 				"line" : 61,
-				"parent" : 122
+				"parent" : 123
 			},
 			{
 				"command" : 6,
 				"file" : 46,
 				"line" : 21,
-				"parent" : 113
+				"parent" : 114
 			},
 			{
 				"file" : 53,
-				"parent" : 124
+				"parent" : 125
 			},
 			{
 				"command" : 5,
 				"file" : 53,
 				"line" : 41,
-				"parent" : 125
+				"parent" : 126
 			},
 			{
 				"file" : 52,
-				"parent" : 126
+				"parent" : 127
 			},
 			{
 				"command" : 6,
 				"file" : 52,
 				"line" : 21,
-				"parent" : 127
+				"parent" : 128
 			},
 			{
 				"file" : 51,
-				"parent" : 128
+				"parent" : 129
 			},
 			{
 				"command" : 5,
 				"file" : 51,
 				"line" : 41,
-				"parent" : 129
+				"parent" : 130
 			},
 			{
 				"file" : 50,
-				"parent" : 130
+				"parent" : 131
 			},
 			{
 				"command" : 5,
 				"file" : 50,
 				"line" : 9,
-				"parent" : 131
+				"parent" : 132
 			},
 			{
 				"file" : 49,
-				"parent" : 132
+				"parent" : 133
 			},
 			{
 				"command" : 4,
 				"file" : 49,
 				"line" : 61,
-				"parent" : 133
-			},
-			{
-				"command" : 2,
-				"file" : 0,
-				"line" : 65,
-				"parent" : 0
+				"parent" : 134
 			},
 			{
 				"command" : 7,
@@ -797,7 +797,7 @@
 			{
 				"command" : 8,
 				"file" : 0,
-				"line" : 90,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
@@ -856,11 +856,6 @@
 				{
 					"backtrace" : 138,
 					"isSystem" : true,
-					"path" : "/opt/ros/jazzy/include/std_msgs"
-				},
-				{
-					"backtrace" : 138,
-					"isSystem" : true,
 					"path" : "/opt/ros/jazzy/include/nav_msgs"
 				},
 				{
@@ -872,6 +867,11 @@
 					"backtrace" : 138,
 					"isSystem" : true,
 					"path" : "/opt/ros/jazzy/include/tf2_ros"
+				},
+				{
+					"backtrace" : 138,
+					"isSystem" : true,
+					"path" : "/opt/ros/jazzy/include/std_msgs"
 				},
 				{
 					"backtrace" : 5,
@@ -1029,12 +1029,12 @@
 					"path" : "/opt/ros/jazzy/include/tf2_msgs"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 7,
 					"isSystem" : true,
 					"path" : "/usr/include/eigen3"
 				},
 				{
-					"backtrace" : 6,
+					"backtrace" : 7,
 					"isSystem" : true,
 					"path" : "/opt/ros/jazzy/include/osqp"
 				}
@@ -1046,14 +1046,7 @@
 			]
 		}
 	],
-	"dependencies" : 
-	[
-		{
-			"backtrace" : 6,
-			"id" : "vessel_lib::@6890427a1f51a3e7e1df"
-		}
-	],
-	"id" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+	"id" : "milliampere_dynamics_node::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -1121,7 +1114,12 @@
 			},
 			{
 				"backtrace" : 6,
-				"fragment" : "libvessel_lib.a",
+				"fragment" : "/opt/ros/jazzy/lib/libosqp.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "/opt/ros/jazzy/lib/libosqp.so",
 				"role" : "libraries"
 			},
 			{
@@ -1145,12 +1143,12 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libmessage_filters.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/librclcpp_action.so",
 				"role" : "libraries"
 			},
@@ -1160,247 +1158,247 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/liblibstatistics_collector.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosgraph_msgs__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libstatistics_msgs__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_action.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_interfaces__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_yaml_param_parser.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libtracetools.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 38,
+				"backtrace" : 39,
 				"fragment" : "-llttng-ust",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 38,
+				"backtrace" : 39,
 				"fragment" : "-llttng-ust-common",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 38,
+				"backtrace" : 39,
 				"fragment" : "-rdynamic",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 38,
+				"backtrace" : 39,
 				"fragment" : "-ldl",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/librcl_logging_interface.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/librmw_implementation.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 49,
+				"backtrace" : 50,
 				"fragment" : "/opt/ros/jazzy/lib/libtype_description_interfaces__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
@@ -1465,7 +1463,7 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
@@ -1480,7 +1478,7 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 13,
+				"backtrace" : 14,
 				"fragment" : "/opt/ros/jazzy/lib/libtf2_msgs__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
@@ -1495,223 +1493,218 @@
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 56,
+				"backtrace" : 57,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 59,
+				"backtrace" : 60,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 62,
+				"backtrace" : 63,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 65,
+				"backtrace" : 66,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 68,
+				"backtrace" : 69,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 29,
+				"backtrace" : 30,
 				"fragment" : "/opt/ros/jazzy/lib/libaction_msgs__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 75,
+				"backtrace" : 76,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 78,
+				"backtrace" : 79,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 81,
+				"backtrace" : 82,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 84,
+				"backtrace" : 85,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 87,
+				"backtrace" : 88,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 94,
+				"backtrace" : 95,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 94,
+				"backtrace" : 95,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_typesupport_fastrtps_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librmw.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_dynamic_typesupport.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 94,
+				"backtrace" : 95,
 				"fragment" : "/opt/ros/jazzy/lib/libfastcdr.so.2.2.5",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 97,
+				"backtrace" : 98,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_typesupport_introspection_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 100,
+				"backtrace" : 101,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_typesupport_introspection_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_typesupport_cpp.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_generator_py.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 103,
+				"backtrace" : 104,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 106,
+				"backtrace" : 107,
 				"fragment" : "/opt/ros/jazzy/lib/libservice_msgs__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/libbuiltin_interfaces__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 109,
+				"backtrace" : 110,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 120,
+				"backtrace" : 121,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_typesupport_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcpputils.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 123,
+				"backtrace" : 124,
 				"fragment" : "/opt/ros/jazzy/lib/libunique_identifier_msgs__rosidl_generator_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librosidl_runtime_c.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 20,
+				"backtrace" : 21,
 				"fragment" : "/opt/ros/jazzy/lib/librcutils.so",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 134,
-				"fragment" : "-ldl",
-				"role" : "libraries"
-			},
-			{
 				"backtrace" : 135,
-				"fragment" : "/opt/ros/jazzy/lib/libosqp.so",
+				"fragment" : "-ldl",
 				"role" : "libraries"
 			},
 			{
@@ -1721,8 +1714,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "milliampere_controller_node",
-	"nameOnDisk" : "milliampere_controller_node",
+	"name" : "milliampere_dynamics_node",
+	"nameOnDisk" : "milliampere_dynamics_node",
 	"paths" : 
 	{
 		"build" : ".",
@@ -1743,7 +1736,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/milliampere_controller_node.cpp",
+			"path" : "src/milliampere_dynamics_node.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

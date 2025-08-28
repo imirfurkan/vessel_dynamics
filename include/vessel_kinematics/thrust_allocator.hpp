@@ -17,7 +17,7 @@
 
 struct TAParams
 {
-  double Lx = 1.8; // [m]
+  double Lx = 1.8; // [m], distance of the azimuth thrusters from the center
 
   Eigen::Vector2d f_min{0.0, 0.0};     // minimum thrust force per thruster [N]
   Eigen::Vector2d f_max{500.0, 500.0}; // maximum thrust force per thruster [N]
