@@ -1,0 +1,106 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-4d24bff737c415d2b4d2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "vessel_kinematics",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-milliampere_controller_node-8b5c76fa5a7b43ae8b87.json",
+					"name" : "milliampere_controller_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "milliampere_dynamics_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-milliampere_dynamics_node-fbe484b4dfa6a7ed3a89.json",
+					"name" : "milliampere_dynamics_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "thrust_allocator_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-thrust_allocator_node-a50ad2e8e1246860d0e6.json",
+					"name" : "thrust_allocator_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-152f8f07505351d4c54c.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vessel_kinematics_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vessel_kinematics_uninstall-b9dbf144a6fa0a88f863.json",
+					"name" : "vessel_kinematics_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vessel_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vessel_lib-10ba534ea0eea570f8e8.json",
+					"name" : "vessel_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics",
+		"source" : "/home/imirdo/marine_ws/src/vessel_kinematics"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

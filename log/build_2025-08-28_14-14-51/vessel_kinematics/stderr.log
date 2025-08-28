@@ -1,0 +1,6 @@
+[31mCMake Error at CMakeLists.txt:77 (install):
+  install TARGETS given target "milliampere_controller_node" which does not
+  exist.
+
+[0m
+gmake: *** [Makefile:390: cmake_check_build_system] Error 1

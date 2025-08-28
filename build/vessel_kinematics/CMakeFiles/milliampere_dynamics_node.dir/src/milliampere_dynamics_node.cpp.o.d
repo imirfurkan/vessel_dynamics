@@ -959,6 +959,7 @@ CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o: \
  /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h \
  /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
  /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
+ /home/imirdo/marine_ws/src/vessel_kinematics/include/vessel_kinematics/utils.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/wrench.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/wrench__struct.hpp \
  /opt/ros/jazzy/include/geometry_msgs/geometry_msgs/msg/detail/vector3__struct.hpp \

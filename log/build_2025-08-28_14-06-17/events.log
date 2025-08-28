@@ -1,0 +1,460 @@
+[0.000000] (-) TimerEvent: {}
+[0.000486] (vessel_kinematics) JobQueued: {'identifier': 'vessel_kinematics', 'dependencies': OrderedDict()}
+[0.000637] (vessel_kinematics) JobStarted: {'identifier': 'vessel_kinematics'}
+[0.023713] (vessel_kinematics) JobProgress: {'identifier': 'vessel_kinematics', 'progress': 'cmake'}
+[0.025956] (vessel_kinematics) JobProgress: {'identifier': 'vessel_kinematics', 'progress': 'build'}
+[0.027871] (vessel_kinematics) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', '--', '-j28', '-l28'], 'cwd': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'KDE_FULL_SESSION': 'true', 'PLASMA_USE_QT_SCALING': '1', 'USER': 'imirdo', 'PAM_KWALLET5_LOGIN': '/run/user/1000/kwallet5.socket', 'LC_TIME': 'tr_TR.UTF-8', 'FONTCONFIG_PATH': '/etc/fonts', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SEAT': 'seat0', 'GIO_MODULE_DIR': '/home/imirdo/snap/code/common/.cache/gio-modules', 'XDG_SESSION_TYPE': 'wayland', 'GIT_ASKPASS': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'GTK_EXE_PREFIX_VSCODE_SNAP_ORIG': '', 'GDK_BACKEND_VSCODE_SNAP_ORIG': '', 'XCURSOR_SIZE': '24', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/imirdo', 'CHROME_DESKTOP': 'code.desktop', 'KDE_APPLICATIONS_AS_SCOPE': '1', 'LOCPATH_VSCODE_SNAP_ORIG': '', 'TERM_PROGRAM_VERSION': '1.103.2', 'DESKTOP_SESSION': 'plasmawayland', 'GTK_PATH': '/snap/code/205/usr/lib/x86_64-linux-gnu/gtk-3.0', 'XDG_DATA_HOME_VSCODE_SNAP_ORIG': '', 'GTK_IM_MODULE_FILE': '/home/imirdo/snap/code/common/.cache/immodules/immodules.cache', 'ROS_PYTHON_VERSION': '3', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/imirdo/.gtkrc:/home/imirdo/.config/gtkrc', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'GSETTINGS_SCHEMA_DIR_VSCODE_SNAP_ORIG': '', 'KDE_SESSION_VERSION': '5', 'VSCODE_GIT_ASKPASS_MAIN': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'tr_TR.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/snap/code/205/usr/share/code/code', 'MANAGERPID': '2267', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'SYSTEMD_EXEC_PID': '2522', 'BUNDLED_DEBUGPY_PATH': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/libs/debugpy', 'IM_CONFIG_CHECK_ENV': '1', 'SSH_ASKPASS': '/usr/bin/ksshaskpass', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'QT_QPA_PLATFORMTHEME': 'qt5ct', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install', 'XKB_DEFAULT_LAYOUT': 'jp', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'imirdo', 'QT_WAYLAND_FORCE_DPI': '96', 'QT_AUTO_SCREEN_SCALE_FACTOR': '0', 'JOURNAL_STREAM': '9:16382', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_CONFIG_DIRS_VSCODE_SNAP_ORIG': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/plasma-plasmashell.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'XDG_DATA_DIRS_VSCODE_SNAP_ORIG': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '1', 'GTK2_RC_FILES': '/etc/gtk-2.0/gtkrc:/home/imirdo/.gtkrc-2.0:/home/imirdo/.config/gtkrc-2.0', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/scripts/noConfigScripts', 'SESSION_MANAGER': 'local/furkan-83fd:@/tmp/.ICE-unix/2480,unix/furkan-83fd:/tmp/.ICE-unix/2480', 'GTK_EXE_PREFIX': '/snap/code/205/usr', 'INVOCATION_ID': '1875de4e06b849cdb1b89393370ae768', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session1', 'LC_ADDRESS': 'tr_TR.UTF-8', 'BAMF_DESKTOP_FILE_HINT': '/var/lib/snapd/desktop/applications/code_code.desktop', 'XKB_DEFAULT_MODEL': 'pc105', 'XDG_RUNTIME_DIR': '/run/user/1000', 'XCURSOR_THEME': 'breeze_cursors', 'GDK_BACKEND': 'x11', 'ICEAUTHORITY': '/run/user/1000/iceauth_MbZehq', 'DISPLAY': ':1', 'LOCPATH': '/snap/code/205/usr/lib/locale', 'VSCODE_DEBUGPY_ADAPTER_ENDPOINTS': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-65583d3b0d661280.txt', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'KDE', 'LC_TELEPHONE': 'tr_TR.UTF-8', 'GIO_MODULE_DIR_VSCODE_SNAP_ORIG': '', 'XDG_DATA_HOME': '/home/imirdo/snap/code/205/.local/share', 'XDG_SESSION_DESKTOP': 'KDE', 'XAUTHORITY': '/run/user/1000/xauth_saTICp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-d15037dd8a.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/gnupg/S.gpg-agent.ssh', 'GSETTINGS_SCHEMA_DIR': '/home/imirdo/snap/code/205/.local/share/glib-2.0/schemas', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'KDE', 'SHELL': '/bin/bash', 'LC_NAME': 'tr_TR.UTF-8', 'QT_ACCESSIBILITY': '1', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GTK_PATH_VSCODE_SNAP_ORIG': '', 'FONTCONFIG_FILE': '/etc/fonts/fonts.conf', 'GTK_IM_MODULE_FILE_VSCODE_SNAP_ORIG': '', 'LC_MEASUREMENT': 'tr_TR.UTF-8', 'XKB_DEFAULT_VARIANT': 'OADG109A', 'LC_IDENTIFICATION': 'tr_TR.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'XDG_VTNR': '1', 'PWD': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'XDG_CONFIG_DIRS': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'XDG_DATA_DIRS': '/home/imirdo/snap/code/205/.local/share:/home/imirdo/snap/code/205:/snap/code/205/usr/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'PYTHONPATH': '/home/imirdo/turtlebot3_ws/build/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/build/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_example/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'tr_TR.UTF-8', 'LC_PAPER': 'tr_TR.UTF-8', 'KDE_SESSION_UID': '1000', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'CMAKE_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy'}), 'shell': False}
+[0.098426] (-) TimerEvent: {}
+[0.110685] (vessel_kinematics) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.198583] (-) TimerEvent: {}
+[0.299199] (-) TimerEvent: {}
+[0.399834] (-) TimerEvent: {}
+[0.500470] (-) TimerEvent: {}
+[0.601149] (-) TimerEvent: {}
+[0.701733] (-) TimerEvent: {}
+[0.767153] (vessel_kinematics) StdoutLine: {'line': b'-- Found rclcpp: 28.1.11 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.801875] (-) TimerEvent: {}
+[0.852888] (vessel_kinematics) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.878017] (vessel_kinematics) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.902047] (-) TimerEvent: {}
+[0.918257] (vessel_kinematics) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.956699] (vessel_kinematics) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.002389] (-) TimerEvent: {}
+[1.102930] (-) TimerEvent: {}
+[1.132207] (vessel_kinematics) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[1.137586] (vessel_kinematics) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.203157] (-) TimerEvent: {}
+[1.303818] (-) TimerEvent: {}
+[1.335177] (vessel_kinematics) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.403981] (-) TimerEvent: {}
+[1.504563] (-) TimerEvent: {}
+[1.525247] (vessel_kinematics) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[1.604776] (-) TimerEvent: {}
+[1.611793] (vessel_kinematics) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[1.681738] (vessel_kinematics) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.14 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[1.704944] (-) TimerEvent: {}
+[1.805543] (-) TimerEvent: {}
+[1.906178] (-) TimerEvent: {}
+[2.001309] (vessel_kinematics) StdoutLine: {'line': b'-- Found osqp_vendor: 0.2.0 (/opt/ros/jazzy/share/osqp_vendor/cmake)\n'}
+[2.006287] (vessel_kinematics) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[2.006658] (-) TimerEvent: {}
+[2.107008] (-) TimerEvent: {}
+[2.207516] (-) TimerEvent: {}
+[2.307994] (-) TimerEvent: {}
+[2.403391] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.404248] (vessel_kinematics) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/imirdo/marine_ws/src/vessel_kinematics/include>;/home/imirdo/marine_ws/src/vessel_kinematics/include\n'}
+[2.404667] (vessel_kinematics) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.408191] (-) TimerEvent: {}
+[2.419093] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[2.419607] (vessel_kinematics) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[2.447560] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.462616] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[2.508460] (-) TimerEvent: {}
+[2.574338] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.574863] (vessel_kinematics) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.589484] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.591523] (vessel_kinematics) StdoutLine: {'line': b'-- Configuring done (2.5s)\n'}
+[2.608611] (-) TimerEvent: {}
+[2.649572] (vessel_kinematics) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[2.671813] (vessel_kinematics) StdoutLine: {'line': b'-- Build files have been written to: /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics\n'}
+[2.708847] (-) TimerEvent: {}
+[2.787939] (vessel_kinematics) StdoutLine: {'line': b'[ 25%] Built target vessel_lib\n'}
+[2.801545] (vessel_kinematics) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o\x1b[0m\n'}
+[2.809048] (-) TimerEvent: {}
+[2.874820] (vessel_kinematics) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/thrust_allocator_node.dir/src/thrust_allocator_node.cpp.o\x1b[0m\n'}
+[2.875390] (vessel_kinematics) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o\x1b[0m\n'}
+[2.909202] (-) TimerEvent: {}
+[3.009659] (-) TimerEvent: {}
+[3.110097] (-) TimerEvent: {}
+[3.210693] (-) TimerEvent: {}
+[3.311245] (-) TimerEvent: {}
+[3.411762] (-) TimerEvent: {}
+[3.512372] (-) TimerEvent: {}
+[3.612874] (-) TimerEvent: {}
+[3.713496] (-) TimerEvent: {}
+[3.814028] (-) TimerEvent: {}
+[3.914560] (-) TimerEvent: {}
+[4.015087] (-) TimerEvent: {}
+[4.115616] (-) TimerEvent: {}
+[4.216168] (-) TimerEvent: {}
+[4.316717] (-) TimerEvent: {}
+[4.417291] (-) TimerEvent: {}
+[4.518002] (-) TimerEvent: {}
+[4.618581] (-) TimerEvent: {}
+[4.719086] (-) TimerEvent: {}
+[4.819724] (-) TimerEvent: {}
+[4.920264] (-) TimerEvent: {}
+[5.020882] (-) TimerEvent: {}
+[5.121462] (-) TimerEvent: {}
+[5.222155] (-) TimerEvent: {}
+[5.322754] (-) TimerEvent: {}
+[5.423381] (-) TimerEvent: {}
+[5.524193] (-) TimerEvent: {}
+[5.624913] (-) TimerEvent: {}
+[5.725407] (-) TimerEvent: {}
+[5.825919] (-) TimerEvent: {}
+[5.926483] (-) TimerEvent: {}
+[6.027057] (-) TimerEvent: {}
+[6.127612] (-) TimerEvent: {}
+[6.228077] (-) TimerEvent: {}
+[6.328689] (-) TimerEvent: {}
+[6.429286] (-) TimerEvent: {}
+[6.529811] (-) TimerEvent: {}
+[6.630418] (-) TimerEvent: {}
+[6.731000] (-) TimerEvent: {}
+[6.831540] (-) TimerEvent: {}
+[6.932074] (-) TimerEvent: {}
+[7.032650] (-) TimerEvent: {}
+[7.133251] (-) TimerEvent: {}
+[7.233782] (-) TimerEvent: {}
+[7.334633] (-) TimerEvent: {}
+[7.435239] (-) TimerEvent: {}
+[7.535810] (-) TimerEvent: {}
+[7.636411] (-) TimerEvent: {}
+[7.737036] (-) TimerEvent: {}
+[7.837622] (-) TimerEvent: {}
+[7.938285] (-) TimerEvent: {}
+[8.038909] (-) TimerEvent: {}
+[8.139412] (-) TimerEvent: {}
+[8.239863] (-) TimerEvent: {}
+[8.340302] (-) TimerEvent: {}
+[8.440738] (-) TimerEvent: {}
+[8.541189] (-) TimerEvent: {}
+[8.641769] (-) TimerEvent: {}
+[8.742332] (-) TimerEvent: {}
+[8.843061] (-) TimerEvent: {}
+[8.943588] (-) TimerEvent: {}
+[9.044212] (-) TimerEvent: {}
+[9.145010] (-) TimerEvent: {}
+[9.245543] (-) TimerEvent: {}
+[9.346042] (-) TimerEvent: {}
+[9.446700] (-) TimerEvent: {}
+[9.547532] (-) TimerEvent: {}
+[9.647995] (-) TimerEvent: {}
+[9.748449] (-) TimerEvent: {}
+[9.848967] (-) TimerEvent: {}
+[9.949475] (-) TimerEvent: {}
+[10.050017] (-) TimerEvent: {}
+[10.150938] (-) TimerEvent: {}
+[10.251474] (-) TimerEvent: {}
+[10.352024] (-) TimerEvent: {}
+[10.452666] (-) TimerEvent: {}
+[10.553234] (-) TimerEvent: {}
+[10.653811] (-) TimerEvent: {}
+[10.754475] (-) TimerEvent: {}
+[10.855068] (-) TimerEvent: {}
+[10.955684] (-) TimerEvent: {}
+[11.056335] (-) TimerEvent: {}
+[11.156874] (-) TimerEvent: {}
+[11.257439] (-) TimerEvent: {}
+[11.357980] (-) TimerEvent: {}
+[11.458741] (-) TimerEvent: {}
+[11.559323] (-) TimerEvent: {}
+[11.659830] (-) TimerEvent: {}
+[11.760407] (-) TimerEvent: {}
+[11.860877] (-) TimerEvent: {}
+[11.961320] (-) TimerEvent: {}
+[12.061904] (-) TimerEvent: {}
+[12.162439] (-) TimerEvent: {}
+[12.263006] (-) TimerEvent: {}
+[12.363604] (-) TimerEvent: {}
+[12.464187] (-) TimerEvent: {}
+[12.564829] (-) TimerEvent: {}
+[12.665583] (-) TimerEvent: {}
+[12.678160] (vessel_kinematics) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/subscription_base.hpp:32\x1b[m\x1b[K,\n'}
+[12.680432] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/callback_group.hpp:29\x1b[m\x1b[K,\n'}
+[12.681627] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/any_executable.hpp:20\x1b[m\x1b[K,\n'}
+[12.682030] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/memory_strategy.hpp:25\x1b[m\x1b[K,\n'}
+[12.682383] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[12.682716] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/executor_options.hpp:22\x1b[m\x1b[K,\n'}
+[12.683043] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/executor.hpp:38\x1b[m\x1b[K,\n'}
+[12.683371] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[12.683702] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[12.684018] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/rclcpp.hpp:172\x1b[m\x1b[K,\n'}
+[12.684384] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/imirdo/marine_ws/src/vessel_kinematics/src/milliampere_controller_node.cpp:2\x1b[m\x1b[K:\n'}
+[12.684678] (vessel_kinematics) StderrLine: {'line': b'/opt/ros/jazzy/include/rclcpp/rclcpp/any_subscription_callback.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Krclcpp::AnySubscriptionCallback<MessageT, AllocatorT> rclcpp::AnySubscriptionCallback<MessageT, AllocatorT>::\x1b[01;32m\x1b[Kset\x1b[m\x1b[K(CallbackT) \x1b[35m\x1b[K[with CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; AllocatorT = std::allocator<void>]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.684982] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/subscription_factory.hpp:93:32:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::SubscriptionFactory rclcpp::\x1b[01;32m\x1b[Kcreate_subscription_factory\x1b[m\x1b[K(CallbackT&&, const SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr, std::shared_ptr<topic_statistics::SubscriptionTopicStatistics>) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.685306] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:121:63:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::detail::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(NodeParametersT&, NodeTopicsT&, const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = rclcpp::Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; NodeParametersT = rclcpp::Node; NodeTopicsT = rclcpp::Node; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.685631] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:190:76:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(NodeT&, const std::string&, const QoS&, CallbackT&&, const SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; NodeT = Node; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.685954] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/node_impl.hpp:99:47:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::Node::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = rclcpp::Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.686306] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/home/imirdo/marine_ws/src/vessel_kinematics/src/milliampere_controller_node.cpp:56:62:\x1b[m\x1b[K   required from here\n'}
+[12.686633] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/any_subscription_callback.hpp:396:23:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator=\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Krclcpp::detail::AnySubscriptionCallbackHelper<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void>, false, false>::variant_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Krclcpp::detail::SubscriptionCallbackTypeHelper<nav_msgs::msg::Odometry_<std::allocator<void> >, std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, void>::callback_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::function<void(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>\x1b[m\x1b[K\xe2\x80\x99})\n'}
+[12.687079] (vessel_kinematics) StderrLine: {'line': b'  396 |     \x1b[01;31m\x1b[Kcallback_variant_ = static_cast<typename scbth::callback_type>(callback)\x1b[m\x1b[K;\n'}
+[12.687421] (vessel_kinematics) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.687733] (vessel_kinematics) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/client.hpp:29\x1b[m\x1b[K,\n'}
+[12.688054] (vessel_kinematics) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/callback_group.hpp:24\x1b[m\x1b[K:\n'}
+[12.688331] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1494:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::enable_if_t<((__exactly_once<std::variant<_Types>::__accepted_type<_Tp&&, typename std::enable_if<__not_self<_Tp&&>, void>::type> > && is_constructible_v<std::variant<_Types>::__accepted_type<_Tp&&, typename std::enable_if<__not_self<_Tp&&>, void>::type>, _Tp>) && is_assignable_v<std::variant<_Types>::__accepted_type<_Tp&&, typename std::enable_if<__not_self<_Tp&&>, void>::type>&, _Tp>), std::variant<_Types>&> std::variant<_Types>::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(_Tp&&) \x1b[35m\x1b[K[with _Types = {std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>}]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.688845] (vessel_kinematics) StderrLine: {'line': b' 1494 |         \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(_Tp&& __rhs)\n'}
+[12.689151] (vessel_kinematics) StderrLine: {'line': b'      |         \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[12.689473] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1494:9:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  template argument deduction/substitution failed:\n'}
+[12.689800] (vessel_kinematics) StderrLine: {'line': b'/usr/include/c++/13/variant: In substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class ... _Types> template<class _Tp, class> using std::variant<_Types>::__accepted_type = std::variant<_Types>::__to_type<__accepted_index<_Tp> > \x1b[35m\x1b[K[with _Tp = std::function<void(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>&&; <template-parameter-2-2> = void; _Types = {std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>}]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.690212] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1490:14:\x1b[m\x1b[K   required by substitution of \xe2\x80\x98\x1b[01m\x1b[Ktemplate<class _Tp> std::enable_if_t<((__exactly_once<std::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >::__accepted_type<_Tp&&, typename std::enable_if<__not_self<_Tp&&>, void>::type> > && is_constructible_v<std::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >::__accepted_type<_Tp&&, typename std::enable_if<__not_self<_Tp&&>, void>::type>, _Tp>) && is_assignable_v<std::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >::__accepted_type<_Tp&&, typename std::enable_if<__not_self<_Tp&&>, void>::type>&, _Tp>), std::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >&> std::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(_Tp&&) \x1b[35m\x1b[K[with _Tp = std::function<void(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.690868] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/any_subscription_callback.hpp:396:23:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::AnySubscriptionCallback<MessageT, AllocatorT> rclcpp::AnySubscriptionCallback<MessageT, AllocatorT>::\x1b[01;32m\x1b[Kset\x1b[m\x1b[K(CallbackT) \x1b[35m\x1b[K[with CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; AllocatorT = std::allocator<void>]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.691206] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/subscription_factory.hpp:93:32:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::SubscriptionFactory rclcpp::\x1b[01;32m\x1b[Kcreate_subscription_factory\x1b[m\x1b[K(CallbackT&&, const SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr, std::shared_ptr<topic_statistics::SubscriptionTopicStatistics>) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.691512] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:121:63:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::detail::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(NodeParametersT&, NodeTopicsT&, const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = rclcpp::Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; NodeParametersT = rclcpp::Node; NodeTopicsT = rclcpp::Node; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.691828] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:190:76:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(NodeT&, const std::string&, const QoS&, CallbackT&&, const SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; NodeT = Node; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.692128] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/node_impl.hpp:99:47:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::Node::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = rclcpp::Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.692468] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/home/imirdo/marine_ws/src/vessel_kinematics/src/milliampere_controller_node.cpp:56:62:\x1b[m\x1b[K   required from here\n'}
+[12.692773] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1407:15:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno type named \xe2\x80\x98\x1b[01m\x1b[Ktype\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Kstruct std::enable_if<false, void>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.693076] (vessel_kinematics) StderrLine: {'line': b' 1407 |         using \x1b[01;31m\x1b[K__accepted_type\x1b[m\x1b[K = __to_type<__accepted_index<_Tp>>;\n'}
+[12.693390] (vessel_kinematics) StderrLine: {'line': b'      |               \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.693692] (vessel_kinematics) StderrLine: {'line': b'/opt/ros/jazzy/include/rclcpp/rclcpp/any_subscription_callback.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Krclcpp::AnySubscriptionCallback<MessageT, AllocatorT> rclcpp::AnySubscriptionCallback<MessageT, AllocatorT>::\x1b[01;32m\x1b[Kset\x1b[m\x1b[K(CallbackT) \x1b[35m\x1b[K[with CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; AllocatorT = std::allocator<void>]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.694009] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/subscription_factory.hpp:93:32:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::SubscriptionFactory rclcpp::\x1b[01;32m\x1b[Kcreate_subscription_factory\x1b[m\x1b[K(CallbackT&&, const SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr, std::shared_ptr<topic_statistics::SubscriptionTopicStatistics>) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.694463] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:121:63:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::detail::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(NodeParametersT&, NodeTopicsT&, const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = rclcpp::Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; NodeParametersT = rclcpp::Node; NodeTopicsT = rclcpp::Node; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.694840] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/create_subscription.hpp:190:76:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(NodeT&, const std::string&, const QoS&, CallbackT&&, const SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; NodeT = Node; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.695183] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/jazzy/include/rclcpp/rclcpp/node_impl.hpp:99:47:\x1b[m\x1b[K   required from \xe2\x80\x98\x1b[01m\x1b[Kstd::shared_ptr<ROSMessageT> rclcpp::Node::\x1b[01;32m\x1b[Kcreate_subscription\x1b[m\x1b[K(const std::string&, const rclcpp::QoS&, CallbackT&&, const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT>&, typename MessageMemoryStrategyT::SharedPtr) \x1b[35m\x1b[K[with MessageT = nav_msgs::msg::Odometry_<std::allocator<void> >; CallbackT = std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>; AllocatorT = std::allocator<void>; SubscriptionT = rclcpp::Subscription<nav_msgs::msg::Odometry_<std::allocator<void> > >; MessageMemoryStrategyT = rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> >; std::string = std::__cxx11::basic_string<char>; typename MessageMemoryStrategyT::SharedPtr = std::shared_ptr<rclcpp::message_memory_strategy::MessageMemoryStrategy<nav_msgs::msg::Odometry_<std::allocator<void> >, std::allocator<void> > >]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.695531] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/home/imirdo/marine_ws/src/vessel_kinematics/src/milliampere_controller_node.cpp:56:62:\x1b[m\x1b[K   required from here\n'}
+[12.695834] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1430:16:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::variant<_Types>& std::variant<_Types>::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(const std::variant<_Types>&) \x1b[35m\x1b[K[with _Types = {std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>}]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.696211] (vessel_kinematics) StderrLine: {'line': b' 1430 |       variant& \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(const variant&) = default;\n'}
+[12.696515] (vessel_kinematics) StderrLine: {'line': b'      |                \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[12.696787] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1430:26:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::detail::SubscriptionCallbackTypeHelper<nav_msgs::msg::Odometry_<std::allocator<void> >, std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, void>::callback_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::function<void(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>\x1b[m\x1b[K\xe2\x80\x99} to \xe2\x80\x98\x1b[01m\x1b[Kconst std::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.697144] (vessel_kinematics) StderrLine: {'line': b' 1430 |       variant& operator=(\x1b[01;36m\x1b[Kconst variant&\x1b[m\x1b[K) = default;\n'}
+[12.697431] (vessel_kinematics) StderrLine: {'line': b'      |                          \x1b[01;36m\x1b[K^~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[12.697706] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1431:16:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::variant<_Types>& std::variant<_Types>::\x1b[01;32m\x1b[Koperator=\x1b[m\x1b[K(std::variant<_Types>&&) \x1b[35m\x1b[K[with _Types = {std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>}]\x1b[m\x1b[K\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.698058] (vessel_kinematics) StderrLine: {'line': b' 1431 |       variant& \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(variant&&) = default;\n'}
+[12.698383] (vessel_kinematics) StderrLine: {'line': b'      |                \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[12.698683] (vessel_kinematics) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/13/variant:1431:26:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Krclcpp::detail::SubscriptionCallbackTypeHelper<nav_msgs::msg::Odometry_<std::allocator<void> >, std::_Bind<void (ControllerNode::*(ControllerNode*, std::_Placeholder<1>))(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, void>::callback_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::function<void(const std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >&)>\x1b[m\x1b[K\xe2\x80\x99} to \xe2\x80\x98\x1b[01m\x1b[Kstd::variant<std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&)>, std::function<void(const nav_msgs::msg::Odometry_<std::allocator<void> >&, const rclcpp::MessageInfo&)>, std::function<void(const rclcpp::SerializedMessage&)>, std::function<void(const rclcpp::SerializedMessage&, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >)>, std::function<void(std::unique_ptr<nav_msgs::msg::Odometry_<std::allocator<void> >, std::default_delete<nav_msgs::msg::Odometry_<std::allocator<void> > > >, const rclcpp::MessageInfo&)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >)>, std::function<void(std::unique_ptr<rclcpp::SerializedMessage, std::default_delete<rclcpp::SerializedMessage> >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<const rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&)>, std::function<void(const std::shared_ptr<const nav_msgs::msg::Odometry_<std::allocator<void> > >&, const rclcpp::MessageInfo&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&)>, std::function<void(const std::shared_ptr<const rclcpp::SerializedMessage>&, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >)>, std::function<void(std::shared_ptr<nav_msgs::msg::Odometry_<std::allocator<void> > >, const rclcpp::MessageInfo&)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>)>, std::function<void(std::shared_ptr<rclcpp::SerializedMessage>, const rclcpp::MessageInfo&)> >&&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[12.699074] (vessel_kinematics) StderrLine: {'line': b' 1431 |       variant& operator=(\x1b[01;36m\x1b[Kvariant&&\x1b[m\x1b[K) = default;\n'}
+[12.699376] (vessel_kinematics) StderrLine: {'line': b'      |                          \x1b[01;36m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[12.765737] (-) TimerEvent: {}
+[12.866393] (-) TimerEvent: {}
+[12.966953] (-) TimerEvent: {}
+[13.067576] (-) TimerEvent: {}
+[13.168255] (-) TimerEvent: {}
+[13.268799] (-) TimerEvent: {}
+[13.369417] (-) TimerEvent: {}
+[13.469963] (-) TimerEvent: {}
+[13.570571] (-) TimerEvent: {}
+[13.671181] (-) TimerEvent: {}
+[13.771762] (-) TimerEvent: {}
+[13.872417] (-) TimerEvent: {}
+[13.973081] (-) TimerEvent: {}
+[14.073581] (-) TimerEvent: {}
+[14.174061] (-) TimerEvent: {}
+[14.274560] (-) TimerEvent: {}
+[14.375059] (-) TimerEvent: {}
+[14.475567] (-) TimerEvent: {}
+[14.576178] (-) TimerEvent: {}
+[14.676721] (-) TimerEvent: {}
+[14.777183] (-) TimerEvent: {}
+[14.877640] (-) TimerEvent: {}
+[14.978089] (-) TimerEvent: {}
+[15.078720] (-) TimerEvent: {}
+[15.179310] (-) TimerEvent: {}
+[15.279973] (-) TimerEvent: {}
+[15.380534] (-) TimerEvent: {}
+[15.481050] (-) TimerEvent: {}
+[15.581809] (-) TimerEvent: {}
+[15.682303] (-) TimerEvent: {}
+[15.782965] (-) TimerEvent: {}
+[15.883421] (-) TimerEvent: {}
+[15.983846] (-) TimerEvent: {}
+[16.084424] (-) TimerEvent: {}
+[16.184900] (-) TimerEvent: {}
+[16.285415] (-) TimerEvent: {}
+[16.385884] (-) TimerEvent: {}
+[16.486390] (-) TimerEvent: {}
+[16.586952] (-) TimerEvent: {}
+[16.687682] (-) TimerEvent: {}
+[16.788167] (-) TimerEvent: {}
+[16.888752] (-) TimerEvent: {}
+[16.989302] (-) TimerEvent: {}
+[17.089847] (-) TimerEvent: {}
+[17.190414] (-) TimerEvent: {}
+[17.290904] (-) TimerEvent: {}
+[17.391548] (-) TimerEvent: {}
+[17.492201] (-) TimerEvent: {}
+[17.592814] (-) TimerEvent: {}
+[17.693441] (-) TimerEvent: {}
+[17.794029] (-) TimerEvent: {}
+[17.822323] (vessel_kinematics) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/milliampere_controller_node.dir/build.make:76: CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o] Error 1\n'}
+[17.824948] (vessel_kinematics) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/milliampere_controller_node.dir/all] Error 2\n'}
+[17.825418] (vessel_kinematics) StderrLine: {'line': b'gmake[1]: *** Waiting for unfinished jobs....\n'}
+[17.894390] (-) TimerEvent: {}
+[17.994923] (-) TimerEvent: {}
+[18.095551] (-) TimerEvent: {}
+[18.196085] (-) TimerEvent: {}
+[18.296661] (-) TimerEvent: {}
+[18.397305] (-) TimerEvent: {}
+[18.497910] (-) TimerEvent: {}
+[18.598555] (-) TimerEvent: {}
+[18.699118] (-) TimerEvent: {}
+[18.799783] (-) TimerEvent: {}
+[18.900376] (-) TimerEvent: {}
+[19.000921] (-) TimerEvent: {}
+[19.101580] (-) TimerEvent: {}
+[19.202249] (-) TimerEvent: {}
+[19.302823] (-) TimerEvent: {}
+[19.403479] (-) TimerEvent: {}
+[19.504095] (-) TimerEvent: {}
+[19.604653] (-) TimerEvent: {}
+[19.705378] (-) TimerEvent: {}
+[19.805900] (-) TimerEvent: {}
+[19.906524] (-) TimerEvent: {}
+[20.007126] (-) TimerEvent: {}
+[20.107745] (-) TimerEvent: {}
+[20.208276] (-) TimerEvent: {}
+[20.308823] (-) TimerEvent: {}
+[20.409537] (-) TimerEvent: {}
+[20.510078] (-) TimerEvent: {}
+[20.610607] (-) TimerEvent: {}
+[20.711111] (-) TimerEvent: {}
+[20.811815] (-) TimerEvent: {}
+[20.912400] (-) TimerEvent: {}
+[21.012938] (-) TimerEvent: {}
+[21.113389] (-) TimerEvent: {}
+[21.213903] (-) TimerEvent: {}
+[21.314429] (-) TimerEvent: {}
+[21.415099] (-) TimerEvent: {}
+[21.515658] (-) TimerEvent: {}
+[21.616250] (-) TimerEvent: {}
+[21.716852] (-) TimerEvent: {}
+[21.817435] (-) TimerEvent: {}
+[21.917994] (-) TimerEvent: {}
+[22.018539] (-) TimerEvent: {}
+[22.119129] (-) TimerEvent: {}
+[22.219725] (-) TimerEvent: {}
+[22.320238] (-) TimerEvent: {}
+[22.420917] (-) TimerEvent: {}
+[22.521493] (-) TimerEvent: {}
+[22.622079] (-) TimerEvent: {}
+[22.722552] (-) TimerEvent: {}
+[22.822991] (-) TimerEvent: {}
+[22.923439] (-) TimerEvent: {}
+[23.023892] (-) TimerEvent: {}
+[23.124536] (-) TimerEvent: {}
+[23.225090] (-) TimerEvent: {}
+[23.325673] (-) TimerEvent: {}
+[23.426235] (-) TimerEvent: {}
+[23.526732] (-) TimerEvent: {}
+[23.627249] (-) TimerEvent: {}
+[23.727731] (-) TimerEvent: {}
+[23.828165] (-) TimerEvent: {}
+[23.928630] (-) TimerEvent: {}
+[24.029172] (-) TimerEvent: {}
+[24.129704] (-) TimerEvent: {}
+[24.230254] (-) TimerEvent: {}
+[24.330775] (-) TimerEvent: {}
+[24.431385] (-) TimerEvent: {}
+[24.531817] (-) TimerEvent: {}
+[24.632400] (-) TimerEvent: {}
+[24.733024] (-) TimerEvent: {}
+[24.833516] (-) TimerEvent: {}
+[24.933927] (-) TimerEvent: {}
+[25.034772] (-) TimerEvent: {}
+[25.135263] (-) TimerEvent: {}
+[25.235821] (-) TimerEvent: {}
+[25.336415] (-) TimerEvent: {}
+[25.436973] (-) TimerEvent: {}
+[25.462686] (vessel_kinematics) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable thrust_allocator_node\x1b[0m\n'}
+[25.537091] (-) TimerEvent: {}
+[25.637496] (-) TimerEvent: {}
+[25.737975] (-) TimerEvent: {}
+[25.838557] (-) TimerEvent: {}
+[25.939289] (-) TimerEvent: {}
+[26.039977] (-) TimerEvent: {}
+[26.140697] (-) TimerEvent: {}
+[26.241210] (-) TimerEvent: {}
+[26.282069] (vessel_kinematics) StdoutLine: {'line': b'[ 75%] Built target thrust_allocator_node\n'}
+[26.341402] (-) TimerEvent: {}
+[26.441915] (-) TimerEvent: {}
+[26.542463] (-) TimerEvent: {}
+[26.643053] (-) TimerEvent: {}
+[26.743472] (-) TimerEvent: {}
+[26.843952] (-) TimerEvent: {}
+[26.944465] (-) TimerEvent: {}
+[27.044899] (-) TimerEvent: {}
+[27.145328] (-) TimerEvent: {}
+[27.245858] (-) TimerEvent: {}
+[27.346396] (-) TimerEvent: {}
+[27.446839] (-) TimerEvent: {}
+[27.547651] (-) TimerEvent: {}
+[27.648112] (-) TimerEvent: {}
+[27.748651] (-) TimerEvent: {}
+[27.849176] (-) TimerEvent: {}
+[27.949789] (-) TimerEvent: {}
+[28.050331] (-) TimerEvent: {}
+[28.150893] (-) TimerEvent: {}
+[28.251424] (-) TimerEvent: {}
+[28.351929] (-) TimerEvent: {}
+[28.452469] (-) TimerEvent: {}
+[28.553020] (-) TimerEvent: {}
+[28.653459] (-) TimerEvent: {}
+[28.753958] (-) TimerEvent: {}
+[28.854586] (-) TimerEvent: {}
+[28.955126] (-) TimerEvent: {}
+[29.055760] (-) TimerEvent: {}
+[29.156326] (-) TimerEvent: {}
+[29.256959] (-) TimerEvent: {}
+[29.357431] (-) TimerEvent: {}
+[29.457914] (-) TimerEvent: {}
+[29.558364] (-) TimerEvent: {}
+[29.658870] (-) TimerEvent: {}
+[29.759429] (-) TimerEvent: {}
+[29.859887] (-) TimerEvent: {}
+[29.960376] (-) TimerEvent: {}
+[30.060849] (-) TimerEvent: {}
+[30.161401] (-) TimerEvent: {}
+[30.261878] (-) TimerEvent: {}
+[30.362412] (-) TimerEvent: {}
+[30.462850] (-) TimerEvent: {}
+[30.563301] (-) TimerEvent: {}
+[30.663839] (-) TimerEvent: {}
+[30.764402] (-) TimerEvent: {}
+[30.864916] (-) TimerEvent: {}
+[30.965387] (-) TimerEvent: {}
+[31.065826] (-) TimerEvent: {}
+[31.166343] (-) TimerEvent: {}
+[31.266887] (-) TimerEvent: {}
+[31.367427] (-) TimerEvent: {}
+[31.468075] (-) TimerEvent: {}
+[31.568621] (-) TimerEvent: {}
+[31.669165] (-) TimerEvent: {}
+[31.769739] (-) TimerEvent: {}
+[31.870256] (-) TimerEvent: {}
+[31.971106] (-) TimerEvent: {}
+[32.071720] (-) TimerEvent: {}
+[32.172327] (-) TimerEvent: {}
+[32.272882] (-) TimerEvent: {}
+[32.373459] (-) TimerEvent: {}
+[32.473954] (-) TimerEvent: {}
+[32.574470] (-) TimerEvent: {}
+[32.674900] (-) TimerEvent: {}
+[32.775334] (-) TimerEvent: {}
+[32.875906] (-) TimerEvent: {}
+[32.976538] (-) TimerEvent: {}
+[33.077090] (-) TimerEvent: {}
+[33.177690] (-) TimerEvent: {}
+[33.278232] (-) TimerEvent: {}
+[33.378789] (-) TimerEvent: {}
+[33.479424] (-) TimerEvent: {}
+[33.580002] (-) TimerEvent: {}
+[33.680575] (-) TimerEvent: {}
+[33.781111] (-) TimerEvent: {}
+[33.881704] (-) TimerEvent: {}
+[33.982380] (-) TimerEvent: {}
+[34.082946] (-) TimerEvent: {}
+[34.183579] (-) TimerEvent: {}
+[34.284123] (-) TimerEvent: {}
+[34.384732] (-) TimerEvent: {}
+[34.485323] (-) TimerEvent: {}
+[34.585991] (-) TimerEvent: {}
+[34.686549] (-) TimerEvent: {}
+[34.730487] (vessel_kinematics) StdoutLine: {'line': b'[ 87%] \x1b[32m\x1b[1mLinking CXX executable milliampere_dynamics_node\x1b[0m\n'}
+[34.786750] (-) TimerEvent: {}
+[34.887256] (-) TimerEvent: {}
+[34.987794] (-) TimerEvent: {}
+[35.088310] (-) TimerEvent: {}
+[35.188857] (-) TimerEvent: {}
+[35.289437] (-) TimerEvent: {}
+[35.389962] (-) TimerEvent: {}
+[35.490581] (-) TimerEvent: {}
+[35.591182] (-) TimerEvent: {}
+[35.691775] (-) TimerEvent: {}
+[35.792319] (-) TimerEvent: {}
+[35.892830] (-) TimerEvent: {}
+[35.937587] (vessel_kinematics) StdoutLine: {'line': b'[ 87%] Built target milliampere_dynamics_node\n'}
+[35.940205] (vessel_kinematics) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[35.944774] (vessel_kinematics) CommandEnded: {'returncode': 2}
+[35.969368] (vessel_kinematics) JobEnded: {'identifier': 'vessel_kinematics', 'rc': 2}
+[35.980309] (-) EventReactorShutdown: {}

@@ -236,6 +236,43 @@ thrust_allocator_node/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thrust_allocator_node.dir/build.make CMakeFiles/thrust_allocator_node.dir/build
 .PHONY : thrust_allocator_node/fast
 
+#=============================================================================
+# Target rules for targets named milliampere_controller_node
+
+# Build rule for target.
+milliampere_controller_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 milliampere_controller_node
+.PHONY : milliampere_controller_node
+
+# fast build rule for target.
+milliampere_controller_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/build
+.PHONY : milliampere_controller_node/fast
+
+src/milliampere_controller_node.o: src/milliampere_controller_node.cpp.o
+.PHONY : src/milliampere_controller_node.o
+
+# target to build an object file
+src/milliampere_controller_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o
+.PHONY : src/milliampere_controller_node.cpp.o
+
+src/milliampere_controller_node.i: src/milliampere_controller_node.cpp.i
+.PHONY : src/milliampere_controller_node.i
+
+# target to preprocess a source file
+src/milliampere_controller_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.i
+.PHONY : src/milliampere_controller_node.cpp.i
+
+src/milliampere_controller_node.s: src/milliampere_controller_node.cpp.s
+.PHONY : src/milliampere_controller_node.s
+
+# target to generate assembly for a file
+src/milliampere_controller_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.s
+.PHONY : src/milliampere_controller_node.cpp.s
+
 src/milliampere_dynamics_node.o: src/milliampere_dynamics_node.cpp.o
 .PHONY : src/milliampere_dynamics_node.o
 
@@ -323,9 +360,13 @@ help:
 	@echo "... test"
 	@echo "... uninstall"
 	@echo "... vessel_kinematics_uninstall"
+	@echo "... milliampere_controller_node"
 	@echo "... milliampere_dynamics_node"
 	@echo "... thrust_allocator_node"
 	@echo "... vessel_lib"
+	@echo "... src/milliampere_controller_node.o"
+	@echo "... src/milliampere_controller_node.i"
+	@echo "... src/milliampere_controller_node.s"
 	@echo "... src/milliampere_dynamics_node.o"
 	@echo "... src/milliampere_dynamics_node.i"
 	@echo "... src/milliampere_dynamics_node.s"

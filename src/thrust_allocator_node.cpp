@@ -1,10 +1,9 @@
 #include <memory>
-#include "rclcpp/rclcpp.hpp"
+#include <rclcpp/rclcpp.hpp>
 #include "geometry_msgs/msg/wrench.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
 #include "vessel_kinematics/thrust_allocator.hpp"
-
-const double DT = 0.02; // TODO make this global param?
+#include "vessel_kinematics/utils.hpp"
 
 class ThrustAllocatorNode : public rclcpp::Node
 {
@@ -66,7 +65,7 @@ private:
     tau_desired(1) = msg->force.y;
     tau_desired(2) = msg->torque.z;
 
-    TAResult result = allocate_tau(tau_desired, ta_state_, ta_params_, DT);
+    TAResult result = allocate_tau(tau_desired, ta_state_, ta_params_, vk::dt);
 
     if (result.success)
     {
@@ -100,6 +99,17 @@ private:
     actual_wrench_msg.force.y                     = tau_actual(1);
     actual_wrench_msg.torque.z                    = tau_actual(2);
     actual_wrench_pub_->publish(actual_wrench_msg);
+
+    // debug
+    RCLCPP_INFO(this->get_logger(),
+                "Azimuths: [%.2f, %.2f], Thrusts: [%.2f, %.2f]",
+                ta_state_.alpha(0) * 180 / M_PI,
+                ta_state_.alpha(1) * 180 / M_PI,
+                ta_state_.f(0),
+                ta_state_.f(1));
+
+    RCLCPP_INFO(
+        this->get_logger(), "Actual Tau: [X=%.2f, Y=%.2f, N=%.2f]", tau_actual(0), tau_actual(1), tau_actual(2));
   }
 
   // ROS2 Subscribers and Publishers

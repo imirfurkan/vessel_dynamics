@@ -1,0 +1,104 @@
+[0.180s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--cmake-args', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON']
+[0.180s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=28, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'], cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7880d749b530>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7880d75bfbf0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7880d75bfbf0>>, mixin_verb=('build',))
+[0.250s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.250s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.250s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.251s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.251s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.251s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.251s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/imirdo/marine_ws/src/vessel_kinematics'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.310s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'vessel_kinematics'
+[0.310s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.310s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.310s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.311s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.311s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.341s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.341s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.345s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 15 installed packages in /home/imirdo/turtlebot3_ws/install
+[0.350s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 403 installed packages in /opt/ros/jazzy
+[0.351s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'cmake_args' from command line to '['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON']'
+[0.429s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'cmake_target' from command line to 'None'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'cmake_clean_cache' from command line to 'False'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'cmake_clean_first' from command line to 'False'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'cmake_force_configure' from command line to 'False'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'ament_cmake_args' from command line to 'None'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'catkin_cmake_args' from command line to 'None'
+[0.430s] Level 5:colcon.colcon_core.verb:set package 'vessel_kinematics' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.430s] DEBUG:colcon.colcon_core.verb:Building package 'vessel_kinematics' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics', 'merge_install': False, 'path': '/home/imirdo/marine_ws/src/vessel_kinematics', 'symlink_install': False, 'test_result_base': None}
+[0.430s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.431s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.432s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/imirdo/marine_ws/src/vessel_kinematics' with build type 'ament_cmake'
+[0.432s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/imirdo/marine_ws/src/vessel_kinematics'
+[0.435s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.435s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.435s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.453s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28
+[27.327s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28
+[27.347s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics
+[27.383s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vessel_kinematics)
+[27.384s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics
+[27.387s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics' for CMake module files
+[27.388s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics' for CMake config files
+[27.388s] Level 1:colcon.colcon_core.shell:create_environment_hook('vessel_kinematics', 'cmake_prefix_path')
+[27.389s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/hook/cmake_prefix_path.ps1'
+[27.390s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/hook/cmake_prefix_path.dsv'
+[27.390s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/hook/cmake_prefix_path.sh'
+[27.391s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib'
+[27.392s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/bin'
+[27.392s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/pkgconfig/vessel_kinematics.pc'
+[27.392s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/python3.12/site-packages'
+[27.393s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/bin'
+[27.393s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.ps1'
+[27.394s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.dsv'
+[27.395s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.sh'
+[27.396s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.bash'
+[27.396s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.zsh'
+[27.397s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/colcon-core/packages/vessel_kinematics)
+[27.398s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vessel_kinematics)
+[27.398s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics' for CMake module files
+[27.399s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics' for CMake config files
+[27.399s] Level 1:colcon.colcon_core.shell:create_environment_hook('vessel_kinematics', 'cmake_prefix_path')
+[27.399s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/hook/cmake_prefix_path.ps1'
+[27.400s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/hook/cmake_prefix_path.dsv'
+[27.400s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/hook/cmake_prefix_path.sh'
+[27.401s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib'
+[27.401s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/bin'
+[27.401s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/pkgconfig/vessel_kinematics.pc'
+[27.402s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/python3.12/site-packages'
+[27.402s] Level 1:colcon.colcon_core.environment:checking '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/bin'
+[27.402s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.ps1'
+[27.403s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.dsv'
+[27.404s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.sh'
+[27.404s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.bash'
+[27.405s] INFO:colcon.colcon_core.shell:Creating package script '/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.zsh'
+[27.405s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/colcon-core/packages/vessel_kinematics)
+[27.406s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[27.406s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[27.406s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[27.406s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[27.415s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[27.415s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[27.415s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[27.464s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[27.465s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/imirdo/marine_ws/src/vessel_kinematics/install/local_setup.ps1'
+[27.466s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/imirdo/marine_ws/src/vessel_kinematics/install/_local_setup_util_ps1.py'
+[27.467s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/imirdo/marine_ws/src/vessel_kinematics/install/setup.ps1'
+[27.469s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/imirdo/marine_ws/src/vessel_kinematics/install/local_setup.sh'
+[27.470s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/imirdo/marine_ws/src/vessel_kinematics/install/_local_setup_util_sh.py'
+[27.471s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/imirdo/marine_ws/src/vessel_kinematics/install/setup.sh'
+[27.473s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/imirdo/marine_ws/src/vessel_kinematics/install/local_setup.bash'
+[27.474s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/imirdo/marine_ws/src/vessel_kinematics/install/setup.bash'
+[27.478s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/imirdo/marine_ws/src/vessel_kinematics/install/local_setup.zsh'
+[27.478s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/imirdo/marine_ws/src/vessel_kinematics/install/setup.zsh'

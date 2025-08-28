@@ -1,0 +1,37 @@
+[0.020s] Invoking command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28
+[0.135s] [ 33%] Built target vessel_lib
+[0.149s] [ 50%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
+[0.198s] [ 83%] Built target thrust_allocator_node
+[25.912s] [100%] [32m[1mLinking CXX executable milliampere_dynamics_node[0m
+[26.877s] [100%] Built target milliampere_dynamics_node
+[26.895s] Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28
+[26.914s] Invoking command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics
+[26.927s] -- Install configuration: ""
+[26.927s] -- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node
+[26.946s] -- Set non-toolchain portion of runtime path of "/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node" to ""
+[26.947s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node
+[26.947s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/launch
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/launch/vessel.launch.py
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/rviz
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/rviz/vessel.rviz
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf
+[26.948s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf/milliampere.urdf.xacro
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf/vessel_prism.urdf.xacro
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/ament_index/resource_index/package_run_dependencies/vessel_kinematics
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/ament_index/resource_index/parent_prefix_path/vessel_kinematics
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/ament_prefix_path.sh
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/ament_prefix_path.dsv
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/path.sh
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/path.dsv
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.bash
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.sh
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.zsh
+[26.949s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.dsv
+[26.950s] -- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.dsv
+[26.950s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/ament_index/resource_index/packages/vessel_kinematics
+[26.950s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/cmake/vessel_kinematicsConfig.cmake
+[26.950s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/cmake/vessel_kinematicsConfig-version.cmake
+[26.950s] -- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.xml
+[26.952s] Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics

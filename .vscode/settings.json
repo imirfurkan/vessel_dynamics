@@ -69,7 +69,15 @@
         "cinttypes": "cpp",
         "typeindex": "cpp",
         "variant": "cpp",
-        "core": "cpp"
+        "core": "cpp",
+        "csignal": "cpp",
+        "strstream": "cpp",
+        "cfenv": "cpp",
+        "codecvt": "cpp",
+        "source_location": "cpp",
+        "future": "cpp",
+        "shared_mutex": "cpp",
+        "stdfloat": "cpp"
     },
     // "C_Cpp.errorSquiggles": "disabled"
     "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
