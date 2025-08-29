@@ -48,6 +48,9 @@ public:
     ref_omega_n_ << 0.5, 0.25, 0.5; // Tune these for response speed, higher values create
                                     // high-bandwidth reference signal
 
+    // // --- Time ---
+    // last_time_ = this->get_clock()->now();
+
     //----------------------------------------------------------------
     // ROS interfaces
     //----------------------------------------------------------------
@@ -89,6 +92,19 @@ private:
 
   void stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
   {
+    // Dynamic Time calculation. After test, I saw that it's ok to just use vk::dt as dynamic time is also very similar.
+    // rclcpp::Time current_time = this->get_clock()->now();
+    // double       dt           = (current_time - last_time_).seconds();
+    // last_time_                = current_time;
+    // RCLCPP_INFO(this->get_logger(), "dynamic time: [%f]", dt);
+
+    // // On the first run, dt can be large and meaningless, so we skip the control logic
+    // if (first_run_)
+    // {
+    //   first_run_ = false;
+    //   return;
+    // }
+
     // Odometry Twist
     nu_(0) = msg->twist.twist.linear.x;  // u
     nu_(1) = msg->twist.twist.linear.y;  // v
@@ -113,7 +129,7 @@ private:
       // ---------- CONTROL PIPELINE
       Eigen::Matrix3d Rbn = vk::calculateRotationMatrix(eta_).transpose(); // of eta_, not eta_des_
 
-      updateReferenceModel(vk::dt);      // TODO change to dynamic time
+      updateReferenceModel(vk::dt);
       nu_ref_     = Rbn * eta_dot_ref_;  // velocity in the body frame
       nu_dot_ref_ = Rbn * eta_ddot_ref_; // acceleration in the body frame
       // RCLCPP_INFO(this->get_logger(), "nu_ref_: [%f, %f, %f]", nu_ref_(0), nu_ref_(1), nu_ref_(2));
@@ -191,6 +207,9 @@ private:
     Eigen::Vector3d tau = vk::M_ * nu_dot_ref_ + C_d * nu_ref_ + D_d * nu_ref_;
     return tau;
   }
+  // --- Time ---
+  rclcpp::Time last_time_;
+  bool         first_run_ = true;
 
   // ROS2 Subscribers and Publishers
   rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pos_cmd_sub_;
