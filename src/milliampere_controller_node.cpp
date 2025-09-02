@@ -1,4 +1,5 @@
 #include <memory>
+#include <chrono>
 #include <rclcpp/rclcpp.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include "geometry_msgs/msg/wrench.hpp"
@@ -29,7 +30,15 @@ public:
     Ki.diagonal() << 15, 15, 45;
     Kd.diagonal() << 700, 700, 1600;
 
-    integral_error_limits_ << 20.0, 20.0, 50.0; // TODO tune these
+    // Kp.diagonal() << 0, 0, 170;
+    // Ki.diagonal() << 0, 0, 4;
+    // Kd.diagonal() << 0, 0, 1600;
+
+    // Kp.diagonal() << 200, 200, 260;
+    // Ki.diagonal() << 0, 0, 0;
+    // Kd.diagonal() << 700, 700, 1800;
+
+    integral_error_limits_ << 10.0, 10.0, 1.0; // TODO tune these
 
     // TODO check if the logic & limits makes sense, in the way that if reference model function always gives the max
     // values written here.
@@ -126,6 +135,8 @@ private:
 
     if (goal_received_)
     {
+      // Record the start time using std::chrono::steady_clock
+      auto start_time = std::chrono::steady_clock::now();
       // ---------- CONTROL PIPELINE
       Eigen::Matrix3d Rbn = vk::calculateRotationMatrix(eta_).transpose(); // of eta_, not eta_des_
 
@@ -149,6 +160,15 @@ private:
       cmd.force.y  = tau_des_(1);
       cmd.torque.z = tau_des_(2);
       wrench_pub_->publish(cmd);
+
+      // Record the end time
+      auto end_time = std::chrono::steady_clock::now();
+
+      // Calculate the duration
+      std::chrono::duration<double, std::milli> duration = end_time - start_time;
+
+      // Print the elapsed time
+      std::cout << "Controller took: " << duration.count() << " milliseconds." << std::endl;
     }
   }
 
@@ -193,6 +213,7 @@ private:
     Eigen::Vector3d error_dot_ = nu_ - nu_ref_;
 
     error_integral_ += error_ * dt;
+    std::cout << "Error integral before clamping: " << error_integral_(2) << std::endl;
     error_integral_ = vk::clampVec3(error_integral_, -integral_error_limits_, integral_error_limits_);
 
     Eigen::Vector3d tau = -Kp * error_ - Ki * error_integral_ - Kd * error_dot_;

@@ -49,7 +49,7 @@ inline const Eigen::Matrix3d M_ = (Eigen::Matrix3d() <<
                                    m33_)
                                       .finished(); // Use .finished() for direct initialization with operator<<
 
-inline double wrapAngle(double angle) // TODO learn inline
+inline double wrapAngle(double angle)
 {
   constexpr double two_pi = 2.0 * M_PI;
 

@@ -72,10 +72,12 @@ private:
       ta_state_.alpha = result.alpha;
       ta_state_.f     = result.f;
     }
-    else
+    else // TODO may implement handling in another way
     {
-      ta_state_.f.setZero();
-      ta_state_.alpha.setZero();
+      //   ta_state_.f.setZero();
+      //   ta_state_.alpha.setZero();
+      ta_state_.alpha = result.alpha;
+      ta_state_.f     = result.f;
       RCLCPP_WARN(this->get_logger(), "Thrust allocation failed! Commanding zero thrust and azimuth angles.");
     }
 
@@ -86,11 +88,11 @@ private:
   {
     auto thruster_cmds_msg = std_msgs::msg::Float64MultiArray();
     thruster_cmds_msg.data.resize(4); // TODO understand .data and the need for resize, what was it initially
-    thruster_cmds_msg.data[0] = ta_state_.alpha(0); // Azimuth 1 [rad]
-    thruster_cmds_msg.data[1] = ta_state_.alpha(1); // Azimuth 2 [rad]
-    thruster_cmds_msg.data[2] = ta_state_.f(0);     // Thrust 1 [N]
-    thruster_cmds_msg.data[3] = ta_state_.f(1);     // Thrust 2 [N]
-    thruster_cmds_pub_->publish(thruster_cmds_msg); // TODO understand the pointer
+    thruster_cmds_msg.data[0] = ta_state_.alpha(0) * 180 / M_PI; // Azimuth 1 [dgr]
+    thruster_cmds_msg.data[1] = ta_state_.alpha(1) * 180 / M_PI; // Azimuth 2 [dgr]
+    thruster_cmds_msg.data[2] = ta_state_.f(0);                  // Thrust 1 [N]
+    thruster_cmds_msg.data[3] = ta_state_.f(1);                  // Thrust 2 [N]
+    thruster_cmds_pub_->publish(thruster_cmds_msg);              // TODO understand the pointer
 
     auto                        actual_wrench_msg = geometry_msgs::msg::Wrench();
     Eigen::Matrix<double, 3, 2> T                 = Tmatrix(ta_state_.alpha, ta_params_.Lx);

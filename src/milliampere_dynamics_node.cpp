@@ -11,6 +11,7 @@
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2/LinearMath/Quaternion.h>
+#include <std_msgs/msg/float64.hpp>
 #include <std_msgs/msg/float64_multi_array.hpp>
 #include <tf2/LinearMath/Matrix3x3.h>
 #include <Eigen/Dense>
@@ -50,6 +51,9 @@ public:
     // coordinate frame transforms (map → base_link)
     tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
 
+    // to use in plotjuggler
+    yaw_pub_ = create_publisher<std_msgs::msg::Float64>("/yaw", 10);
+
     // calls step() each 20ms
     timer_ = create_wall_timer(20ms, std::bind(&MilliampereDynamics::step, this));
   }
@@ -83,7 +87,7 @@ private:
     Eigen::Vector3d nu_dot = vk::M_.ldlt().solve(-C_ * nu_ - D_ * nu_ + tau_total_);
     // RCLCPP_INFO(get_logger(), "C*nu: [%f, %f, %f]", (C_ * nu_)(0), (C_ * nu_)(1), (C_ * nu_)(2));
     // RCLCPP_INFO(get_logger(), "D*nu: [%f, %f, %f]", (D_ * nu_)(0), (D_ * nu_)(1), (D_ * nu_)(2));
-    // RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1), tu_(2));a
+    // RCLCPP_INFO(get_logger(), "tau:  [%f, %f, %f]", tau_(0), tau_(1  ), tu_(2));a
 
     nu_ += nu_dot * vk::dt;
 
@@ -97,6 +101,11 @@ private:
     Eigen::Vector3d eta_dot = Rnb * nu_;
     eta_ += eta_dot * vk::dt;
     RCLCPP_INFO(this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f°]", eta_(0), eta_(1), eta_(2) * 180 / M_PI);
+
+    std_msgs::msg::Float64 yaw_msg;
+    yaw_msg.data = eta_(2) * 180 / M_PI; // radians
+    yaw_pub_->publish(yaw_msg);
+
     // ------------------------------------------------------------
     //  Publish TF + Odometry
     // ------------------------------------------------------------
@@ -153,6 +162,7 @@ private:
   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr            odom_pub_;
   std::shared_ptr<tf2_ros::TransformBroadcaster>                   tf_broadcaster_;
   rclcpp::TimerBase::SharedPtr                                     timer_;
+  rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr             yaw_pub_;
 
   // ---------- node state & parameters ------------
   const double    m_  = 1800;  // mass [kg]

@@ -18,7 +18,7 @@ public:
     //----------------------------------------------------------------
     omega0_ << 0.90, 0.90, 0.90; // rad/s
     lambda_ << 0.10, 0.10, 0.10; // JONSWAP damping ratio // TODO why jonswap
-    K_wave_ << 500.0, 500.0, 500.0;
+    K_wave_ << 400.0, 400.0, 400.0;
     xi_wave_.setZero();
 
     A_wave_.setZero();

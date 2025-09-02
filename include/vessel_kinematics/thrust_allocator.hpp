@@ -29,6 +29,7 @@ struct TAParams
   // Eigen::Vector2d dalpha_min_rate_rad_s{-0.1745, -0.1745};
   // Eigen::Vector2d dalpha_max_rate_rad_s{0.1745, 0.1745};
 
+  double max_force_rate{100}; // [N/s]
   // --- QP Optimization Weights ---
   // These weights define the "priorities" of the optimization.
   // Tweak these to change the allocator's behavior.
@@ -36,7 +37,7 @@ struct TAParams
   // to build the sparse matrix 'P' that OSQP needs, inside osqp_path.
   Eigen::Vector2d Wf{1.0, 1.0};      // Higher values prioritize using less thrust.
   Eigen::Vector3d Qs{1e4, 1e4, 1e4}; // This should be high to ensure the desired tau is met.
-  Eigen::Vector2d Oa{1e2, 1e2}; // Higher values result in smoother, less aggressive angle changes.
+  Eigen::Vector2d Oa{1e1, 1e1}; // Higher values result in smoother, less aggressive angle changes.
 };
 
 /// @brief Current state of the thruster system. This is updated at each timestep.

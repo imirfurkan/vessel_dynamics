@@ -2,14 +2,15 @@
 #include <algorithm> // TODO when is this needed
 #include <cmath>
 #include <vector>
+#include <chrono>
 #include <osqp.h>
 #include <Eigen/Dense> // TODO removing this still builds but it takes 4x time time
 #include <Eigen/Sparse>
 #include <iostream>
+#include "vessel_kinematics/utils.hpp"
 
 // Helper function declarations (at the bottom)
 static inline Eigen::Vector2d clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi);
-static inline double          wrapAngle(double angle);
 
 Eigen::Matrix<double, 3, 2> Tmatrix(const Eigen::Vector2d& a, double Lx)
 {
@@ -60,7 +61,7 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
   // --- QP Problem Definition ---
   // Solves for x = [f_0, f_1, s_x, s_y, s_n, dα_0, dα_1]
   constexpr int NUM_VARS        = 7; // 2 thrusts, 3 slacks, 2 angle changes
-  constexpr int NUM_CONSTRAINTS = 7;
+  constexpr int NUM_CONSTRAINTS = 9;
 
   // --- Hessian Matrix P (Quadratic Cost) ---
   Eigen::VectorXd P_diag(NUM_VARS); // diagonal parts for the P matrix
@@ -94,7 +95,7 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
   dT_dalpha(state.alpha, P.Lx, dT1, dT2);
 
   // Linearization term for dα_0 and dα_1.
-  Eigen::Vector3d       epsilon_     = Eigen::Vector3d::Constant(0.01);
+  Eigen::Vector3d       epsilon_     = Eigen::Vector3d::Constant(0.01); // unstick the system
   const Eigen::Vector3d term_dalpha0 = dT1.col(0) * state.f(0) + epsilon_;
   const Eigen::Vector3d term_dalpha1 = dT2.col(1) * state.f(1) + epsilon_;
 
@@ -105,7 +106,7 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
                                                 //  format, which is not directly compatible with Eigen's triplet
                                                 //  representation so we have to make it vector.
 
-  triplets.reserve(13);
+  triplets.reserve(21); // TODO what is this
 
   // Row 0-2: Physics constraint (T0*f + (dT/dalpha)*f_prev*dalpha + s = tau_des)
   // [f0]
@@ -137,6 +138,12 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
   // Row 6: dα1 lower bound
   triplets.emplace_back(6, 6, 1.0);
 
+  // NEW: Row 7-8: Force rate-of-change constraints
+  // This constrains the final force f, not the change df.
+  // The constraint is: f_prev - max_rate*dt <= f_current <= f_prev + max_rate*dt
+  triplets.emplace_back(7, 0, 1.0); // for f0
+  triplets.emplace_back(8, 1, 1.0); // for f1
+
   // Convert triplets to OSQP's CSC format. This is the most reliable way.
   Eigen::SparseMatrix<double> A_sparse(NUM_CONSTRAINTS, NUM_VARS);
   A_sparse.setFromTriplets(triplets.begin(), triplets.end());
@@ -149,8 +156,9 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
 
   // --- Constraint Bounds l and u ---
   std::vector<c_float>  l(NUM_CONSTRAINTS), u(NUM_CONSTRAINTS);
-  const Eigen::Vector2d dalpha_min = P.dalpha_min_rate_rad_s * dt;
-  const Eigen::Vector2d dalpha_max = P.dalpha_max_rate_rad_s * dt;
+  const Eigen::Vector2d dalpha_min       = P.dalpha_min_rate_rad_s * dt;
+  const Eigen::Vector2d dalpha_max       = P.dalpha_max_rate_rad_s * dt;
+  const double          max_force_change = P.max_force_rate * dt;
 
   // Physics constraint: T0*f + s = tau_des
   l[0] = u[0] = tau_des(0);
@@ -162,11 +170,20 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
   // Asymmetric angle rate limits
   l[5] = dalpha_min(0), u[5] = dalpha_max(0);
   l[6] = dalpha_min(1), u[6] = dalpha_max(1);
+  // NEW: Row 7-8: Force rate-of-change bounds
+  l[7] = state.f(0) - max_force_change;
+  u[7] = state.f(0) + max_force_change;
+  l[8] = state.f(1) - max_force_change;
+  u[8] = state.f(1) + max_force_change;
 
   // --- Setup and Solve with OSQP (using RAII for safety) --- // TODO detayli incelemedim
   std::unique_ptr<OSQPSettings, OSQPSettingsDeleter> settings((OSQPSettings*)c_malloc(sizeof(OSQPSettings)));
   osqp_set_default_settings(settings.get());
-  settings->verbose = 0;
+  settings->verbose  = 0;
+  settings->polish   = true;
+  settings->eps_abs  = 1e-5; // Tighter absolute tolerance
+  settings->eps_rel  = 1e-5;
+  settings->max_iter = 8000;
 
   std::unique_ptr<OSQPData, OSQPDataDeleter> data((OSQPData*)c_malloc(sizeof(OSQPData)));
   data->n = NUM_VARS;
@@ -181,7 +198,20 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
   osqp_setup(&raw_workspace, data.get(), settings.get());
   std::unique_ptr<OSQPWorkspace, OSQPWorkspaceDeleter> work(raw_workspace);
 
+  // Record the start time using std::chrono::steady_clock
+  auto start_time = std::chrono::steady_clock::now();
+
+  // The line you want to time
   osqp_solve(work.get());
+
+  // Record the end time
+  auto end_time = std::chrono::steady_clock::now();
+
+  // Calculate the duration
+  std::chrono::duration<double> duration = end_time - start_time;
+
+  // Print the elapsed time
+  std::cout << "OSQP solver took: " << duration.count() << " seconds." << std::endl;
 
   // --- Extract Results ---
   TAResult   out;
@@ -194,9 +224,11 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
     Eigen::Vector2d da_sol(sol_x[5], sol_x[6]);
 
     out.alpha    = state.alpha + da_sol;
-    out.alpha(0) = wrapAngle(out.alpha(0));
-    out.alpha(1) = wrapAngle(out.alpha(1));
-    out.f        = clampVec(f_sol, P.f_min, P.f_max);
+    out.alpha(0) = vk::wrapAngle(out.alpha(0));
+    out.alpha(1) = vk::wrapAngle(out.alpha(1));
+    // out.f        = clampVec(f_sol, P.f_min, P.f_max);
+    out.f = f_sol; // TODO let's not clamp it and trust the solver
+    std::cout << "azimuth 0 change:" << da_sol[0] * 180 / M_PI << std::endl;
   }
   else
   {
@@ -204,6 +236,8 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
     // The caller MUST check out success to handle this failure case.
     out.alpha = state.alpha;
     out.f.setZero();
+    // out.f = state.f; // lets keep it at where it was
+    std::cout << "solver failed" << std::endl;
   }
   return out;
 }
@@ -211,18 +245,4 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
 static inline Eigen::Vector2d clampVec(const Eigen::Vector2d& x, const Eigen::Vector2d& lo, const Eigen::Vector2d& hi)
 {
   return x.cwiseMax(lo).cwiseMin(hi);
-}
-
-static inline double wrapAngle(double angle)
-{
-  const double two_pi = 2.0 * M_PI;
-
-  angle = std::fmod(angle, two_pi);
-  if (angle < 0)
-    angle += two_pi;
-
-  if (angle > M_PI)
-    angle -= two_pi;
-
-  return angle;
 }
