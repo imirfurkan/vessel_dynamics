@@ -29,4 +29,4 @@
 [ 30%] Built target vessel_lib
 [ 40%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
 [ 60%] Built target thrust_allocator_node
-[ 70%] [32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o[0m
+[ 70%] [32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o[0m

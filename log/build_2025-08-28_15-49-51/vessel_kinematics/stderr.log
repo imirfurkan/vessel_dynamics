@@ -7,7 +7,7 @@ gmake[2]: *** [CMakeFiles/disturbances_node.dir/build.make:76: CMakeFiles/distur
 gmake[1]: *** [CMakeFiles/Makefile2:249: CMakeFiles/disturbances_node.dir/all] Error 2
 gmake[1]: *** Waiting for unfinished jobs....
 gmake[2]: *** [CMakeFiles/milliampere_dynamics_node.dir/build.make:76: CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o] Interrupt
-gmake[2]: *** [CMakeFiles/milliampere_controller_node.dir/build.make:76: CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:223: CMakeFiles/milliampere_controller_node.dir/all] Interrupt
+gmake[2]: *** [CMakeFiles/pid_controller_node.dir/build.make:76: CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:223: CMakeFiles/pid_controller_node.dir/all] Interrupt
 gmake[1]: *** [CMakeFiles/Makefile2:145: CMakeFiles/milliampere_dynamics_node.dir/all] Interrupt
 gmake: *** [Makefile:146: all] Interrupt

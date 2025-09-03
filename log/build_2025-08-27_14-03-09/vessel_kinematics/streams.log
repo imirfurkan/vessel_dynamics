@@ -28,13 +28,13 @@
 [2.408s] -- Build files have been written to: /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics
 [2.531s] [ 25%] Built target vessel_lib
 [2.552s] [ 50%] Built target milliampere_dynamics_node
-[2.599s] [ 62%] [32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o[0m
+[2.599s] [ 62%] [32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o[0m
 [2.638s] [ 87%] Built target thrust_allocator_node
-[9.361s] [100%] [32m[1mLinking CXX executable milliampere_controller_node[0m
+[9.361s] [100%] [32m[1mLinking CXX executable pid_controller_node[0m
 [9.611s] /usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
 [9.611s] (.text+0x1b): undefined reference to `main'
 [9.621s] collect2: error: ld returned 1 exit status
-[9.625s] gmake[2]: *** [CMakeFiles/milliampere_controller_node.dir/build.make:181: milliampere_controller_node] Error 1
-[9.625s] gmake[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/milliampere_controller_node.dir/all] Error 2
+[9.625s] gmake[2]: *** [CMakeFiles/pid_controller_node.dir/build.make:181: pid_controller_node] Error 1
+[9.625s] gmake[1]: *** [CMakeFiles/Makefile2:221: CMakeFiles/pid_controller_node.dir/all] Error 2
 [9.626s] gmake: *** [Makefile:146: all] Error 2
 [9.631s] Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28

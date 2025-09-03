@@ -14,7 +14,7 @@ class ControllerNode : public rclcpp::Node
 {
 
 public:
-  ControllerNode() : Node("milliampere_controller_node")
+  ControllerNode() : Node("pid_controller_node")
   {
     //----------------------------------------------------------------
     // State initialization

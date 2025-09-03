@@ -899,6 +899,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/milliampere_dynamics_node.dir/DependInfo.cmake"
   "CMakeFiles/vessel_lib.dir/DependInfo.cmake"
   "CMakeFiles/thrust_allocator_node.dir/DependInfo.cmake"
-  "CMakeFiles/milliampere_controller_node.dir/DependInfo.cmake"
+  "CMakeFiles/pid_controller_node.dir/DependInfo.cmake"
   "CMakeFiles/disturbances_node.dir/DependInfo.cmake"
   )

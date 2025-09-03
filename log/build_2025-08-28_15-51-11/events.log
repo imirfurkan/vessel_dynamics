@@ -57,7 +57,7 @@
 [2.226332] (vessel_kinematics) StdoutLine: {'line': b'[ 40%] Built target milliampere_dynamics_node\n'}
 [2.266650] (vessel_kinematics) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o\x1b[0m\n'}
 [2.291777] (vessel_kinematics) StdoutLine: {'line': b'[ 70%] Built target thrust_allocator_node\n'}
-[2.293331] (vessel_kinematics) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX executable milliampere_controller_node\x1b[0m\n'}
+[2.293331] (vessel_kinematics) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX executable pid_controller_node\x1b[0m\n'}
 [2.306456] (-) TimerEvent: {}
 [2.406925] (-) TimerEvent: {}
 [2.507367] (-) TimerEvent: {}
@@ -67,7 +67,7 @@
 [2.909561] (-) TimerEvent: {}
 [3.010076] (-) TimerEvent: {}
 [3.110870] (-) TimerEvent: {}
-[3.187971] (vessel_kinematics) StdoutLine: {'line': b'[ 90%] Built target milliampere_controller_node\n'}
+[3.187971] (vessel_kinematics) StdoutLine: {'line': b'[ 90%] Built target pid_controller_node\n'}
 [3.211173] (-) TimerEvent: {}
 [3.311613] (-) TimerEvent: {}
 [3.412155] (-) TimerEvent: {}

@@ -30,8 +30,8 @@
 [2.226s] [ 40%] Built target milliampere_dynamics_node
 [2.266s] [ 50%] [32mBuilding CXX object CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o[0m
 [2.292s] [ 70%] Built target thrust_allocator_node
-[2.293s] [ 80%] [32m[1mLinking CXX executable milliampere_controller_node[0m
-[3.188s] [ 90%] Built target milliampere_controller_node
+[2.293s] [ 80%] [32m[1mLinking CXX executable pid_controller_node[0m
+[3.188s] [ 90%] Built target pid_controller_node
 [7.650s] [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:55:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
 [7.650s]    55 | }
 [7.651s]       |  [01;31m[K^[m[K

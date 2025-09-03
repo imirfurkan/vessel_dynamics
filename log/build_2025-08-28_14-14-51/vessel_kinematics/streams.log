@@ -14,7 +14,7 @@
 [1.598s] -- Found osqp_vendor: 0.2.0 (/opt/ros/jazzy/share/osqp_vendor/cmake)
 [1.603s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
 [1.868s] [31mCMake Error at CMakeLists.txt:77 (install):
-[1.869s]   install TARGETS given target "milliampere_controller_node" which does not
+[1.869s]   install TARGETS given target "pid_controller_node" which does not
 [1.869s]   exist.
 [1.869s] 
 [1.869s] [0m

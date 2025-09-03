@@ -299,9 +299,9 @@
 			"destination" : "lib/vessel_kinematics",
 			"paths" : 
 			[
-				"milliampere_controller_node"
+				"pid_controller_node"
 			],
-			"targetId" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+			"targetId" : "pid_controller_node::@6890427a1f51a3e7e1df",
 			"targetIndex" : 1,
 			"type" : "target"
 		},
@@ -310,7 +310,7 @@
 			"component" : "Unspecified",
 			"cxxModuleBmiTarget" : 
 			{
-				"id" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+				"id" : "pid_controller_node::@6890427a1f51a3e7e1df",
 				"index" : 1
 			},
 			"destination" : "lib/vessel_kinematics",
@@ -391,9 +391,9 @@
 			"destination" : "lib/vessel_kinematics",
 			"paths" : 
 			[
-				"milliampere_controller_node"
+				"pid_controller_node"
 			],
-			"targetId" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+			"targetId" : "pid_controller_node::@6890427a1f51a3e7e1df",
 			"targetIndex" : 1,
 			"type" : "target"
 		},
@@ -402,7 +402,7 @@
 			"component" : "Unspecified",
 			"cxxModuleBmiTarget" : 
 			{
-				"id" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+				"id" : "pid_controller_node::@6890427a1f51a3e7e1df",
 				"index" : 1
 			},
 			"destination" : "lib/vessel_kinematics",

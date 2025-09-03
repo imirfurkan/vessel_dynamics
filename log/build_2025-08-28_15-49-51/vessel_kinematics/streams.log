@@ -30,7 +30,7 @@
 [2.302s] [ 30%] Built target vessel_lib
 [2.310s] [ 40%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
 [2.392s] [ 60%] Built target thrust_allocator_node
-[2.392s] [ 70%] [32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o[0m
+[2.392s] [ 70%] [32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o[0m
 [2.731s] In file included from [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:2[m[K:
 [2.731s] [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/include/vessel_kinematics/utils.hpp:3:10:[m[K [01;31m[Kfatal error: [m[KEigen/Dense: No such file or directory
 [2.731s]     3 | #include [01;31m[K<Eigen/Dense>[m[K
@@ -40,8 +40,8 @@
 [2.736s] gmake[1]: *** [CMakeFiles/Makefile2:249: CMakeFiles/disturbances_node.dir/all] Error 2
 [2.737s] gmake[1]: *** Waiting for unfinished jobs....
 [6.033s] gmake[2]: *** [CMakeFiles/milliampere_dynamics_node.dir/build.make:76: CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o] Interrupt
-[6.033s] gmake[2]: *** [CMakeFiles/milliampere_controller_node.dir/build.make:76: CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o] Interrupt
-[6.033s] gmake[1]: *** [CMakeFiles/Makefile2:223: CMakeFiles/milliampere_controller_node.dir/all] Interrupt
+[6.033s] gmake[2]: *** [CMakeFiles/pid_controller_node.dir/build.make:76: CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o] Interrupt
+[6.033s] gmake[1]: *** [CMakeFiles/Makefile2:223: CMakeFiles/pid_controller_node.dir/all] Interrupt
 [6.034s] gmake[1]: *** [CMakeFiles/Makefile2:145: CMakeFiles/milliampere_dynamics_node.dir/all] Interrupt
 [6.034s] gmake: *** [Makefile:146: all] Interrupt
 [6.069s] Invoked command in '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics -- -j28 -l28

@@ -27,7 +27,7 @@
 -- Build files have been written to: /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics
 [ 25%] Built target vessel_lib
 [ 37%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o[0m
 [ 62%] [32mBuilding CXX object CMakeFiles/thrust_allocator_node.dir/src/thrust_allocator_node.cpp.o[0m
 [ 75%] [32m[1mLinking CXX executable thrust_allocator_node[0m
 [ 75%] Built target thrust_allocator_node

@@ -237,17 +237,17 @@ thrust_allocator_node/fast:
 .PHONY : thrust_allocator_node/fast
 
 #=============================================================================
-# Target rules for targets named milliampere_controller_node
+# Target rules for targets named pid_controller_node
 
 # Build rule for target.
-milliampere_controller_node: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 milliampere_controller_node
-.PHONY : milliampere_controller_node
+pid_controller_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pid_controller_node
+.PHONY : pid_controller_node
 
 # fast build rule for target.
-milliampere_controller_node/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/build
-.PHONY : milliampere_controller_node/fast
+pid_controller_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/build
+.PHONY : pid_controller_node/fast
 
 #=============================================================================
 # Target rules for targets named disturbances_node
@@ -286,29 +286,29 @@ src/disturbances_node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.s
 .PHONY : src/disturbances_node.cpp.s
 
-src/milliampere_controller_node.o: src/milliampere_controller_node.cpp.o
-.PHONY : src/milliampere_controller_node.o
+src/pid_controller_node.o: src/pid_controller_node.cpp.o
+.PHONY : src/pid_controller_node.o
 
 # target to build an object file
-src/milliampere_controller_node.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o
-.PHONY : src/milliampere_controller_node.cpp.o
+src/pid_controller_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o
+.PHONY : src/pid_controller_node.cpp.o
 
-src/milliampere_controller_node.i: src/milliampere_controller_node.cpp.i
-.PHONY : src/milliampere_controller_node.i
+src/pid_controller_node.i: src/pid_controller_node.cpp.i
+.PHONY : src/pid_controller_node.i
 
 # target to preprocess a source file
-src/milliampere_controller_node.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.i
-.PHONY : src/milliampere_controller_node.cpp.i
+src/pid_controller_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.i
+.PHONY : src/pid_controller_node.cpp.i
 
-src/milliampere_controller_node.s: src/milliampere_controller_node.cpp.s
-.PHONY : src/milliampere_controller_node.s
+src/pid_controller_node.s: src/pid_controller_node.cpp.s
+.PHONY : src/pid_controller_node.s
 
 # target to generate assembly for a file
-src/milliampere_controller_node.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_controller_node.dir/build.make CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.s
-.PHONY : src/milliampere_controller_node.cpp.s
+src/pid_controller_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.s
+.PHONY : src/pid_controller_node.cpp.s
 
 src/milliampere_dynamics_node.o: src/milliampere_dynamics_node.cpp.o
 .PHONY : src/milliampere_dynamics_node.o
@@ -398,16 +398,16 @@ help:
 	@echo "... uninstall"
 	@echo "... vessel_kinematics_uninstall"
 	@echo "... disturbances_node"
-	@echo "... milliampere_controller_node"
+	@echo "... pid_controller_node"
 	@echo "... milliampere_dynamics_node"
 	@echo "... thrust_allocator_node"
 	@echo "... vessel_lib"
 	@echo "... src/disturbances_node.o"
 	@echo "... src/disturbances_node.i"
 	@echo "... src/disturbances_node.s"
-	@echo "... src/milliampere_controller_node.o"
-	@echo "... src/milliampere_controller_node.i"
-	@echo "... src/milliampere_controller_node.s"
+	@echo "... src/pid_controller_node.o"
+	@echo "... src/pid_controller_node.i"
+	@echo "... src/pid_controller_node.s"
 	@echo "... src/milliampere_dynamics_node.o"
 	@echo "... src/milliampere_dynamics_node.i"
 	@echo "... src/milliampere_dynamics_node.s"

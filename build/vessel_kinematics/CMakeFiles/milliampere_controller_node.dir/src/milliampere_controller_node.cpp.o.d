@@ -1,5 +1,5 @@
-CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o: \
- /home/imirdo/marine_ws/src/vessel_kinematics/src/milliampere_controller_node.cpp \
+CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o: \
+ /home/imirdo/marine_ws/src/vessel_kinematics/src/pid_controller_node.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/memory \
  /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \

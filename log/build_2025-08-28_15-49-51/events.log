@@ -58,7 +58,7 @@
 [2.306880] (-) TimerEvent: {}
 [2.311381] (vessel_kinematics) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o\x1b[0m\n'}
 [2.392966] (vessel_kinematics) StdoutLine: {'line': b'[ 60%] Built target thrust_allocator_node\n'}
-[2.393400] (vessel_kinematics) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o\x1b[0m\n'}
+[2.393400] (vessel_kinematics) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o\x1b[0m\n'}
 [2.407072] (-) TimerEvent: {}
 [2.507651] (-) TimerEvent: {}
 [2.608099] (-) TimerEvent: {}
@@ -105,8 +105,8 @@
 [5.925882] (-) TimerEvent: {}
 [6.026447] (-) TimerEvent: {}
 [6.033391] (vessel_kinematics) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/milliampere_dynamics_node.dir/build.make:76: CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o] Interrupt\n'}
-[6.033794] (vessel_kinematics) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/milliampere_controller_node.dir/build.make:76: CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o] Interrupt\n'}
-[6.034277] (vessel_kinematics) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:223: CMakeFiles/milliampere_controller_node.dir/all] Interrupt\n'}
+[6.033794] (vessel_kinematics) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/pid_controller_node.dir/build.make:76: CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o] Interrupt\n'}
+[6.034277] (vessel_kinematics) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:223: CMakeFiles/pid_controller_node.dir/all] Interrupt\n'}
 [6.034614] (vessel_kinematics) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:145: CMakeFiles/milliampere_dynamics_node.dir/all] Interrupt\n'}
 [6.034859] (vessel_kinematics) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Interrupt\n'}
 [6.069117] (vessel_kinematics) CommandEnded: {'returncode': -2}

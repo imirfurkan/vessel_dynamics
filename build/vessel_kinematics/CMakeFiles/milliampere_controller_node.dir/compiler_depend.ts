@@ -1,2 +1,2 @@
 # CMAKE generated file: DO NOT EDIT!
-# Timestamp file for compiler generated dependencies management for milliampere_controller_node.
+# Timestamp file for compiler generated dependencies management for pid_controller_node.

@@ -2,7 +2,7 @@
 [ 30%] Built target vessel_lib
 [ 40%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
 [ 60%] Built target thrust_allocator_node
-[ 70%] [32mBuilding CXX object CMakeFiles/milliampere_controller_node.dir/src/milliampere_controller_node.cpp.o[0m
+[ 70%] [32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o[0m
 In file included from [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/src/disturbances_node.cpp:2[m[K:
 [01m[K/home/imirdo/marine_ws/src/vessel_kinematics/include/vessel_kinematics/utils.hpp:3:10:[m[K [01;31m[Kfatal error: [m[KEigen/Dense: No such file or directory
     3 | #include [01;31m[K<Eigen/Dense>[m[K
@@ -11,8 +11,8 @@ compilation terminated.
 gmake[2]: *** [CMakeFiles/disturbances_node.dir/build.make:76: CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o] Error 1
 gmake[1]: *** [CMakeFiles/Makefile2:249: CMakeFiles/disturbances_node.dir/all] Error 2
 gmake[1]: *** Waiting for unfinished jobs....
-[ 80%] [32m[1mLinking CXX executable milliampere_controller_node[0m
-[ 80%] Built target milliampere_controller_node
+[ 80%] [32m[1mLinking CXX executable pid_controller_node[0m
+[ 80%] Built target pid_controller_node
 [ 90%] [32m[1mLinking CXX executable milliampere_dynamics_node[0m
 [ 90%] Built target milliampere_dynamics_node
 gmake: *** [Makefile:146: all] Error 2

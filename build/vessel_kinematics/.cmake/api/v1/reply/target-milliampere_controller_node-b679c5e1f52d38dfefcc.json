@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "milliampere_controller_node"
+			"path" : "pid_controller_node"
 		}
 	],
 	"backtrace" : 1,
@@ -1053,7 +1053,7 @@
 			"id" : "vessel_lib::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "milliampere_controller_node::@6890427a1f51a3e7e1df",
+	"id" : "pid_controller_node::@6890427a1f51a3e7e1df",
 	"install" : 
 	{
 		"destinations" : 
@@ -1721,8 +1721,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "milliampere_controller_node",
-	"nameOnDisk" : "milliampere_controller_node",
+	"name" : "pid_controller_node",
+	"nameOnDisk" : "pid_controller_node",
 	"paths" : 
 	{
 		"build" : ".",
@@ -1743,7 +1743,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/milliampere_controller_node.cpp",
+			"path" : "src/pid_controller_node.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

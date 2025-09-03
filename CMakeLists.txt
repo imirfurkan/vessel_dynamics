@@ -81,18 +81,18 @@ install(TARGETS
 )
 
 #################################################################
-# --- Controller Node ---
+# --- PID Controller Node ---
 #################################################################
 
-add_executable(milliampere_controller_node src/milliampere_controller_node.cpp)
+add_executable(pid_controller_node src/pid_controller_node.cpp)
 
 # CORRECTED: Only include your own package's headers here.
-target_include_directories(milliampere_controller_node PUBLIC
+target_include_directories(pid_controller_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-ament_target_dependencies(milliampere_controller_node
+ament_target_dependencies(pid_controller_node
   rclcpp
   geometry_msgs
   std_msgs
@@ -102,12 +102,42 @@ ament_target_dependencies(milliampere_controller_node
 )
 
 # Link Eigen if you use it in this file
-target_link_libraries(milliampere_controller_node
+target_link_libraries(pid_controller_node
   Eigen3::Eigen
   vessel_lib            # if your node uses your library
 )
 
-install(TARGETS milliampere_controller_node
+install(TARGETS pid_controller_node
+  DESTINATION lib/${PROJECT_NAME})
+
+#################################################################
+# --- MPC Controller Node ---
+#################################################################
+
+add_executable(mpc_controller_node src/mpc_controller_node.cpp)
+
+# CORRECTED: Only include your own package's headers here.
+target_include_directories(mpc_controller_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+
+ament_target_dependencies(mpc_controller_node
+  rclcpp
+  geometry_msgs
+  std_msgs
+  nav_msgs
+  tf2
+  tf2_ros
+)
+
+# Link Eigen if you use it in this file
+target_link_libraries(mpc_controller_node
+  Eigen3::Eigen
+  vessel_lib            # if your node uses your library
+)
+
+install(TARGETS mpc_controller_node
   DESTINATION lib/${PROJECT_NAME})
 
 #################################################################
@@ -147,7 +177,7 @@ install(TARGETS disturbances_node
 install(TARGETS
   milliampere_dynamics_node
   thrust_allocator_node
-  milliampere_controller_node
+  pid_controller_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

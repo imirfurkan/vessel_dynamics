@@ -1,9 +1,9 @@
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node
-/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_controller_node
+/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/pid_controller_node
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node
-/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_controller_node
+/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/pid_controller_node
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/launch/vessel.launch.py
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/rviz/vessel.rviz
 /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf/milliampere.urdf.xacro
