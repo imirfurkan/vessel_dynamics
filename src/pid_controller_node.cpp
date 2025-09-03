@@ -10,11 +10,11 @@
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/LinearMath/Matrix3x3.h>
 
-class ControllerNode : public rclcpp::Node
+class PIDControllerNode : public rclcpp::Node
 {
 
 public:
-  ControllerNode() : Node("pid_controller_node")
+  PIDControllerNode() : Node("pid_controller_node")
   {
     //----------------------------------------------------------------
     // State initialization
@@ -64,10 +64,10 @@ public:
     // ROS interfaces
     //----------------------------------------------------------------
     pos_cmd_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(
-        "/goal_pose", 10, std::bind(&ControllerNode::goalCallback, this, std::placeholders::_1)); // TODO anla
+        "/goal_pose", 10, std::bind(&PIDControllerNode::goalCallback, this, std::placeholders::_1)); // TODO anla
 
     state_sub_ = create_subscription<nav_msgs::msg::Odometry>(
-        "/vessel_state", 10, std::bind(&ControllerNode::stateCallback, this, std::placeholders::_1));
+        "/vessel_state", 10, std::bind(&PIDControllerNode::stateCallback, this, std::placeholders::_1));
 
     wrench_pub_ = create_publisher<geometry_msgs::msg::Wrench>("/cmd_wrench", 10);
   }
@@ -107,21 +107,11 @@ private:
     // last_time_                = current_time;
     // RCLCPP_INFO(this->get_logger(), "dynamic time: [%f]", dt);
 
-    // // On the first run, dt can be large and meaningless, so we skip the control logic
-    // if (first_run_)
-    // {
-    //   first_run_ = false;
-    //   return;
-    // }
-
     // Odometry Twist
     nu_(0) = msg->twist.twist.linear.x;  // u
     nu_(1) = msg->twist.twist.linear.y;  // v
     nu_(2) = msg->twist.twist.angular.z; // r
     // Odometry Pose is published in ENU frame, convert to NED
-    eta_(0) = msg->pose.pose.position.y;
-    eta_(1) = msg->pose.pose.position.x;
-
     tf2::Quaternion q(msg->pose.pose.orientation.x,
                       msg->pose.pose.orientation.y,
                       msg->pose.pose.orientation.z,
@@ -130,8 +120,9 @@ private:
     double roll, pitch, yaw_enu;
     tf2::Matrix3x3(q).getRPY(roll, pitch, yaw_enu);
 
-    // convert ENU yaw (CCW, 0 = East) to NED yaw (CW, 0 = North)
-    eta_(2) = vk::wrapAngle(M_PI / 2.0 - yaw_enu);
+    eta_(0) = msg->pose.pose.position.y;
+    eta_(1) = msg->pose.pose.position.x;
+    eta_(2) = vk::wrapAngle(M_PI / 2.0 - yaw_enu); //    // convert ENU yaw (CCW, 0 = East) to NED yaw (CW, 0 = North)
 
     if (goal_received_)
     {
@@ -264,7 +255,7 @@ private:
 int main(int argc, char** argv)
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<ControllerNode>());
+  rclcpp::spin(std::make_shared<PIDControllerNode>());
   rclcpp::shutdown();
   return 0;
 }

@@ -78,12 +78,13 @@
         "future": "cpp",
         "shared_mutex": "cpp",
         "stdfloat": "cpp",
-        "dense": "cpp"
+        "dense": "cpp",
+        "regex": "cpp"
     },
     // "C_Cpp.errorSquiggles": "disabled"
     "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
-    "C_Cpp.intelliSenseEngine": "Default",
+    "C_Cpp.intelliSenseEngine": "default",
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
-    "C_Cpp.errorSquiggles": "Enabled",
+    "C_Cpp.errorSquiggles": "enabled",
     "C_Cpp.default.cppStandard": "c++17"
 }

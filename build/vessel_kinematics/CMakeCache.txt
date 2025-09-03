@@ -120,8 +120,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_EXPORT_COMPILE_COMMANDS:UNINITIALIZED=ON
+//Export compile_commands.json
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles/pkgRedirects
@@ -379,6 +379,9 @@ ament_xmllint_BIN:FILEPATH=/opt/ros/jazzy/bin/ament_xmllint
 //The directory containing a CMake configuration file for builtin_interfaces.
 builtin_interfaces_DIR:PATH=/opt/ros/jazzy/share/builtin_interfaces/cmake
 
+//The directory containing a CMake configuration file for casadi.
+casadi_DIR:PATH=/usr/local/lib/cmake/casadi
+
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/jazzy/share/class_loader/cmake
 
@@ -621,6 +624,8 @@ CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_DLLTOOL
 CMAKE_DLLTOOL-ADVANCED:INTERNAL=1
+//Whether to issue deprecation errors for macros and functions.
+CMAKE_ERROR_DEPRECATED:INTERNAL=FALSE
 //Executable file format
 CMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS
@@ -633,6 +638,8 @@ CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS
+CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
@@ -704,12 +711,20 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_STRIP
 CMAKE_STRIP-ADVANCED:INTERNAL=1
+//Suppress errors that are meant for the author of the CMakeLists.txt
+// files.
+CMAKE_SUPPRESS_DEVELOPER_ERRORS:INTERNAL=TRUE
+//Suppress Warnings that are meant for the author of the CMakeLists.txt
+// files.
+CMAKE_SUPPRESS_DEVELOPER_WARNINGS:INTERNAL=TRUE
 //ADVANCED property for variable: CMAKE_TAPI
 CMAKE_TAPI-ADVANCED:INTERNAL=1
 //uname command
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Whether to issue warnings for deprecated functionality.
+CMAKE_WARN_DEPRECATED:INTERNAL=FALSE
 //Details about finding FastRTPS
 FIND_PACKAGE_MESSAGE_DETAILS_FastRTPS:INTERNAL=[/opt/ros/jazzy/include][/opt/ros/jazzy/lib/libfastrtps.so;/opt/ros/jazzy/lib/libfastcdr.so][v(2.13)]
 //Details about finding OpenSSL

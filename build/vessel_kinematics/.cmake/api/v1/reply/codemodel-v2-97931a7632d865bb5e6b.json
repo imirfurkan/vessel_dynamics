@@ -1,0 +1,124 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-33eeec79a6021f7072f7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "vessel_kinematics",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "disturbances_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-disturbances_node-82011781ceaec3d768f9.json",
+					"name" : "disturbances_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "milliampere_dynamics_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-milliampere_dynamics_node-d7bae4efa89c5cc98fad.json",
+					"name" : "milliampere_dynamics_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mpc_controller_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mpc_controller_node-f4175ce3e0b5d5fa9e51.json",
+					"name" : "mpc_controller_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pid_controller_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pid_controller_node-a8e0d08a1422e28bd8fd.json",
+					"name" : "pid_controller_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "thrust_allocator_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-thrust_allocator_node-5c8663e3b8e567a88219.json",
+					"name" : "thrust_allocator_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-c33f57380f01fb349517.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vessel_kinematics_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vessel_kinematics_uninstall-1b6bb0d57ab87a7ea2d2.json",
+					"name" : "vessel_kinematics_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "vessel_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-vessel_lib-c55239ef46c08c782f57.json",
+					"name" : "vessel_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics",
+		"source" : "/home/imirdo/marine_ws/src/vessel_kinematics"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

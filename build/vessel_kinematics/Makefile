@@ -250,6 +250,19 @@ pid_controller_node/fast:
 .PHONY : pid_controller_node/fast
 
 #=============================================================================
+# Target rules for targets named mpc_controller_node
+
+# Build rule for target.
+mpc_controller_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mpc_controller_node
+.PHONY : mpc_controller_node
+
+# fast build rule for target.
+mpc_controller_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/build
+.PHONY : mpc_controller_node/fast
+
+#=============================================================================
 # Target rules for targets named disturbances_node
 
 # Build rule for target.
@@ -286,30 +299,6 @@ src/disturbances_node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disturbances_node.dir/build.make CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.s
 .PHONY : src/disturbances_node.cpp.s
 
-src/pid_controller_node.o: src/pid_controller_node.cpp.o
-.PHONY : src/pid_controller_node.o
-
-# target to build an object file
-src/pid_controller_node.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o
-.PHONY : src/pid_controller_node.cpp.o
-
-src/pid_controller_node.i: src/pid_controller_node.cpp.i
-.PHONY : src/pid_controller_node.i
-
-# target to preprocess a source file
-src/pid_controller_node.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.i
-.PHONY : src/pid_controller_node.cpp.i
-
-src/pid_controller_node.s: src/pid_controller_node.cpp.s
-.PHONY : src/pid_controller_node.s
-
-# target to generate assembly for a file
-src/pid_controller_node.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.s
-.PHONY : src/pid_controller_node.cpp.s
-
 src/milliampere_dynamics_node.o: src/milliampere_dynamics_node.cpp.o
 .PHONY : src/milliampere_dynamics_node.o
 
@@ -333,6 +322,54 @@ src/milliampere_dynamics_node.s: src/milliampere_dynamics_node.cpp.s
 src/milliampere_dynamics_node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_dynamics_node.dir/build.make CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.s
 .PHONY : src/milliampere_dynamics_node.cpp.s
+
+src/mpc_controller_node.o: src/mpc_controller_node.cpp.o
+.PHONY : src/mpc_controller_node.o
+
+# target to build an object file
+src/mpc_controller_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/src/mpc_controller_node.cpp.o
+.PHONY : src/mpc_controller_node.cpp.o
+
+src/mpc_controller_node.i: src/mpc_controller_node.cpp.i
+.PHONY : src/mpc_controller_node.i
+
+# target to preprocess a source file
+src/mpc_controller_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/src/mpc_controller_node.cpp.i
+.PHONY : src/mpc_controller_node.cpp.i
+
+src/mpc_controller_node.s: src/mpc_controller_node.cpp.s
+.PHONY : src/mpc_controller_node.s
+
+# target to generate assembly for a file
+src/mpc_controller_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/src/mpc_controller_node.cpp.s
+.PHONY : src/mpc_controller_node.cpp.s
+
+src/pid_controller_node.o: src/pid_controller_node.cpp.o
+.PHONY : src/pid_controller_node.o
+
+# target to build an object file
+src/pid_controller_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o
+.PHONY : src/pid_controller_node.cpp.o
+
+src/pid_controller_node.i: src/pid_controller_node.cpp.i
+.PHONY : src/pid_controller_node.i
+
+# target to preprocess a source file
+src/pid_controller_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.i
+.PHONY : src/pid_controller_node.cpp.i
+
+src/pid_controller_node.s: src/pid_controller_node.cpp.s
+.PHONY : src/pid_controller_node.s
+
+# target to generate assembly for a file
+src/pid_controller_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.s
+.PHONY : src/pid_controller_node.cpp.s
 
 src/thrust_allocator.o: src/thrust_allocator.cpp.o
 .PHONY : src/thrust_allocator.o
@@ -398,19 +435,23 @@ help:
 	@echo "... uninstall"
 	@echo "... vessel_kinematics_uninstall"
 	@echo "... disturbances_node"
-	@echo "... pid_controller_node"
 	@echo "... milliampere_dynamics_node"
+	@echo "... mpc_controller_node"
+	@echo "... pid_controller_node"
 	@echo "... thrust_allocator_node"
 	@echo "... vessel_lib"
 	@echo "... src/disturbances_node.o"
 	@echo "... src/disturbances_node.i"
 	@echo "... src/disturbances_node.s"
-	@echo "... src/pid_controller_node.o"
-	@echo "... src/pid_controller_node.i"
-	@echo "... src/pid_controller_node.s"
 	@echo "... src/milliampere_dynamics_node.o"
 	@echo "... src/milliampere_dynamics_node.i"
 	@echo "... src/milliampere_dynamics_node.s"
+	@echo "... src/mpc_controller_node.o"
+	@echo "... src/mpc_controller_node.i"
+	@echo "... src/mpc_controller_node.s"
+	@echo "... src/pid_controller_node.o"
+	@echo "... src/pid_controller_node.i"
+	@echo "... src/pid_controller_node.s"
 	@echo "... src/thrust_allocator.o"
 	@echo "... src/thrust_allocator.i"
 	@echo "... src/thrust_allocator.s"

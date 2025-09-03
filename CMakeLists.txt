@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 project(vessel_kinematics)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Export compile_commands.json" FORCE)
 
 # (Optional) extra warnings under GCC/Clang
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -16,7 +17,7 @@ find_package(tf2 REQUIRED)   # for tf2::Quaternion
 find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(osqp_vendor REQUIRED)
-
+find_package(casadi CONFIG REQUIRED)
 
 # 2) Linting (skip copyright checks for now)
 if(BUILD_TESTING)
@@ -74,9 +75,7 @@ ament_target_dependencies(thrust_allocator_node
 target_link_libraries(thrust_allocator_node vessel_lib)
 
 
-install(TARGETS
-  milliampere_dynamics_node
-  thrust_allocator_node
+install(TARGETS thrust_allocator_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -116,7 +115,6 @@ install(TARGETS pid_controller_node
 
 add_executable(mpc_controller_node src/mpc_controller_node.cpp)
 
-# CORRECTED: Only include your own package's headers here.
 target_include_directories(mpc_controller_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
@@ -131,10 +129,10 @@ ament_target_dependencies(mpc_controller_node
   tf2_ros
 )
 
-# Link Eigen if you use it in this file
 target_link_libraries(mpc_controller_node
   Eigen3::Eigen
-  vessel_lib            # if your node uses your library
+  vessel_lib
+  casadi::casadi
 )
 
 install(TARGETS mpc_controller_node
@@ -178,6 +176,8 @@ install(TARGETS
   milliampere_dynamics_node
   thrust_allocator_node
   pid_controller_node
+  mpc_controller_node
+  disturbances_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

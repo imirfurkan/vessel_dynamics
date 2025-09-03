@@ -21,6 +21,10 @@
   <depend>robot_state_publisher</depend>
   <depend>osqp_vendor</depend>
 
+  <build_depend>libcasadi-dev</build_depend>
+  <exec_depend>libcasadi-dev</exec_depend>
+
+
   <!-- For processing XACRO -->
   <build_depend>xacro</build_depend>
   <exec_depend>xacro</exec_depend>

@@ -67,6 +67,7 @@ all: CMakeFiles/milliampere_dynamics_node.dir/all
 all: CMakeFiles/vessel_lib.dir/all
 all: CMakeFiles/thrust_allocator_node.dir/all
 all: CMakeFiles/pid_controller_node.dir/all
+all: CMakeFiles/mpc_controller_node.dir/all
 all: CMakeFiles/disturbances_node.dir/all
 .PHONY : all
 
@@ -81,6 +82,7 @@ clean: CMakeFiles/milliampere_dynamics_node.dir/clean
 clean: CMakeFiles/vessel_lib.dir/clean
 clean: CMakeFiles/thrust_allocator_node.dir/clean
 clean: CMakeFiles/pid_controller_node.dir/clean
+clean: CMakeFiles/mpc_controller_node.dir/clean
 clean: CMakeFiles/disturbances_node.dir/clean
 .PHONY : clean
 
@@ -143,7 +145,7 @@ CMakeFiles/vessel_kinematics_uninstall.dir/clean:
 CMakeFiles/milliampere_dynamics_node.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_dynamics_node.dir/build.make CMakeFiles/milliampere_dynamics_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/milliampere_dynamics_node.dir/build.make CMakeFiles/milliampere_dynamics_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=5,6 "Built target milliampere_dynamics_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=3,4 "Built target milliampere_dynamics_node"
 .PHONY : CMakeFiles/milliampere_dynamics_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -169,7 +171,7 @@ CMakeFiles/milliampere_dynamics_node.dir/clean:
 CMakeFiles/vessel_lib.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vessel_lib.dir/build.make CMakeFiles/vessel_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vessel_lib.dir/build.make CMakeFiles/vessel_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=9,10 "Built target vessel_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=11,12 "Built target vessel_lib"
 .PHONY : CMakeFiles/vessel_lib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -195,7 +197,7 @@ CMakeFiles/vessel_lib.dir/clean:
 CMakeFiles/thrust_allocator_node.dir/all: CMakeFiles/vessel_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thrust_allocator_node.dir/build.make CMakeFiles/thrust_allocator_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thrust_allocator_node.dir/build.make CMakeFiles/thrust_allocator_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=7,8 "Built target thrust_allocator_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=9,10 "Built target thrust_allocator_node"
 .PHONY : CMakeFiles/thrust_allocator_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -221,7 +223,7 @@ CMakeFiles/thrust_allocator_node.dir/clean:
 CMakeFiles/pid_controller_node.dir/all: CMakeFiles/vessel_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=3,4 "Built target pid_controller_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=7,8 "Built target pid_controller_node"
 .PHONY : CMakeFiles/pid_controller_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -239,6 +241,32 @@ pid_controller_node: CMakeFiles/pid_controller_node.dir/rule
 CMakeFiles/pid_controller_node.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pid_controller_node.dir/build.make CMakeFiles/pid_controller_node.dir/clean
 .PHONY : CMakeFiles/pid_controller_node.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mpc_controller_node.dir
+
+# All Build rule for target.
+CMakeFiles/mpc_controller_node.dir/all: CMakeFiles/vessel_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles --progress-num=5,6 "Built target mpc_controller_node"
+.PHONY : CMakeFiles/mpc_controller_node.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mpc_controller_node.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mpc_controller_node.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics/CMakeFiles 0
+.PHONY : CMakeFiles/mpc_controller_node.dir/rule
+
+# Convenience name for target.
+mpc_controller_node: CMakeFiles/mpc_controller_node.dir/rule
+.PHONY : mpc_controller_node
+
+# clean rule for target.
+CMakeFiles/mpc_controller_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mpc_controller_node.dir/build.make CMakeFiles/mpc_controller_node.dir/clean
+.PHONY : CMakeFiles/mpc_controller_node.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/disturbances_node.dir

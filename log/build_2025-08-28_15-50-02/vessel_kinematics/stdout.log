@@ -1,9 +1,0 @@
-[ 10%] [32mBuilding CXX object CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o[0m
-[ 30%] Built target vessel_lib
-[ 40%] [32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o[0m
-[ 60%] Built target thrust_allocator_node
-[ 70%] [32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o[0m
-[ 80%] [32m[1mLinking CXX executable pid_controller_node[0m
-[ 80%] Built target pid_controller_node
-[ 90%] [32m[1mLinking CXX executable milliampere_dynamics_node[0m
-[ 90%] Built target milliampere_dynamics_node

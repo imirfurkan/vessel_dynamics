@@ -1,0 +1,374 @@
+[0.000000] (-) TimerEvent: {}
+[0.000198] (vessel_kinematics) JobQueued: {'identifier': 'vessel_kinematics', 'dependencies': OrderedDict()}
+[0.000242] (vessel_kinematics) JobStarted: {'identifier': 'vessel_kinematics'}
+[0.010115] (vessel_kinematics) JobProgress: {'identifier': 'vessel_kinematics', 'progress': 'cmake'}
+[0.010750] (vessel_kinematics) Command: {'cmd': ['/usr/bin/cmake', '/home/imirdo/marine_ws/src/vessel_kinematics', '-Wno-dev', '-DCMAKE_INSTALL_PREFIX=/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics'], 'cwd': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'KDE_FULL_SESSION': 'true', 'PLASMA_USE_QT_SCALING': '1', 'USER': 'imirdo', 'PAM_KWALLET5_LOGIN': '/run/user/1000/kwallet5.socket', 'LC_TIME': 'tr_TR.UTF-8', 'FONTCONFIG_PATH': '/etc/fonts', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SEAT': 'seat0', 'GIO_MODULE_DIR': '/home/imirdo/snap/code/common/.cache/gio-modules', 'XDG_SESSION_TYPE': 'wayland', 'GIT_ASKPASS': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'GTK_EXE_PREFIX_VSCODE_SNAP_ORIG': '', 'GDK_BACKEND_VSCODE_SNAP_ORIG': '', 'XCURSOR_SIZE': '24', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/imirdo', 'CHROME_DESKTOP': 'code.desktop', 'KDE_APPLICATIONS_AS_SCOPE': '1', 'LOCPATH_VSCODE_SNAP_ORIG': '', 'OLDPWD': '/home/imirdo/marine_ws', 'TERM_PROGRAM_VERSION': '1.103.2', 'DESKTOP_SESSION': 'plasmawayland', 'GTK_PATH': '/snap/code/205/usr/lib/x86_64-linux-gnu/gtk-3.0', 'XDG_DATA_HOME_VSCODE_SNAP_ORIG': '', 'GTK_IM_MODULE_FILE': '/home/imirdo/snap/code/common/.cache/immodules/immodules.cache', 'ROS_PYTHON_VERSION': '3', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/imirdo/.gtkrc:/home/imirdo/.config/gtkrc', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'GSETTINGS_SCHEMA_DIR_VSCODE_SNAP_ORIG': '', 'KDE_SESSION_VERSION': '5', 'VSCODE_GIT_ASKPASS_MAIN': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'tr_TR.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/snap/code/205/usr/share/code/code', 'MANAGERPID': '2189', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'SYSTEMD_EXEC_PID': '2443', 'BUNDLED_DEBUGPY_PATH': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/libs/debugpy', 'IM_CONFIG_CHECK_ENV': '1', 'SSH_ASKPASS': '/usr/bin/ksshaskpass', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'QT_QPA_PLATFORMTHEME': 'qt5ct', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install', 'XKB_DEFAULT_LAYOUT': 'jp', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'imirdo', 'QT_WAYLAND_FORCE_DPI': '96', 'QT_AUTO_SCREEN_SCALE_FACTOR': '0', 'JOURNAL_STREAM': '9:21453', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_CONFIG_DIRS_VSCODE_SNAP_ORIG': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/plasma-plasmashell.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'XDG_DATA_DIRS_VSCODE_SNAP_ORIG': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '1', 'GTK2_RC_FILES': '/etc/gtk-2.0/gtkrc:/home/imirdo/.gtkrc-2.0:/home/imirdo/.config/gtkrc-2.0', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/scripts/noConfigScripts', 'SESSION_MANAGER': 'local/furkan-83fd:@/tmp/.ICE-unix/2401,unix/furkan-83fd:/tmp/.ICE-unix/2401', 'GTK_EXE_PREFIX': '/snap/code/205/usr', 'INVOCATION_ID': '6a6ddf5a1f2e4f328586011460389c64', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session1', 'LC_ADDRESS': 'tr_TR.UTF-8', 'BAMF_DESKTOP_FILE_HINT': '/var/lib/snapd/desktop/applications/code_code.desktop', 'XKB_DEFAULT_MODEL': 'pc105', 'XDG_RUNTIME_DIR': '/run/user/1000', 'XCURSOR_THEME': 'breeze_cursors', 'GDK_BACKEND': 'x11', 'ICEAUTHORITY': '/run/user/1000/iceauth_pyWwiQ', 'DISPLAY': ':1', 'LOCPATH': '/snap/code/205/usr/lib/locale', 'VSCODE_DEBUGPY_ADAPTER_ENDPOINTS': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-65583d3b0d661280.txt', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'KDE', 'LC_TELEPHONE': 'tr_TR.UTF-8', 'GIO_MODULE_DIR_VSCODE_SNAP_ORIG': '', 'XDG_DATA_HOME': '/home/imirdo/snap/code/205/.local/share', 'XDG_SESSION_DESKTOP': 'KDE', 'XAUTHORITY': '/run/user/1000/xauth_VfylQH', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-d15037dd8a.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/gnupg/S.gpg-agent.ssh', 'GSETTINGS_SCHEMA_DIR': '/home/imirdo/snap/code/205/.local/share/glib-2.0/schemas', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'KDE', 'SHELL': '/bin/bash', 'LC_NAME': 'tr_TR.UTF-8', 'QT_ACCESSIBILITY': '1', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GTK_PATH_VSCODE_SNAP_ORIG': '', 'FONTCONFIG_FILE': '/etc/fonts/fonts.conf', 'GTK_IM_MODULE_FILE_VSCODE_SNAP_ORIG': '', 'LC_MEASUREMENT': 'tr_TR.UTF-8', 'XKB_DEFAULT_VARIANT': 'OADG109A', 'LC_IDENTIFICATION': 'tr_TR.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'XDG_VTNR': '1', 'PWD': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'XDG_CONFIG_DIRS': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'XDG_DATA_DIRS': '/home/imirdo/snap/code/205/.local/share:/home/imirdo/snap/code/205:/snap/code/205/usr/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'PYTHONPATH': '/home/imirdo/turtlebot3_ws/build/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/build/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_example/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'tr_TR.UTF-8', 'LC_PAPER': 'tr_TR.UTF-8', 'KDE_SESSION_UID': '1000', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'CMAKE_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy'}), 'shell': False}
+[0.099469] (-) TimerEvent: {}
+[0.124761] (vessel_kinematics) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.199650] (-) TimerEvent: {}
+[0.210155] (vessel_kinematics) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.240920] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299831] (-) TimerEvent: {}
+[0.380242] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.396609] (vessel_kinematics) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.397118] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.397573] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.399978] (-) TimerEvent: {}
+[0.412775] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.500208] (-) TimerEvent: {}
+[0.596718] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.600484] (-) TimerEvent: {}
+[0.610967] (vessel_kinematics) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.611420] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.612227] (vessel_kinematics) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.624023] (vessel_kinematics) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.700726] (-) TimerEvent: {}
+[0.801190] (-) TimerEvent: {}
+[0.886509] (vessel_kinematics) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[0.901395] (-) TimerEvent: {}
+[1.001825] (-) TimerEvent: {}
+[1.102274] (-) TimerEvent: {}
+[1.105140] (vessel_kinematics) StdoutLine: {'line': b'-- Found rclcpp: 28.1.11 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[1.201095] (vessel_kinematics) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[1.202493] (-) TimerEvent: {}
+[1.231469] (vessel_kinematics) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[1.269489] (vessel_kinematics) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.299114] (vessel_kinematics) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.302569] (-) TimerEvent: {}
+[1.402921] (-) TimerEvent: {}
+[1.446027] (vessel_kinematics) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[1.455028] (vessel_kinematics) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.503079] (-) TimerEvent: {}
+[1.603500] (-) TimerEvent: {}
+[1.665680] (vessel_kinematics) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[1.703624] (-) TimerEvent: {}
+[1.706324] (vessel_kinematics) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[1.747963] (vessel_kinematics) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.803829] (-) TimerEvent: {}
+[1.894252] (vessel_kinematics) StdoutLine: {'line': b'-- Found geometry_msgs: 5.3.6 (/opt/ros/jazzy/share/geometry_msgs/cmake)\n'}
+[1.903983] (-) TimerEvent: {}
+[1.962846] (vessel_kinematics) StdoutLine: {'line': b'-- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)\n'}
+[2.004165] (-) TimerEvent: {}
+[2.023030] (vessel_kinematics) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.14 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[2.104460] (-) TimerEvent: {}
+[2.204944] (-) TimerEvent: {}
+[2.305520] (-) TimerEvent: {}
+[2.345448] (vessel_kinematics) StdoutLine: {'line': b'-- Found osqp_vendor: 0.2.0 (/opt/ros/jazzy/share/osqp_vendor/cmake)\n'}
+[2.368336] (vessel_kinematics) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[2.405670] (-) TimerEvent: {}
+[2.506226] (-) TimerEvent: {}
+[2.606851] (-) TimerEvent: {}
+[2.707253] (-) TimerEvent: {}
+[2.772874] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.773676] (vessel_kinematics) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/imirdo/marine_ws/src/vessel_kinematics/include>\n'}
+[2.773885] (vessel_kinematics) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.785718] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[2.785927] (vessel_kinematics) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[2.807363] (-) TimerEvent: {}
+[2.807783] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.819253] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[2.906893] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.907182] (vessel_kinematics) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.907441] (-) TimerEvent: {}
+[2.918526] (vessel_kinematics) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.922344] (vessel_kinematics) StdoutLine: {'line': b'-- Configuring done (2.9s)\n'}
+[2.976773] (vessel_kinematics) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[2.993765] (vessel_kinematics) StdoutLine: {'line': b'-- Build files have been written to: /home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics\n'}
+[3.007662] (-) TimerEvent: {}
+[3.010753] (vessel_kinematics) CommandEnded: {'returncode': 0}
+[3.013064] (vessel_kinematics) JobProgress: {'identifier': 'vessel_kinematics', 'progress': 'build'}
+[3.013159] (vessel_kinematics) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', '--', '-j28', '-l28'], 'cwd': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'KDE_FULL_SESSION': 'true', 'PLASMA_USE_QT_SCALING': '1', 'USER': 'imirdo', 'PAM_KWALLET5_LOGIN': '/run/user/1000/kwallet5.socket', 'LC_TIME': 'tr_TR.UTF-8', 'FONTCONFIG_PATH': '/etc/fonts', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SEAT': 'seat0', 'GIO_MODULE_DIR': '/home/imirdo/snap/code/common/.cache/gio-modules', 'XDG_SESSION_TYPE': 'wayland', 'GIT_ASKPASS': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'GTK_EXE_PREFIX_VSCODE_SNAP_ORIG': '', 'GDK_BACKEND_VSCODE_SNAP_ORIG': '', 'XCURSOR_SIZE': '24', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/imirdo', 'CHROME_DESKTOP': 'code.desktop', 'KDE_APPLICATIONS_AS_SCOPE': '1', 'LOCPATH_VSCODE_SNAP_ORIG': '', 'OLDPWD': '/home/imirdo/marine_ws', 'TERM_PROGRAM_VERSION': '1.103.2', 'DESKTOP_SESSION': 'plasmawayland', 'GTK_PATH': '/snap/code/205/usr/lib/x86_64-linux-gnu/gtk-3.0', 'XDG_DATA_HOME_VSCODE_SNAP_ORIG': '', 'GTK_IM_MODULE_FILE': '/home/imirdo/snap/code/common/.cache/immodules/immodules.cache', 'ROS_PYTHON_VERSION': '3', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/imirdo/.gtkrc:/home/imirdo/.config/gtkrc', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'GSETTINGS_SCHEMA_DIR_VSCODE_SNAP_ORIG': '', 'KDE_SESSION_VERSION': '5', 'VSCODE_GIT_ASKPASS_MAIN': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'tr_TR.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/snap/code/205/usr/share/code/code', 'MANAGERPID': '2189', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'SYSTEMD_EXEC_PID': '2443', 'BUNDLED_DEBUGPY_PATH': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/libs/debugpy', 'IM_CONFIG_CHECK_ENV': '1', 'SSH_ASKPASS': '/usr/bin/ksshaskpass', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'QT_QPA_PLATFORMTHEME': 'qt5ct', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install', 'XKB_DEFAULT_LAYOUT': 'jp', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'imirdo', 'QT_WAYLAND_FORCE_DPI': '96', 'QT_AUTO_SCREEN_SCALE_FACTOR': '0', 'JOURNAL_STREAM': '9:21453', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_CONFIG_DIRS_VSCODE_SNAP_ORIG': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/plasma-plasmashell.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'XDG_DATA_DIRS_VSCODE_SNAP_ORIG': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '1', 'GTK2_RC_FILES': '/etc/gtk-2.0/gtkrc:/home/imirdo/.gtkrc-2.0:/home/imirdo/.config/gtkrc-2.0', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/scripts/noConfigScripts', 'SESSION_MANAGER': 'local/furkan-83fd:@/tmp/.ICE-unix/2401,unix/furkan-83fd:/tmp/.ICE-unix/2401', 'GTK_EXE_PREFIX': '/snap/code/205/usr', 'INVOCATION_ID': '6a6ddf5a1f2e4f328586011460389c64', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session1', 'LC_ADDRESS': 'tr_TR.UTF-8', 'BAMF_DESKTOP_FILE_HINT': '/var/lib/snapd/desktop/applications/code_code.desktop', 'XKB_DEFAULT_MODEL': 'pc105', 'XDG_RUNTIME_DIR': '/run/user/1000', 'XCURSOR_THEME': 'breeze_cursors', 'GDK_BACKEND': 'x11', 'ICEAUTHORITY': '/run/user/1000/iceauth_pyWwiQ', 'DISPLAY': ':1', 'LOCPATH': '/snap/code/205/usr/lib/locale', 'VSCODE_DEBUGPY_ADAPTER_ENDPOINTS': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-65583d3b0d661280.txt', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'KDE', 'LC_TELEPHONE': 'tr_TR.UTF-8', 'GIO_MODULE_DIR_VSCODE_SNAP_ORIG': '', 'XDG_DATA_HOME': '/home/imirdo/snap/code/205/.local/share', 'XDG_SESSION_DESKTOP': 'KDE', 'XAUTHORITY': '/run/user/1000/xauth_VfylQH', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-d15037dd8a.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/gnupg/S.gpg-agent.ssh', 'GSETTINGS_SCHEMA_DIR': '/home/imirdo/snap/code/205/.local/share/glib-2.0/schemas', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'KDE', 'SHELL': '/bin/bash', 'LC_NAME': 'tr_TR.UTF-8', 'QT_ACCESSIBILITY': '1', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GTK_PATH_VSCODE_SNAP_ORIG': '', 'FONTCONFIG_FILE': '/etc/fonts/fonts.conf', 'GTK_IM_MODULE_FILE_VSCODE_SNAP_ORIG': '', 'LC_MEASUREMENT': 'tr_TR.UTF-8', 'XKB_DEFAULT_VARIANT': 'OADG109A', 'LC_IDENTIFICATION': 'tr_TR.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'XDG_VTNR': '1', 'PWD': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'XDG_CONFIG_DIRS': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'XDG_DATA_DIRS': '/home/imirdo/snap/code/205/.local/share:/home/imirdo/snap/code/205:/snap/code/205/usr/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'PYTHONPATH': '/home/imirdo/turtlebot3_ws/build/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/build/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_example/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'tr_TR.UTF-8', 'LC_PAPER': 'tr_TR.UTF-8', 'KDE_SESSION_UID': '1000', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'CMAKE_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy'}), 'shell': False}
+[3.107856] (-) TimerEvent: {}
+[3.121179] (vessel_kinematics) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object CMakeFiles/vessel_lib.dir/src/thrust_allocator.cpp.o\x1b[0m\n'}
+[3.125965] (vessel_kinematics) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/milliampere_dynamics_node.dir/src/milliampere_dynamics_node.cpp.o\x1b[0m\n'}
+[3.208008] (-) TimerEvent: {}
+[3.308485] (-) TimerEvent: {}
+[3.408878] (-) TimerEvent: {}
+[3.509259] (-) TimerEvent: {}
+[3.609738] (-) TimerEvent: {}
+[3.710150] (-) TimerEvent: {}
+[3.810541] (-) TimerEvent: {}
+[3.910936] (-) TimerEvent: {}
+[4.011322] (-) TimerEvent: {}
+[4.111733] (-) TimerEvent: {}
+[4.212134] (-) TimerEvent: {}
+[4.312526] (-) TimerEvent: {}
+[4.412918] (-) TimerEvent: {}
+[4.513314] (-) TimerEvent: {}
+[4.613659] (-) TimerEvent: {}
+[4.714059] (-) TimerEvent: {}
+[4.814469] (-) TimerEvent: {}
+[4.914869] (-) TimerEvent: {}
+[5.015272] (-) TimerEvent: {}
+[5.115582] (-) TimerEvent: {}
+[5.215923] (-) TimerEvent: {}
+[5.316344] (-) TimerEvent: {}
+[5.416779] (-) TimerEvent: {}
+[5.517189] (-) TimerEvent: {}
+[5.617607] (-) TimerEvent: {}
+[5.718009] (-) TimerEvent: {}
+[5.818407] (-) TimerEvent: {}
+[5.918826] (-) TimerEvent: {}
+[6.019221] (-) TimerEvent: {}
+[6.119625] (-) TimerEvent: {}
+[6.219958] (-) TimerEvent: {}
+[6.320387] (-) TimerEvent: {}
+[6.402322] (vessel_kinematics) StdoutLine: {'line': b'[ 25%] \x1b[32m\x1b[1mLinking CXX static library libvessel_lib.a\x1b[0m\n'}
+[6.420581] (-) TimerEvent: {}
+[6.478217] (vessel_kinematics) StdoutLine: {'line': b'[ 25%] Built target vessel_lib\n'}
+[6.519633] (vessel_kinematics) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/pid_controller_node.dir/src/pid_controller_node.cpp.o\x1b[0m\n'}
+[6.520686] (-) TimerEvent: {}
+[6.521302] (vessel_kinematics) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/thrust_allocator_node.dir/src/thrust_allocator_node.cpp.o\x1b[0m\n'}
+[6.521768] (vessel_kinematics) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object CMakeFiles/mpc_controller_node.dir/src/mpc_controller_node.cpp.o\x1b[0m\n'}
+[6.521986] (vessel_kinematics) StdoutLine: {'line': b'[ 58%] \x1b[32mBuilding CXX object CMakeFiles/disturbances_node.dir/src/disturbances_node.cpp.o\x1b[0m\n'}
+[6.620912] (-) TimerEvent: {}
+[6.721342] (-) TimerEvent: {}
+[6.821792] (-) TimerEvent: {}
+[6.922221] (-) TimerEvent: {}
+[7.022723] (-) TimerEvent: {}
+[7.123164] (-) TimerEvent: {}
+[7.223564] (-) TimerEvent: {}
+[7.324051] (-) TimerEvent: {}
+[7.424556] (-) TimerEvent: {}
+[7.524969] (-) TimerEvent: {}
+[7.625454] (-) TimerEvent: {}
+[7.725924] (-) TimerEvent: {}
+[7.826474] (-) TimerEvent: {}
+[7.926985] (-) TimerEvent: {}
+[8.027541] (-) TimerEvent: {}
+[8.128025] (-) TimerEvent: {}
+[8.228556] (-) TimerEvent: {}
+[8.329022] (-) TimerEvent: {}
+[8.429557] (-) TimerEvent: {}
+[8.530059] (-) TimerEvent: {}
+[8.630643] (-) TimerEvent: {}
+[8.731208] (-) TimerEvent: {}
+[8.831721] (-) TimerEvent: {}
+[8.932293] (-) TimerEvent: {}
+[9.032821] (-) TimerEvent: {}
+[9.133388] (-) TimerEvent: {}
+[9.233958] (-) TimerEvent: {}
+[9.334532] (-) TimerEvent: {}
+[9.435094] (-) TimerEvent: {}
+[9.535649] (-) TimerEvent: {}
+[9.636209] (-) TimerEvent: {}
+[9.736784] (-) TimerEvent: {}
+[9.837341] (-) TimerEvent: {}
+[9.937907] (-) TimerEvent: {}
+[10.038367] (-) TimerEvent: {}
+[10.138836] (-) TimerEvent: {}
+[10.239304] (-) TimerEvent: {}
+[10.339888] (-) TimerEvent: {}
+[10.440479] (-) TimerEvent: {}
+[10.541010] (-) TimerEvent: {}
+[10.641583] (-) TimerEvent: {}
+[10.742122] (-) TimerEvent: {}
+[10.842694] (-) TimerEvent: {}
+[10.943251] (-) TimerEvent: {}
+[11.043765] (-) TimerEvent: {}
+[11.144278] (-) TimerEvent: {}
+[11.244860] (-) TimerEvent: {}
+[11.345404] (-) TimerEvent: {}
+[11.445973] (-) TimerEvent: {}
+[11.546524] (-) TimerEvent: {}
+[11.647075] (-) TimerEvent: {}
+[11.747609] (-) TimerEvent: {}
+[11.848158] (-) TimerEvent: {}
+[11.948724] (-) TimerEvent: {}
+[12.049268] (-) TimerEvent: {}
+[12.149850] (-) TimerEvent: {}
+[12.250390] (-) TimerEvent: {}
+[12.350958] (-) TimerEvent: {}
+[12.451517] (-) TimerEvent: {}
+[12.552052] (-) TimerEvent: {}
+[12.652629] (-) TimerEvent: {}
+[12.753175] (-) TimerEvent: {}
+[12.853755] (-) TimerEvent: {}
+[12.954294] (-) TimerEvent: {}
+[13.054868] (-) TimerEvent: {}
+[13.155499] (-) TimerEvent: {}
+[13.256042] (-) TimerEvent: {}
+[13.356620] (-) TimerEvent: {}
+[13.457164] (-) TimerEvent: {}
+[13.557693] (-) TimerEvent: {}
+[13.658315] (-) TimerEvent: {}
+[13.758868] (-) TimerEvent: {}
+[13.859400] (-) TimerEvent: {}
+[13.959945] (-) TimerEvent: {}
+[14.060532] (-) TimerEvent: {}
+[14.161181] (-) TimerEvent: {}
+[14.261644] (-) TimerEvent: {}
+[14.362181] (-) TimerEvent: {}
+[14.462709] (-) TimerEvent: {}
+[14.563252] (-) TimerEvent: {}
+[14.663889] (-) TimerEvent: {}
+[14.764452] (-) TimerEvent: {}
+[14.864983] (-) TimerEvent: {}
+[14.965533] (-) TimerEvent: {}
+[15.066087] (-) TimerEvent: {}
+[15.166702] (-) TimerEvent: {}
+[15.267239] (-) TimerEvent: {}
+[15.367800] (-) TimerEvent: {}
+[15.468344] (-) TimerEvent: {}
+[15.568952] (-) TimerEvent: {}
+[15.669592] (-) TimerEvent: {}
+[15.770135] (-) TimerEvent: {}
+[15.870665] (-) TimerEvent: {}
+[15.971187] (-) TimerEvent: {}
+[16.071776] (-) TimerEvent: {}
+[16.172337] (-) TimerEvent: {}
+[16.272794] (-) TimerEvent: {}
+[16.373327] (-) TimerEvent: {}
+[16.473860] (-) TimerEvent: {}
+[16.574386] (-) TimerEvent: {}
+[16.674940] (-) TimerEvent: {}
+[16.775377] (-) TimerEvent: {}
+[16.778254] (vessel_kinematics) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX executable disturbances_node\x1b[0m\n'}
+[16.875585] (-) TimerEvent: {}
+[16.975961] (-) TimerEvent: {}
+[17.076337] (-) TimerEvent: {}
+[17.166149] (vessel_kinematics) StdoutLine: {'line': b'[ 66%] Built target disturbances_node\n'}
+[17.176568] (-) TimerEvent: {}
+[17.277071] (-) TimerEvent: {}
+[17.377595] (-) TimerEvent: {}
+[17.478132] (-) TimerEvent: {}
+[17.578657] (-) TimerEvent: {}
+[17.679189] (-) TimerEvent: {}
+[17.779725] (-) TimerEvent: {}
+[17.880235] (-) TimerEvent: {}
+[17.980768] (-) TimerEvent: {}
+[18.081274] (-) TimerEvent: {}
+[18.181708] (-) TimerEvent: {}
+[18.282219] (-) TimerEvent: {}
+[18.382707] (-) TimerEvent: {}
+[18.483252] (-) TimerEvent: {}
+[18.583683] (-) TimerEvent: {}
+[18.684208] (-) TimerEvent: {}
+[18.784738] (-) TimerEvent: {}
+[18.885168] (-) TimerEvent: {}
+[18.985717] (-) TimerEvent: {}
+[19.086237] (-) TimerEvent: {}
+[19.186784] (-) TimerEvent: {}
+[19.287295] (-) TimerEvent: {}
+[19.387841] (-) TimerEvent: {}
+[19.488357] (-) TimerEvent: {}
+[19.588833] (-) TimerEvent: {}
+[19.689363] (-) TimerEvent: {}
+[19.790010] (-) TimerEvent: {}
+[19.890476] (-) TimerEvent: {}
+[19.990900] (-) TimerEvent: {}
+[20.091325] (-) TimerEvent: {}
+[20.191700] (-) TimerEvent: {}
+[20.292133] (-) TimerEvent: {}
+[20.392586] (-) TimerEvent: {}
+[20.493029] (-) TimerEvent: {}
+[20.593488] (-) TimerEvent: {}
+[20.693841] (-) TimerEvent: {}
+[20.794267] (-) TimerEvent: {}
+[20.894707] (-) TimerEvent: {}
+[20.995139] (-) TimerEvent: {}
+[21.095560] (-) TimerEvent: {}
+[21.180990] (vessel_kinematics) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable thrust_allocator_node\x1b[0m\n'}
+[21.195660] (-) TimerEvent: {}
+[21.295991] (-) TimerEvent: {}
+[21.396438] (-) TimerEvent: {}
+[21.496865] (-) TimerEvent: {}
+[21.597294] (-) TimerEvent: {}
+[21.697748] (-) TimerEvent: {}
+[21.720396] (vessel_kinematics) StdoutLine: {'line': b'[ 75%] Built target thrust_allocator_node\n'}
+[21.797985] (-) TimerEvent: {}
+[21.898487] (-) TimerEvent: {}
+[21.998977] (-) TimerEvent: {}
+[22.099495] (-) TimerEvent: {}
+[22.199989] (-) TimerEvent: {}
+[22.300497] (-) TimerEvent: {}
+[22.400964] (-) TimerEvent: {}
+[22.501448] (-) TimerEvent: {}
+[22.601944] (-) TimerEvent: {}
+[22.702456] (-) TimerEvent: {}
+[22.802974] (-) TimerEvent: {}
+[22.903492] (-) TimerEvent: {}
+[23.004016] (-) TimerEvent: {}
+[23.104527] (-) TimerEvent: {}
+[23.205055] (-) TimerEvent: {}
+[23.280385] (vessel_kinematics) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking CXX executable milliampere_dynamics_node\x1b[0m\n'}
+[23.305298] (-) TimerEvent: {}
+[23.405712] (-) TimerEvent: {}
+[23.506208] (-) TimerEvent: {}
+[23.606638] (-) TimerEvent: {}
+[23.707051] (-) TimerEvent: {}
+[23.807689] (-) TimerEvent: {}
+[23.908068] (-) TimerEvent: {}
+[24.005763] (vessel_kinematics) StdoutLine: {'line': b'[ 83%] Built target milliampere_dynamics_node\n'}
+[24.008247] (-) TimerEvent: {}
+[24.108621] (-) TimerEvent: {}
+[24.209012] (-) TimerEvent: {}
+[24.309390] (-) TimerEvent: {}
+[24.409784] (-) TimerEvent: {}
+[24.510183] (-) TimerEvent: {}
+[24.610605] (-) TimerEvent: {}
+[24.710319] (vessel_kinematics) StdoutLine: {'line': b'[ 91%] \x1b[32m\x1b[1mLinking CXX executable mpc_controller_node\x1b[0m\n'}
+[24.710643] (-) TimerEvent: {}
+[24.810931] (-) TimerEvent: {}
+[24.911347] (-) TimerEvent: {}
+[25.011667] (-) TimerEvent: {}
+[25.112000] (-) TimerEvent: {}
+[25.212416] (-) TimerEvent: {}
+[25.312771] (-) TimerEvent: {}
+[25.333747] (vessel_kinematics) StdoutLine: {'line': b'[ 91%] Built target mpc_controller_node\n'}
+[25.412988] (-) TimerEvent: {}
+[25.513394] (-) TimerEvent: {}
+[25.613904] (-) TimerEvent: {}
+[25.714307] (-) TimerEvent: {}
+[25.759090] (vessel_kinematics) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable pid_controller_node\x1b[0m\n'}
+[25.814545] (-) TimerEvent: {}
+[25.914860] (-) TimerEvent: {}
+[26.015303] (-) TimerEvent: {}
+[26.115761] (-) TimerEvent: {}
+[26.216199] (-) TimerEvent: {}
+[26.316695] (-) TimerEvent: {}
+[26.381742] (vessel_kinematics) StdoutLine: {'line': b'[100%] Built target pid_controller_node\n'}
+[26.399387] (vessel_kinematics) CommandEnded: {'returncode': 0}
+[26.400368] (vessel_kinematics) JobProgress: {'identifier': 'vessel_kinematics', 'progress': 'install'}
+[26.411948] (vessel_kinematics) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics'], 'cwd': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'KDE_FULL_SESSION': 'true', 'PLASMA_USE_QT_SCALING': '1', 'USER': 'imirdo', 'PAM_KWALLET5_LOGIN': '/run/user/1000/kwallet5.socket', 'LC_TIME': 'tr_TR.UTF-8', 'FONTCONFIG_PATH': '/etc/fonts', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SEAT': 'seat0', 'GIO_MODULE_DIR': '/home/imirdo/snap/code/common/.cache/gio-modules', 'XDG_SESSION_TYPE': 'wayland', 'GIT_ASKPASS': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'GTK_EXE_PREFIX_VSCODE_SNAP_ORIG': '', 'GDK_BACKEND_VSCODE_SNAP_ORIG': '', 'XCURSOR_SIZE': '24', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/imirdo', 'CHROME_DESKTOP': 'code.desktop', 'KDE_APPLICATIONS_AS_SCOPE': '1', 'LOCPATH_VSCODE_SNAP_ORIG': '', 'OLDPWD': '/home/imirdo/marine_ws', 'TERM_PROGRAM_VERSION': '1.103.2', 'DESKTOP_SESSION': 'plasmawayland', 'GTK_PATH': '/snap/code/205/usr/lib/x86_64-linux-gnu/gtk-3.0', 'XDG_DATA_HOME_VSCODE_SNAP_ORIG': '', 'GTK_IM_MODULE_FILE': '/home/imirdo/snap/code/common/.cache/immodules/immodules.cache', 'ROS_PYTHON_VERSION': '3', 'GTK_RC_FILES': '/etc/gtk/gtkrc:/home/imirdo/.gtkrc:/home/imirdo/.config/gtkrc', 'XDG_SEAT_PATH': '/org/freedesktop/DisplayManager/Seat0', 'GSETTINGS_SCHEMA_DIR_VSCODE_SNAP_ORIG': '', 'KDE_SESSION_VERSION': '5', 'VSCODE_GIT_ASKPASS_MAIN': '/snap/code/205/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'tr_TR.UTF-8', 'VSCODE_GIT_ASKPASS_NODE': '/snap/code/205/usr/share/code/code', 'MANAGERPID': '2189', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'SYSTEMD_EXEC_PID': '2443', 'BUNDLED_DEBUGPY_PATH': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/libs/debugpy', 'IM_CONFIG_CHECK_ENV': '1', 'SSH_ASKPASS': '/usr/bin/ksshaskpass', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'QT_QPA_PLATFORMTHEME': 'qt5ct', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install', 'XKB_DEFAULT_LAYOUT': 'jp', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'imirdo', 'QT_WAYLAND_FORCE_DPI': '96', 'QT_AUTO_SCREEN_SCALE_FACTOR': '0', 'JOURNAL_STREAM': '9:21453', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_CONFIG_DIRS_VSCODE_SNAP_ORIG': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/plasma-plasmashell.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'XDG_DATA_DIRS_VSCODE_SNAP_ORIG': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '1', 'GTK2_RC_FILES': '/etc/gtk-2.0/gtkrc:/home/imirdo/.gtkrc-2.0:/home/imirdo/.config/gtkrc-2.0', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/bundled/scripts/noConfigScripts', 'SESSION_MANAGER': 'local/furkan-83fd:@/tmp/.ICE-unix/2401,unix/furkan-83fd:/tmp/.ICE-unix/2401', 'GTK_EXE_PREFIX': '/snap/code/205/usr', 'INVOCATION_ID': '6a6ddf5a1f2e4f328586011460389c64', 'XDG_SESSION_PATH': '/org/freedesktop/DisplayManager/Session1', 'LC_ADDRESS': 'tr_TR.UTF-8', 'BAMF_DESKTOP_FILE_HINT': '/var/lib/snapd/desktop/applications/code_code.desktop', 'XKB_DEFAULT_MODEL': 'pc105', 'XDG_RUNTIME_DIR': '/run/user/1000', 'XCURSOR_THEME': 'breeze_cursors', 'GDK_BACKEND': 'x11', 'ICEAUTHORITY': '/run/user/1000/iceauth_pyWwiQ', 'DISPLAY': ':1', 'LOCPATH': '/snap/code/205/usr/lib/locale', 'VSCODE_DEBUGPY_ADAPTER_ENDPOINTS': '/home/imirdo/.vscode/extensions/ms-python.debugpy-2025.10.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-65583d3b0d661280.txt', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'KDE', 'LC_TELEPHONE': 'tr_TR.UTF-8', 'GIO_MODULE_DIR_VSCODE_SNAP_ORIG': '', 'XDG_DATA_HOME': '/home/imirdo/snap/code/205/.local/share', 'XDG_SESSION_DESKTOP': 'KDE', 'XAUTHORITY': '/run/user/1000/xauth_VfylQH', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-d15037dd8a.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/gnupg/S.gpg-agent.ssh', 'GSETTINGS_SCHEMA_DIR': '/home/imirdo/snap/code/205/.local/share/glib-2.0/schemas', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'KDE', 'SHELL': '/bin/bash', 'LC_NAME': 'tr_TR.UTF-8', 'QT_ACCESSIBILITY': '1', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GTK_PATH_VSCODE_SNAP_ORIG': '', 'FONTCONFIG_FILE': '/etc/fonts/fonts.conf', 'GTK_IM_MODULE_FILE_VSCODE_SNAP_ORIG': '', 'LC_MEASUREMENT': 'tr_TR.UTF-8', 'XKB_DEFAULT_VARIANT': 'OADG109A', 'LC_IDENTIFICATION': 'tr_TR.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'XDG_VTNR': '1', 'PWD': '/home/imirdo/marine_ws/src/vessel_kinematics/build/vessel_kinematics', 'XDG_CONFIG_DIRS': '/home/imirdo/.config/kdedefaults:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings', 'XDG_DATA_DIRS': '/home/imirdo/snap/code/205/.local/share:/home/imirdo/snap/code/205:/snap/code/205/usr/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'QTWEBENGINE_DICTIONARIES_PATH': '/usr/share/hunspell-bdic/', 'PYTHONPATH': '/home/imirdo/turtlebot3_ws/build/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/build/turtlebot3_example:/home/imirdo/turtlebot3_ws/install/turtlebot3_example/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib/python3.12/site-packages:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'tr_TR.UTF-8', 'LC_PAPER': 'tr_TR.UTF-8', 'KDE_SESSION_UID': '1000', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'CMAKE_PREFIX_PATH': '/home/imirdo/turtlebot3_ws/install/turtlebot3:/home/imirdo/turtlebot3_ws/install/turtlebot3_simulations:/home/imirdo/turtlebot3_ws/install/turtlebot3_bringup:/home/imirdo/turtlebot3_ws/install/turtlebot3_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_navigation2:/home/imirdo/turtlebot3_ws/install/turtlebot3_fake_node:/home/imirdo/turtlebot3_ws/install/turtlebot3_msgs:/home/imirdo/turtlebot3_ws/install/turtlebot3_gazebo:/home/imirdo/turtlebot3_ws/install/turtlebot3_description:/home/imirdo/turtlebot3_ws/install/turtlebot3_cartographer:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_examples:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/imirdo/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/imirdo/turtlebot3_ws/install/turtlebot3_teleop:/home/imirdo/turtlebot3_ws/install/turtlebot3_example:/opt/ros/jazzy'}), 'shell': False}
+[26.416871] (-) TimerEvent: {}
+[26.422192] (vessel_kinematics) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[26.422459] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node\n'}
+[26.429197] (vessel_kinematics) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node" to ""\n'}
+[26.429725] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/pid_controller_node\n'}
+[26.439792] (vessel_kinematics) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/pid_controller_node" to ""\n'}
+[26.440158] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/mpc_controller_node\n'}
+[26.450385] (vessel_kinematics) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/mpc_controller_node" to ""\n'}
+[26.450713] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/disturbances_node\n'}
+[26.453277] (vessel_kinematics) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/disturbances_node" to ""\n'}
+[26.453594] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node\n'}
+[26.462725] (vessel_kinematics) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/milliampere_dynamics_node" to ""\n'}
+[26.463047] (vessel_kinematics) StdoutLine: {'line': b'-- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/thrust_allocator_node\n'}
+[26.463410] (vessel_kinematics) StdoutLine: {'line': b'-- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/pid_controller_node\n'}
+[26.463772] (vessel_kinematics) StdoutLine: {'line': b'-- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/mpc_controller_node\n'}
+[26.464162] (vessel_kinematics) StdoutLine: {'line': b'-- Up-to-date: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/lib/vessel_kinematics/disturbances_node\n'}
+[26.464438] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/launch\n'}
+[26.464822] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/launch/vessel.launch.py\n'}
+[26.465061] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/rviz\n'}
+[26.465232] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/rviz/vessel.rviz\n'}
+[26.465473] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf\n'}
+[26.465712] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf/milliampere.urdf.xacro\n'}
+[26.465876] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/urdf/vessel_prism.urdf.xacro\n'}
+[26.466038] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/ament_index/resource_index/package_run_dependencies/vessel_kinematics\n'}
+[26.466304] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/ament_index/resource_index/parent_prefix_path/vessel_kinematics\n'}
+[26.466510] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/ament_prefix_path.sh\n'}
+[26.466676] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/ament_prefix_path.dsv\n'}
+[26.466904] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/path.sh\n'}
+[26.467150] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/environment/path.dsv\n'}
+[26.467368] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.bash\n'}
+[26.467543] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.sh\n'}
+[26.467696] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.zsh\n'}
+[26.467846] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/local_setup.dsv\n'}
+[26.468014] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.dsv\n'}
+[26.468163] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/ament_index/resource_index/packages/vessel_kinematics\n'}
+[26.468313] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/cmake/vessel_kinematicsConfig.cmake\n'}
+[26.468477] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/cmake/vessel_kinematicsConfig-version.cmake\n'}
+[26.468636] (vessel_kinematics) StdoutLine: {'line': b'-- Installing: /home/imirdo/marine_ws/src/vessel_kinematics/install/vessel_kinematics/share/vessel_kinematics/package.xml\n'}
+[26.470177] (vessel_kinematics) CommandEnded: {'returncode': 0}
+[26.492688] (vessel_kinematics) JobEnded: {'identifier': 'vessel_kinematics', 'rc': 0}
+[26.493338] (-) EventReactorShutdown: {}

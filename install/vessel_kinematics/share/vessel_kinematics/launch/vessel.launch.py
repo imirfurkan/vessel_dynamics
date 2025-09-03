@@ -67,14 +67,34 @@ def generate_launch_description():
             output='screen'
         ),
         
-        # ————————————————————————————
-        # E) pid_controller_node
+        # # ————————————————————————————
+        # # E) pid_controller_node
+        # #    
+        # #    
+        # Node(
+        #     package='vessel_kinematics',
+        #     executable='pid_controller_node',
+        #     name='pid_controller',
+        #     output='screen'
+        # ),
+        # # ————————————————————————————
+        # F) mpc_controller_node
         #    
         #    
         Node(
             package='vessel_kinematics',
-            executable='pid_controller_node',
-            name='milliampere_controller',
+            executable='mpc_controller_node',
+            name='mpc_controller',
+            output='screen'
+        ),
+        # ————————————————————————————
+        # G) disturbances_node
+        #    
+        #    
+        Node(
+            package='vessel_kinematics',
+            executable='disturbances_node',
+            name='disturbances',
             output='screen'
         ),
     ])
