@@ -9,6 +9,7 @@
 #include <casadi/casadi.hpp>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2/LinearMath/Matrix3x3.h>
+#include "vessel_kinematics/mpc_controller.hpp"
 
 using namespace std::chrono_literals; // write time as ms
 using namespace casadi;
@@ -19,6 +20,7 @@ class MPCNode : public rclcpp::Node
 public:
   MPCNode() : Node("mpc_controller_node")
   {
+    this->loadParameters();
     //----------------------------------------------------------------
     // ROS interfaces
     //----------------------------------------------------------------
@@ -71,6 +73,28 @@ private:
   }
   void controllerLoop() {}
   void setupSolver() {}
+  void loadParameters()
+  {
+    MPCParams p_default;
+
+    mpc_params_.P_  = this->declare_parameter<unsigned int>("P", p_default.P_);
+    mpc_params_.Ts_ = this->declare_parameter<double>("Ts", p_default.Ts_);
+
+    auto tau_min_vec = this->declare_parameter<std::vector<double>>(
+        "tau_min", {p_default.tau_min_(0), p_default.tau_min_(1), p_default.tau_min_(2)});
+    mpc_params_.tau_min_ = Eigen::Map<Eigen::Vector3d>(tau_min_vec.data());
+
+    auto tau_max_vec = this->declare_parameter<std::vector<double>>(
+        "tau_max", {p_default.tau_max_(0), p_default.tau_max_(1), p_default.tau_max_(2)});
+    mpc_params_.tau_max_ = Eigen::Map<Eigen::Vector3d>(tau_max_vec.data());
+
+    // Q and R are guaranteed to be in YAML
+    std::vector<double> Q_vec = this->get_parameter("Q_weights").as_double_array();
+    std::vector<double> R_vec = this->get_parameter("R_weights").as_double_array();
+
+    mpc_params_.Q_ = casadi::DM::reshape(Q_vec, 3, 3);
+    mpc_params_.R_ = casadi::DM::reshape(R_vec, 3, 3);
+  }
   // ROS2 Subscribers and Publishers
   rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pos_cmd_sub_;
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr         state_sub_;
@@ -81,6 +105,7 @@ private:
   Eigen::Vector3d eta_;     // position [x, y, ψ]
   Eigen::Vector3d eta_des_; // [N, E, ψ]
   Eigen::Vector3d nu_;      // body-frame twist [u, v, r]
+  MPCParams       mpc_params_;
 
   bool goal_received_ = false;
 };

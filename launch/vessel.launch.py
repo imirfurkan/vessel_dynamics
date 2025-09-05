@@ -5,10 +5,10 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-    # 2) locate our package on the filesystem
+    # locate our package on the filesystem
     pkg = FindPackageShare('vessel_kinematics')
 
-    # 3) build the 'robot_description' parameter by running xacro on our URDF
+    # build the 'robot_description' parameter by running xacro on our URDF
     robot_desc = Command([
         # find the 'xacro' executable
         FindExecutable(name='xacro'), ' ',
@@ -16,7 +16,13 @@ def generate_launch_description():
         PathJoinSubstitution([pkg, 'urdf/milliampere.urdf.xacro'])
     ])
 
-    # 4) return a LaunchDescription with the 3 nodes we want
+    mpc_parameter_file = PathJoinSubstitution([
+        pkg,
+        'config',
+        'mpc_params.yaml'
+    ])
+
+    # 4) return a LaunchDescription with the nodes we want
     return LaunchDescription([
 
         # ————————————————————————————
@@ -85,16 +91,17 @@ def generate_launch_description():
             package='vessel_kinematics',
             executable='mpc_controller_node',
             name='mpc_controller',
-            output='screen'
+            output='screen',
+            parameters='mpc_parameter_file'
         ),
-        # ————————————————————————————
-        # G) disturbances_node
-        #    
-        #    
-        Node(
-            package='vessel_kinematics',
-            executable='disturbances_node',
-            name='disturbances',
-            output='screen'
-        ),
+        # # ————————————————————————————
+        # # G) disturbances_node
+        # #    
+        # #    
+        # Node(
+        #     package='vessel_kinematics',
+        #     executable='disturbances_node',
+        #     name='disturbances',
+        #     output='screen'
+        # ),
     ])

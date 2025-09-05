@@ -1,0 +1,15 @@
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/uninstall.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/vessel_kinematics_uninstall.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/milliampere_dynamics_node.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/vessel_lib.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/thrust_allocator_node.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/pid_controller_node.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/mpc_controller_node.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/disturbances_node.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/test.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/edit_cache.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/rebuild_cache.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/list_install_components.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/install.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/install/local.dir
+/home/imirdo/marine_ws/src/vessel_kinematics/build/CMakeFiles/install/strip.dir

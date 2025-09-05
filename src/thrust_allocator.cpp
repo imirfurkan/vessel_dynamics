@@ -4,7 +4,7 @@
 #include <vector>
 #include <chrono>
 #include <osqp.h>
-#include <Eigen/Dense> // TODO removing this still builds but it takes 4x time time
+#include <Eigen/Dense>
 #include <Eigen/Sparse>
 #include <iostream>
 #include "vessel_kinematics/utils.hpp"
@@ -176,7 +176,7 @@ TAResult allocate_tau(const Eigen::Vector3d& tau_des, const TAState& state, cons
   l[8] = state.f(1) - max_force_change;
   u[8] = state.f(1) + max_force_change;
 
-  // --- Setup and Solve with OSQP (using RAII for safety) --- // TODO detayli incelemedim
+  // --- Setup and Solve with OSQP (using RAII for safety) ---
   std::unique_ptr<OSQPSettings, OSQPSettingsDeleter> settings((OSQPSettings*)c_malloc(sizeof(OSQPSettings)));
   osqp_set_default_settings(settings.get());
   settings->verbose  = 0;

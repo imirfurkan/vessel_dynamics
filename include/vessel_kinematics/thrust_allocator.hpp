@@ -2,7 +2,7 @@
 
 #include <Eigen/Dense>
 #include <Eigen/Sparse>
-#include <memory> // Required for std::unique_ptr // TODO check that function
+#include <memory> // Required for std::unique_ptr
 
 // clang-format off
 

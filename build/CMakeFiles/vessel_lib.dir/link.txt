@@ -1,0 +1,2 @@
+/usr/bin/ar qc libvessel_lib.a CMakeFiles/vessel_lib.dir/src/thrust_allocator.cpp.o
+/usr/bin/ranlib libvessel_lib.a

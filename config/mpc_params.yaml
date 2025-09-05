@@ -1,0 +1,17 @@
+# Parameters for our MPC Controller Node
+mpc_controller_node:
+  ros__parameters:
+    # Prediction horizon and timestep
+    P: 20
+    Ts: 0.1
+
+    # Cost function weights for Q (for the 9x1 augmented state)
+    # Order: [Δu, Δv, Δr, Δx, Δy, Δψ, x, y, ψ]
+    Q_weights: [0.1, 0.1, 0.5, 1.0, 1.0, 2.0, 100.0, 100.0, 500.0]
+
+    # Cost function weights for R (for the 3x1 control change Δτ)
+    R_weights: [0.01, 0.01, 0.05]
+
+    # Thruster limits [Force X, Force Y, Torque N]
+    tau_max: [1000.0, 1000.0, 1800.0]
+    tau_min: [-1000.0, -1000.0, -1800.0]

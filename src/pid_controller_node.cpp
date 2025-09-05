@@ -30,14 +30,6 @@ public:
     Ki.diagonal() << 15, 15, 45;
     Kd.diagonal() << 700, 700, 1600;
 
-    // Kp.diagonal() << 0, 0, 170;
-    // Ki.diagonal() << 0, 0, 4;
-    // Kd.diagonal() << 0, 0, 1600;
-
-    // Kp.diagonal() << 200, 200, 260;
-    // Ki.diagonal() << 0, 0, 0;
-    // Kd.diagonal() << 700, 700, 1800;
-
     integral_error_limits_ << 10.0, 10.0, 1.0; // TODO tune these
 
     // TODO check if the logic & limits makes sense, in the way that if reference model function always gives the max
@@ -228,8 +220,7 @@ private:
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr         state_sub_;
   rclcpp::Publisher<geometry_msgs::msg::Wrench>::SharedPtr         wrench_pub_;
 
-  // Variable declarations // TODO check variable declarations, needed here or there etc
-  // TODO when to make them member variables vs
+  // Variable declarations
   Eigen::Vector3d eta_;                   // position [x, y, ψ]
   Eigen::Vector3d vel_ref_max_;           // v_max in the book // physical limit
   Eigen::Vector3d acc_ref_max_;           // a_max (derived from ν̇_max) // physical limit
