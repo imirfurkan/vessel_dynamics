@@ -8,12 +8,12 @@ using namespace casadi;
 // --- MPC Tuning Parameters ---
 struct MPCParams
 {
-  unsigned int    P_;       // Prediction horizon (number of steps)
-  double          Ts_;      // Control timestep (seconds), e.g., 0.1s for 10Hz
-  casadi::DM      Q_;       // Weighting matrix for state error (augmented)
-  casadi::DM      R_;       // Weighting matrix for control input changes
-  Eigen::Vector3d tau_min_; // Minimum thruster force/torque
-  Eigen::Vector3d tau_max_; // Maximum thruster force/torque
+  int        P_;       // Prediction horizon (number of steps)
+  double     Ts_;      // Control timestep (seconds), e.g., 0.1s for 10Hz
+  casadi::DM Q_;       // Weighting matrix for state error (augmented)
+  casadi::DM R_;       // Weighting matrix for control input changes
+  casadi::DM tau_min_; // Minimum thruster force/torque
+  casadi::DM tau_max_; // Maximum thruster force/torque
 };
 
 struct MPCState
@@ -22,18 +22,12 @@ struct MPCState
   Eigen::Vector<double, 6> x_k_;           // Current full state [nu, eta]
   Eigen::Vector<double, 6> x_k_minus_1_;   // Previous full state (for delta_x)
   Eigen::Vector3d          tau_k_minus_1_; // Last applied control input (for delta_tau)
-
-  // The numerical matrices for the augmented model p[k+1] = A_bar*p[k] + B_bar*delta_tau[k]
-  // These will be recalculated in every loop.
-  Eigen::Matrix<double, 9, 9> A_bar_;
-  Eigen::Matrix<double, 9, 3> B_bar_;
 };
 
-struct solverObjects
+struct MPCSolver
 {
   // --- CasADi Solver Objects ---
-  std::shared_ptr<casadi::Opti> opti_;   // The optimization problem stack
-  casadi::Function              solver_; // The compiled solver function
+  std::shared_ptr<casadi::Opti> opti_; // The optimization problem stack
 
   // Symbolic VARIABLES the solver will find
   casadi::MX U_var_; // The sequence of control changes {Δτ_k, ..., Δτ_{k+P-1}}
@@ -41,6 +35,11 @@ struct solverObjects
 
   // Symbolic PARAMETERS we will provide at runtime
   casadi::MX p0_param_;       // The initial augmented state p[k]
-  casadi::MX pref_param_;     // The reference for the output y (part of p)
+  casadi::MX p_ref_param_;    // The reference for the output y (part of p)
   casadi::MX tau_prev_param_; // The previous control input τ[k-1]
+
+  // Matrices for the augmented model p[k+1] = A_bar*p[k] + B_bar*delta_tau[k]
+  // These will be recalculated in every loop.
+  casadi::MX A_bar_;
+  casadi::MX B_bar_;
 };
