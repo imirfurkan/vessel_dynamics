@@ -4,10 +4,11 @@ mpc_controller_node:
     # Prediction horizon and timestep
     P: 20
     Ts: 0.1
+    # P * Ts = predicted future (s) 
 
     # Cost function weights for Q (for the 9x1 augmented state)
     # Order: [Δu, Δv, Δr, Δx, Δy, Δψ, x, y, ψ]
-    Q_weights: [0.1, 0.1, 0.5, 1.0, 1.0, 2.0, 100.0, 100.0, 500.0]
+    Q_weights: [0,  0,  0,  0,  0,  0, 100.0, 100.0, 500.0]
 
     # Cost function weights for R (for the 3x1 control change Δτ)
     R_weights: [0.01, 0.01, 0.05]

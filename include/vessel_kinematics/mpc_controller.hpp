@@ -9,7 +9,7 @@ using namespace casadi;
 struct MPCParams
 {
   int        P_;       // Prediction horizon (number of steps)
-  double     Ts_;      // Control timestep (seconds), e.g., 0.1s for 10Hz
+  double     Ts_;      // Control timestep (seconds), e.g., 0.1s for 10Hz // TODO understand
   casadi::DM Q_;       // Weighting matrix for state error (augmented)
   casadi::DM R_;       // Weighting matrix for control input changes
   casadi::DM tau_min_; // Minimum thruster force/torque
@@ -22,6 +22,9 @@ struct MPCState
   Eigen::Vector<double, 6> x_k_;           // Current full state [nu, eta]
   Eigen::Vector<double, 6> x_k_minus_1_;   // Previous full state (for delta_x)
   Eigen::Vector3d          tau_k_minus_1_; // Last applied control input (for delta_tau)
+
+  Eigen::Matrix<double, 9, 9> A_bar_;
+  Eigen::Matrix<double, 9, 3> B_bar_;
 };
 
 struct MPCSolver
@@ -40,6 +43,6 @@ struct MPCSolver
 
   // Matrices for the augmented model p[k+1] = A_bar*p[k] + B_bar*delta_tau[k]
   // These will be recalculated in every loop.
-  casadi::MX A_bar_;
-  casadi::MX B_bar_;
+  casadi::MX A_bar_param_;
+  casadi::MX B_bar_param_;
 };

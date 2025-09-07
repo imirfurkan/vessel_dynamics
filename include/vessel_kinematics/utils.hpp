@@ -69,9 +69,9 @@ inline Eigen::Vector3d clampVec3(const Eigen::Vector3d& x, const Eigen::Vector3d
   return x.cwiseMax(lo).cwiseMin(hi);
 }
 
-inline Eigen::Matrix3d calculateRotationMatrix(const Eigen::Vector3d& pos)
+inline Eigen::Matrix3d calculateRotationMatrix(const Eigen::Vector3d& eta)
 {
-  double cy = std::cos(pos(2)), sy = std::sin(pos(2)); // pos(2) is yaw.
+  const double cy = std::cos(eta(2)), sy = std::sin(eta(2)); // eta(2) is yaw.
 
   Eigen::Matrix3d Jnb;
   // clang-format off
@@ -81,6 +81,26 @@ inline Eigen::Matrix3d calculateRotationMatrix(const Eigen::Vector3d& pos)
   // clang-format on
 
   return Jnb;
+}
+
+inline Eigen::Matrix3d calculateKinematicJacobian(const Eigen::Vector3d& nu, const Eigen::Vector3d& eta)
+{
+  // This computes the matrix ∂(R(ψ)ν)/∂η
+  Eigen::Matrix3d jacobian;
+  jacobian.setZero(); // First two columns (derivatives w.r.t. N and E) are zero.
+
+  // Get the current state values needed for the calculation
+  const double u   = nu(0);
+  const double v   = nu(1);
+  const double yaw = eta(2);
+
+  const double cy = std::cos(yaw), sy = std::sin(yaw); // pos(2) is yaw.
+  // Fill in the third column (derivative w.r.t. ψ)
+  jacobian(0, 2) = -u * sy - v * cy;
+  jacobian(1, 2) = u * cy - v * sy;
+  // jacobian(2, 2) is already 0
+
+  return jacobian;
 }
 
 // velocity dependent → compute dynamically

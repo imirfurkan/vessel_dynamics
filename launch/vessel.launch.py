@@ -92,7 +92,7 @@ def generate_launch_description():
             executable='mpc_controller_node',
             name='mpc_controller',
             output='screen',
-            parameters='mpc_parameter_file'
+            parameters=[mpc_parameter_file]
         ),
         # # ————————————————————————————
         # # G) disturbances_node
