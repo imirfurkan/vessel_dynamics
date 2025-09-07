@@ -23,12 +23,15 @@ public:
     //----------------------------------------------------------------
     // Variable initialization
     //----------------------------------------------------------------
+    RCLCPP_INFO(this->get_logger(), "Starting constructor...");
     this->loadParameters();
+    RCLCPP_INFO(this->get_logger(), "Parameters loaded. Initializing state...");
     mpc_state_.x_k_.setZero();
     mpc_state_.x_k_minus_1_.setZero();
     mpc_state_.tau_k_minus_1_.setZero();
     mpc_state_.A_bar_.setZero();
     mpc_state_.B_bar_.setZero();
+    RCLCPP_INFO(this->get_logger(), "Parameters loaded. Initializing state...");
     //----------------------------------------------------------------
     // ROS interfaces
     //----------------------------------------------------------------
@@ -43,9 +46,10 @@ public:
     // calls step() each 20ms
     timer_ =
         create_wall_timer(std::chrono::duration<double>(mpc_params_.Ts_), std::bind(&MPCNode::controllerLoop, this));
-
+    RCLCPP_INFO(this->get_logger(), "ROS interfaces created. Setting up solver...");
     // --
     this->setupSolver();
+    RCLCPP_INFO(this->get_logger(), "Constructor finished successfully!");
   }
 
 private:
@@ -196,7 +200,7 @@ private:
     casadi::MX cost = 0;
     for (int i = 0; i < mpc_params_.P_; i++)
     {
-      auto state_error    = mpc_solver_.P_var_(Slice(), i + 1) - mpc_solver_.p_ref_param_;
+      auto state_error    = mpc_solver_.P_var_(Slice(), i + 1) - mpc_solver_.p_ref_param_; // TODO wrap yaw
       auto control_change = mpc_solver_.U_var_(Slice(), i);
       cost += casadi::MX::mtimes({state_error.T(), mpc_params_.Q_, state_error});
       cost += casadi::MX::mtimes({control_change.T(), mpc_params_.R_, control_change});
@@ -224,14 +228,28 @@ private:
       mpc_solver_.opti_->subject_to(tau_i <= mpc_params_.tau_max_);
     }
     // --- Create the Solver ---
-    casadi::Dict opts;
-    opts["qpsol"]         = "qpoases";
-    opts["qpsol_options"] = casadi::Dict{{"printLevel", "none"}};
-    opts["print_time"]    = false;
-    opts["expand"]        = true;
+    // casadi::Dict opts;
+    // opts["qpsol"]         = "qpoases";
+    // opts["qpsol_options"] = casadi::Dict{{"printLevel", "none"}};
+    // opts["print_time"]    = false;
+    // opts["expand"]        = true;
 
-    mpc_solver_.opti_->solver("sqpmethod", opts);
-    RCLCPP_INFO(this->get_logger(), "MPC solver has been set up successfully.");
+    // opts["qpsol"]         = "osqp"; // <-- change from "qpoases" to "osqp"
+    // opts["qpsol_options"] = casadi::Dict{{"verbose", false}};
+    // opts["print_time"]    = false;
+    // opts["expand"]        = true;
+
+    // mpc_solver_.opti_->solver("sqpmethod", opts);
+    // RCLCPP_INFO(this->get_logger(), "MPC solver has been set up successfully.");
+
+    // TODO opt for a better solver
+    casadi::Dict opts;
+    opts["ipopt.print_level"] = 0;
+    opts["print_time"]        = false;
+    opts["expand"]            = true;
+
+    // Use dense solver, no external plugin required
+    mpc_solver_.opti_->solver("ipopt", opts);
   }
   void loadParameters()
   {
@@ -240,14 +258,15 @@ private:
     mpc_params_.P_  = this->declare_parameter<int>("P", p_default.P_);
     mpc_params_.Ts_ = this->declare_parameter<double>("Ts", p_default.Ts_);
 
-    std::vector<double> Q_vec       = this->get_parameter("Q_weights").as_double_array();
-    std::vector<double> R_vec       = this->get_parameter("R_weights").as_double_array();
-    std::vector<double> tau_min_vec = this->get_parameter("tau_min").as_double_array();
-    std::vector<double> tau_max_vec = this->get_parameter("tau_max").as_double_array();
-    mpc_params_.Q_                  = casadi::DM::diag(Q_vec);
-    mpc_params_.R_                  = casadi::DM::diag(R_vec);
-    mpc_params_.tau_min_            = casadi::DM::reshape(tau_min_vec, 3, 1);
-    mpc_params_.tau_max_            = casadi::DM::reshape(tau_max_vec, 3, 1);
+    std::vector<double> Q_vec       = this->declare_parameter<std::vector<double>>("Q_weights");
+    std::vector<double> R_vec       = this->declare_parameter<std::vector<double>>("R_weights");
+    std::vector<double> tau_min_vec = this->declare_parameter<std::vector<double>>("tau_min");
+    std::vector<double> tau_max_vec = this->declare_parameter<std::vector<double>>("tau_max");
+
+    mpc_params_.Q_       = casadi::DM::diag(Q_vec);
+    mpc_params_.R_       = casadi::DM::diag(R_vec);
+    mpc_params_.tau_min_ = casadi::DM::reshape(tau_min_vec, 3, 1);
+    mpc_params_.tau_max_ = casadi::DM::reshape(tau_max_vec, 3, 1);
   }
   // ROS2 Subscribers and Publishers
   rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr pos_cmd_sub_;

@@ -100,6 +100,7 @@ private:
     Eigen::Matrix3d Rnb     = vk::calculateRotationMatrix(eta_);
     Eigen::Vector3d eta_dot = Rnb * nu_;
     eta_ += eta_dot * vk::dt;
+    eta_(2) = vk::wrapAngle(eta_(2));
     RCLCPP_INFO(this->get_logger(), "Position: [N=%.2f, E=%.2f, ψ=%.2f°]", eta_(0), eta_(1), eta_(2) * 180 / M_PI);
 
     std_msgs::msg::Float64 yaw_msg;
