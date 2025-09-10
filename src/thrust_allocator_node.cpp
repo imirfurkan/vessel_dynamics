@@ -60,12 +60,30 @@ private:
 
   void wrenchCallBack(const geometry_msgs::msg::Wrench::SharedPtr msg) // TODO understand smart pointer SharedPtr
   {
+    // --- 1. Calculate Dynamic Timestep 'dt' ---
+    rclcpp::Time current_time = this->get_clock()->now();
+    double       dt;
+
+    // Handle the first run edge case
+    if (first_run_)
+    {
+      // On the first call, we don't have a previous time, so assume a small dt.
+      // The ideal angles will be commanded directly.
+      dt         = 0.02; // A small, reasonable default
+      first_run_ = false;
+    }
+    else
+    {
+      dt = (current_time - last_update_time_).seconds();
+    }
+    // IMPORTANT: Update the last update time for the next cycle
+    last_update_time_ = current_time;
     Eigen::Vector3d tau_desired;
     tau_desired(0) = msg->force.x;
     tau_desired(1) = msg->force.y;
     tau_desired(2) = msg->torque.z;
 
-    TAResult result = allocate_tau(tau_desired, ta_state_, ta_params_, vk::dt);
+    TAResult result = allocate_tau(tau_desired, ta_state_, ta_params_, dt);
 
     if (result.success)
     {
@@ -122,7 +140,9 @@ private:
   // Variables for the allocation algorithm
   TAState  ta_state_;
   TAParams ta_params_; // TODO what is different between this and p_default if both are initialized from the header
-                       // file, why did we have to do allat?
+  // file, why did we have to do allat?
+  bool         first_run_ = true;
+  rclcpp::Time last_update_time_;
 };
 
 int main(int argc, char** argv) // TODO understand function parameters and the whole int main function

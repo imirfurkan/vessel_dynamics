@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <Eigen/Dense>
+#include <sstream>
 
 namespace vk // TODO change name
 {
@@ -134,6 +135,73 @@ inline void updateDampingMatrix(const Eigen::Vector3d& nu, Eigen::Matrix3d& D_ou
            0.0, d22,  d23,
            0.0, d32,  d33;
   // clang-format on
+}
+
+inline bool isControllable(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B)
+{
+  int             n = A.rows();
+  Eigen::MatrixXd C(n, n * B.cols());
+
+  C.block(0, 0, n, B.cols()) = B;
+  for (int i = 1; i < n; i++)
+  {
+    C.block(0, i * B.cols(), n, B.cols()) = A * C.block(0, (i - 1) * B.cols(), n, B.cols());
+  }
+
+  return C.fullPivLu().rank() == n;
+}
+
+inline bool isObservable(const Eigen::MatrixXd& A, const Eigen::MatrixXd& C)
+{
+  return isControllable(A.transpose(), C.transpose());
+}
+
+inline bool isStable(const Eigen::MatrixXd& A, double tolerance = 1e-10)
+{
+  Eigen::EigenSolver<Eigen::MatrixXd> solver(A);
+  auto eigenvalues = solver.eigenvalues();
+  
+  int integrators = 0;
+  for(int i = 0; i < eigenvalues.size(); i++)
+  {
+    double real_part = eigenvalues(i).real();
+    
+    // Count eigenvalues very close to zero as integrators
+    if (std::abs(real_part) < tolerance)
+    {
+      integrators++;
+      continue;
+    }
+    
+    // Any positive real part (beyond tolerance) means instability
+    if (real_part > tolerance)
+    {
+      return false;
+    }
+  }
+  
+  // Marine vessels typically have 3 integrators (x, y, ψ)
+  return integrators <= 3;
+}
+
+inline std::string getSystemAnalysis(const Eigen::MatrixXd& A, const Eigen::MatrixXd& B, const Eigen::MatrixXd& C)
+{
+  std::stringstream ss;
+
+  ss << "System Analysis:\n";
+  ss << "Controllable: " << (isControllable(A, B) ? "Yes" : "No") << "\n";
+  ss << "Observable: " << (isObservable(A, C) ? "Yes" : "No") << "\n";
+  ss << "Stable: " << (isStable(A) ? "Yes" : "No") << "\n\n";
+
+  Eigen::EigenSolver<Eigen::MatrixXd> solver(A);
+  auto                                eigenvalues = solver.eigenvalues();
+  ss << "Eigenvalues:\n";
+  for (int i = 0; i < eigenvalues.size(); i++)
+  {
+    ss << "λ" << i << " = " << eigenvalues(i).real() << " + " << eigenvalues(i).imag() << "i\n";
+  }
+
+  return ss.str();
 }
 
 } // namespace vk
