@@ -1,4 +1,4 @@
-Modeling and Control of a USSV, using the milliAmpere ship model from NTNU.
+Modeling and Control of an ASV, using the milliAmpere ship model from NTNU.
 
 # Relevant Papers:
 
